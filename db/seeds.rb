@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+cells = []
+625.times do
+  cells << "white"
+end
+
+Drawing.create!(title: "test", content: cells, size: 25);
