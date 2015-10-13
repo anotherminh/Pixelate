@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.canvas {
+  border: 1px solid #ccc;
+}
+
+.canvas:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cell {
+  border: 1px dotted #ccc;
+  float: left;
+  width: 15px;
+  height: 15px;
+}
