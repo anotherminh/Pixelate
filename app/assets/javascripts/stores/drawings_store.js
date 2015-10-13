@@ -5,6 +5,7 @@
   function loadDrawing (drawing) {
     _drawing = drawing;
     _drawing.content = parseDrawingContent(drawing.content);
+    DrawingsStore.changed();
   }
 
   // create objects out of cells such that they can be easily

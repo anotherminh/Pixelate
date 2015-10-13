@@ -3,8 +3,29 @@ var Router = ReactRouter.Router;
 var IndexRoute = ReactRouter.IndexRoute;
 
 var DrawingApp = React.createClass({
+  getInitialState: function () {
+    return { drawing: null };
+  },
+
+  _onChange: function () {
+    this.setState({ drawing: DrawingsStore.get() });
+  },
+
+  componentDidMount: function () {
+    DrawingsStore.addChangeListener(this._onChange);
+    this.loadSavedDrawing();
+  },
+
+  loadSavedDrawing: function () {
+    ApiUtil.loadSavedDrawing(this.props.params.id);
+  },
+
   render: function () {
-    return <div>Test!</div>;
+    if (this.state.drawing) {
+      return <Canvas drawing={this.state.drawing}/>;
+    } else {
+      return <div>Not yet loaded!</div>;
+    }
   }
 });
 
