@@ -2,11 +2,11 @@
   'use strict';
   root.Cell = React.createClass({
     getInitialState: function() {
-      return { active: false };
+      return { active: 0 };
     },
 
     handleMouseDown: function () {
-      this.setState({ active: true});
+      this.setState({ active: 1 });
       this.props.toggleClick();
     },
 
@@ -16,15 +16,16 @@
 
     mouseOver: function(e) {
       if (this.props.mouseDown) {
-        this.setState({active: true});
+        this.setState({active: 1});
       }
     },
 
     render: function () {
       var cell = this.props.cell;
 
-      if (this.state.active) {
-        this.props.cell.style.backgroundColor = "black";
+      if (this.state.active === 1) {
+        this.props.cell.style.backgroundColor = ColorStore.get();
+        this.state.active++; //updates to 2
         CellsActions.updateCellsStore(cell);
       }
 

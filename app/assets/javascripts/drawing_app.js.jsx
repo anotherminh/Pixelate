@@ -7,12 +7,12 @@ var DrawingApp = React.createClass({
     return { drawing: null };
   },
 
-  _onChange: function () {
+  _loadCanvas: function () {
     this.setState({ drawing: DrawingsStore.get() });
   },
 
   componentDidMount: function () {
-    DrawingsStore.addChangeListener(this._onChange);
+    DrawingsStore.addChangeListener(this._loadCanvas);
     this.loadSavedDrawing();
   },
 
