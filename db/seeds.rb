@@ -11,4 +11,4 @@ cells = []
   cells << "white"
 end
 
-Drawing.create!(title: "test", content: cells, size: 25);
+Drawing.create!(title: "test", content: cells, size: 25)
