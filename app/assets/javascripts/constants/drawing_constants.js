@@ -1,0 +1,3 @@
+DrawingConstants = {
+  RECEIVE_SAVED_DRAWING: "RECEIVE_SAVED_DRAWING"
+};
