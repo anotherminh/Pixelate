@@ -14,7 +14,6 @@
       }
     },
 
-
     render: function () {
       var that = this;
       var canvas = that.props.drawing;

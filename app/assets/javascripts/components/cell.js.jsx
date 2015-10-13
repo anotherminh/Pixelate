@@ -21,13 +21,16 @@
     },
 
     render: function () {
-      var style = { backgroundColor: "white" };
-      if (this.state.active) { style.backgroundColor = "black"; }
-
       var cell = this.props.cell;
+
+      if (this.state.active) {
+        this.props.cell.style.backgroundColor = "black";
+        CellsActions.updateCellsStore(cell);
+      }
+
       return (
         <div className="cell"
-             style={style}
+             style={cell.style}
              idx={cell.id}
              onMouseDown={this.handleMouseDown}
              onMouseUp={this.handleMouseUp}

@@ -17,6 +17,10 @@
     });
   }
 
+  function updateCell (cell) {
+    _drawing.content[cell.id] = cell;
+  }
+
   root.DrawingsStore = $.extend({}, EventEmitter.prototype, {
     get: function () {
       return _drawing;
@@ -38,6 +42,9 @@
       switch (action.actionType) {
         case DrawingConstants.RECEIVE_SAVED_DRAWING:
           loadDrawing(action.drawing);
+          break;
+        case DrawingConstants.UPDATE_CELL:
+          updateCell(action.cell);
           break;
       }
     })
