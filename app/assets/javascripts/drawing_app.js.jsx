@@ -21,7 +21,7 @@ var DrawingApp = React.createClass({
     });
   },
 
-  componentDidMount: function () {
+  _initiateFetchingOfCanvas: function () {
     DrawingsStore.addChangeListener(this._loadCanvas);
     if (this.props.params.id) {
       ApiUtil.loadSavedDrawing(this.props.params.id);
@@ -29,6 +29,10 @@ var DrawingApp = React.createClass({
       DrawingsStore.addNewDrawingSaveListener(this._onSaveOfNewDrawing);
       ApiUtil.makeNewDrawing(this.props.params.id);
     }
+  },
+
+  componentDidMount: function () {
+    this._initiateFetchingOfCanvas();
   },
 
   render: function () {
