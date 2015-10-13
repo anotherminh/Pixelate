@@ -22,7 +22,12 @@ var DrawingApp = React.createClass({
 
   render: function () {
     if (this.state.drawing) {
-      return <Canvas drawing={this.state.drawing}/>;
+      return (
+        <div className="drawing-app">
+          <Canvas drawing={this.state.drawing}/>
+          <Palette/>
+        </div>
+      );
     } else {
       return <div>Not yet loaded!</div>;
     }

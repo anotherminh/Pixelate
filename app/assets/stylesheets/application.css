@@ -13,6 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ .drawing-app {
+   width: 1000px;
+   height: 800px;
+ }
+
+.palette {
+ min-width: 300px;
+ padding: 0px;
+ list-style-type: none;
+ margin: auto;
+}
+
+.palette:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.color-swatch:hover {
+  cursor: pointer;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  float: left;
+}
 
 .canvas {
   border: 1px solid #ccc;

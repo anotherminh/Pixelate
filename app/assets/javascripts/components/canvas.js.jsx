@@ -6,7 +6,6 @@
     },
 
     toggleClick: function () {
-      console.log("toggle click");
       if (this.state.mouseDown) {
         this.setState({ mouseDown: false });
       } else {
