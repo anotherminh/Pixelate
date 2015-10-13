@@ -13,4 +13,16 @@ class Api::DrawingsController < ApplicationController
     @new_drawing = Drawing.new(title: "test", content: cells, size: 25)
     render :new
   end
+
+  def update
+    @drawing = Drawing.find(params[:id])
+    if @drawing && @drawing.update(drawing_params)
+      render :show
+    end
+  end
+
+  private
+  def drawing_params
+    params.require(:drawing).permit(:title, :size, { content: [] })
+  end
 end

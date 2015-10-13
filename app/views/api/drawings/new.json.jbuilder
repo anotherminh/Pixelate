@@ -1,1 +1,1 @@
-json.extract!(@drawing, :id, :title, :size, :content)
+json.extract!(@new_drawing, :id, :title, :size, :content)

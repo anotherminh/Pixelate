@@ -12,12 +12,17 @@ var DrawingApp = React.createClass({
   },
 
   componentDidMount: function () {
-    DrawingsStore.addChangeListener(this._loadCanvas);
-    this.loadSavedDrawing();
+    DrawingsStore.addChangeListener(this.loadDrawing);
+    this.loadDrawing();
   },
 
-  loadSavedDrawing: function () {
-    ApiUtil.loadSavedDrawing(this.props.params.id);
+  loadDrawing: function () {
+    if (this.props.params.id) {
+      ApiUtil.loadSavedDrawing(this.props.params.id);
+    } else {
+      debugger
+      ApiUtil.makeNewDrawing(this.props.params.id);
+    }
   },
 
   render: function () {
@@ -26,6 +31,7 @@ var DrawingApp = React.createClass({
         <div className="drawing-app">
           <Canvas drawing={this.state.drawing}/>
           <Palette/>
+          <Tools/>
         </div>
       );
     } else {
@@ -35,7 +41,10 @@ var DrawingApp = React.createClass({
 });
 
 var routes = (
+  <Route>
+    <Route path="/drawings/new" component={DrawingApp}/>
     <Route path="/drawings/:id" component={DrawingApp}/>
+  </Route>
 );
 
 $(document).ready(

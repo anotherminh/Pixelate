@@ -41,6 +41,7 @@
     dispatcherID: AppDispatcher.register(function (action) {
       switch (action.actionType) {
         case DrawingConstants.RECEIVE_SAVED_DRAWING:
+          debugger
           loadDrawing(action.drawing);
           break;
         case DrawingConstants.UPDATE_CELL:

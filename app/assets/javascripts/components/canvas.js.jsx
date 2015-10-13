@@ -2,7 +2,7 @@
   'use strict';
   root.Canvas = React.createClass({
     getInitialState: function () {
-      return { mouseDown: false };
+      return { mouseDown: false, activeTool: ToolStore.get() };
     },
 
     toggleClick: function () {
@@ -11,6 +11,20 @@
       } else {
         this.setState({ mouseDown: true });
       }
+    },
+
+    handleToolSelection: function () {
+      this.state.activeTool = ToolStore.get();
+
+      switch (this.state.activeTool) {
+        case 'save':
+          ApiUtil.saveDrawing(this.props.drawing);
+          break;
+      }
+    },
+
+    componentDidMount: function () {
+      ToolStore.addChangeListener(this.handleToolSelection);
     },
 
     render: function () {
