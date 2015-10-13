@@ -20,7 +20,8 @@ var DrawingApp = React.createClass({
       this.history.pushState(null, url);
     });
   },
-
+  // works for both fetching a brand new (not in db) canvas,
+  // as well as a saved one
   _initiateFetchingOfCanvas: function () {
     DrawingsStore.addChangeListener(this._loadCanvas);
     if (this.props.params.id) {
