@@ -20,7 +20,7 @@
         type: 'get',
         dataType: 'json',
         success: function(response) {
-          ApiActions.receiveSavedDrawing(response);
+          ApiActions.receiveDrawing(response);
         }
       });
     },
@@ -38,14 +38,28 @@
       });
     },
 
+    saveNewDrawing: function (drawing) {
+      var preparedParams = prepareForSave(drawing);
+      $.ajax({
+        url: '/api/drawings/',
+        type: 'post',
+        dataType: 'json',
+        data: { drawing: preparedParams.drawing },
+        success: function (response) {
+          console.log("saved new drawing sucessfully!");
+          ApiActions.newDrawingSaved(response);
+        }
+      });
+    },
+
     makeNewDrawing: function () {
       $.ajax({
         url: 'api/drawings/new',
         type: 'get',
         dataType: 'json',
-        sucess: function (response) {
+        success: function (response) {
           console.log("got new drawing");
-          ApiActions.receiveSavedDrawing(response);
+          ApiActions.receiveDrawing(response);
         }
       });
     }

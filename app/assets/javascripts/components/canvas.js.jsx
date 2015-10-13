@@ -18,7 +18,11 @@
 
       switch (this.state.activeTool) {
         case 'save':
-          ApiUtil.saveDrawing(this.props.drawing);
+          if (this.props.drawing.id) {
+            ApiUtil.saveDrawing(this.props.drawing);
+          } else {
+            ApiUtil.saveNewDrawing(this.props.drawing);
+          }
           break;
       }
     },

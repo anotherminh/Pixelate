@@ -4,6 +4,13 @@ class Api::DrawingsController < ApplicationController
     render :show
   end
 
+  def create
+    @drawing = Drawing.new(drawing_params)
+    if @drawing.save
+      render :show
+    end
+  end
+
   def new
     cells = []
     625.times do

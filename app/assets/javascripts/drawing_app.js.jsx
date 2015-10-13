@@ -3,6 +3,9 @@ var Router = ReactRouter.Router;
 var IndexRoute = ReactRouter.IndexRoute;
 
 var DrawingApp = React.createClass({
+  mixins: [ReactRouter.History],
+
+
   getInitialState: function () {
     return { drawing: null };
   },
@@ -11,16 +14,19 @@ var DrawingApp = React.createClass({
     this.setState({ drawing: DrawingsStore.get() });
   },
 
-  componentDidMount: function () {
-    DrawingsStore.addChangeListener(this.loadDrawing);
-    this.loadDrawing();
+  _onSaveOfNewDrawing: function () {
+    this.setState({ drawing: DrawingsStore.get() }, function () {
+      var url = '/drawings/' + DrawingsStore.get().id;
+      this.history.pushState(null, url);
+    });
   },
 
-  loadDrawing: function () {
+  componentDidMount: function () {
+    DrawingsStore.addChangeListener(this._loadCanvas);
     if (this.props.params.id) {
       ApiUtil.loadSavedDrawing(this.props.params.id);
     } else {
-      debugger
+      DrawingsStore.addNewDrawingSaveListener(this._onSaveOfNewDrawing);
       ApiUtil.makeNewDrawing(this.props.params.id);
     }
   },

@@ -1,7 +1,14 @@
 ApiActions = {
-  receiveSavedDrawing: function (drawing) {
+  receiveDrawing: function (drawing) {
     AppDispatcher.dispatch({
-      actionType: DrawingConstants.RECEIVE_SAVED_DRAWING,
+      actionType: DrawingConstants.RECEIVE_DRAWING,
+      drawing: drawing
+    });
+  },
+
+  newDrawingSaved: function (drawing) {
+    AppDispatcher.dispatch({
+      actionType: DrawingConstants.NEW_DRAWING_SAVED,
       drawing: drawing
     });
   },
@@ -11,5 +18,5 @@ ApiActions = {
       actionType: DrawingConstants.RECEIVE_CELLS,
       cells: cells
     });
-  }
+  },
 };
