@@ -35,6 +35,11 @@ var DrawingApp = React.createClass({
     this._initiateFetchingOfCanvas();
   },
 
+  componentWillReceiveProps: function (newProps) {
+    console.log(newProps);
+    ApiUtil.loadSavedDrawing(newProps.params.id);
+  },
+
   render: function () {
     if (this.state.drawing) {
       return (
