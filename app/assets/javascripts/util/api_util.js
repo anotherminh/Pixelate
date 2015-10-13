@@ -54,7 +54,7 @@
 
     makeNewDrawing: function () {
       $.ajax({
-        url: 'api/drawings/new',
+        url: '/api/drawings/new',
         type: 'get',
         dataType: 'json',
         success: function (response) {

@@ -1,11 +1,11 @@
 class Api::DrawingsController < ApplicationController
   def show
-    @drawing = Drawing.find(params[:id])
+    @drawing = current_user.drawings.find(params[:id])
     render :show
   end
 
   def create
-    @drawing = Drawing.new(drawing_params)
+    @drawing = current_user.drawings.new(drawing_params)
     if @drawing.save
       render :show
     end
@@ -17,7 +17,7 @@ class Api::DrawingsController < ApplicationController
       cells << "white"
     end
 
-    @new_drawing = Drawing.new(title: "test", content: cells, size: 25)
+    @new_drawing = current_user.drawings.new(title: "test", content: cells, size: 25)
     render :new
   end
 

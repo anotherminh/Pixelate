@@ -45,6 +45,7 @@ var DrawingApp = React.createClass({
     if (this.state.drawing) {
       return (
         <div className="drawing-app">
+          <LogOutButton/>
           <Canvas drawing={this.state.drawing}/>
           <Palette/>
           <Tools/>
@@ -63,8 +64,6 @@ var routes = (
   </Route>
 );
 
-$(document).ready(
-  function () {
-    React.render(<Router>{routes}</Router>, document.getElementById('content'));
-  }
-);
+function RenderDrawingApp () {
+  React.render(<Router>{routes}</Router>, document.getElementById('content'));
+}
