@@ -14,7 +14,7 @@ class Api::DrawingsController < ApplicationController
   def new
     cells = []
     2500.times do
-      cells << "white"
+      cells << "#eee"
     end
 
     @new_drawing = current_user.drawings.new(title: "test", content: cells, size: 50)

@@ -7,7 +7,11 @@
     },
 
     render: function () {
-      return <button onClick={this.handleLogOut}>Log out</button>;
+      return (
+        <div className="log-out-button" onClick={this.handleLogOut}>
+          Log out
+        </div>
+      );
     }
   });
 }(this));

@@ -13,7 +13,113 @@
  *= require reset
  *= require_tree .
  *= require_self
- */
+ // */
+ //
+ // .loading-page {
+ //   margin: 100px auto;
+ //   width: 50px;
+ //   height: 50px;
+ //   display: block;
+ // }
+
+.sidebar-hide {
+  width: 150px;
+  background-color: coral;
+  height: 20px;
+  clear: both;
+  left: 26px;
+  position: fixed;
+}
+
+.sidebar-show-triangle-left {
+  width:
+  0;
+  position: absolute;
+  height: 0;
+  border-style: solid;
+  border-width: 20px 0 0 20px;
+  border-color: transparent transparent transparent white;
+  left: 0px;
+  bottom: 0px;
+}
+.sidebar-show-triangle-right {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  position: absolute;
+  right: 0px;
+  border-color: transparent transparent white transparent;
+  bottom: 0px;
+}
+
+.sidebar-triangle-left {
+  width: 0;
+  position: absolute;
+  height: 0;
+  border-style: solid;
+  border-width: 20px 0 0 20px;
+  border-color: transparent transparent transparent white;
+  left: 0px;
+}
+.sidebar-triangle-right {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  position: absolute;
+  right: 0px;
+  border-color: transparent transparent white transparent;
+}
+
+.nav-menu li div {
+  font-family: "Inconsolata";
+  font-size: 18px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 5px;
+}
+
+.nav-menu li {
+  width: 110px;
+  height: 60px;
+  border-bottom: 2px wheat solid;
+  position: relative;
+}
+
+.sidebar-show-decor {
+  width: 60px;
+  background-color: wheat;
+  height: 5px;
+  left: 31%;
+  bottom: 7px;
+  position: absolute;
+}
+
+.decor {
+  width: 60px;
+  background-color: wheat;
+  height: 5px;
+  left: 31%;
+  top: 7px;
+  position: absolute;
+}
+
+.nav-menu {
+  right: 18px;
+  top: 40px;
+  position: absolute;
+}
+
+.sidebar-show {
+  width: 150px;
+  background-color: coral;
+  height: 400px;
+  clear: both;
+  left: 26px;
+  position: fixed;
+}
 
 @font-face {
   font-family: 'Blox2';
