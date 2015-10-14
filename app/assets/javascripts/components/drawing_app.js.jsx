@@ -40,6 +40,12 @@
       ApiUtil.loadSavedDrawing(newProps.params.id);
     },
 
+    componentWillUnmount: function () {
+      ToolStore.removeChangeListener(this.handleToolSelection);
+      DrawingsStore.removeChangeListener(this._loadCanvas);
+      DrawingsStore.removeChangeListener(this._onSaveOfNewDrawing);
+    },
+
     handleToolSelection: function (tool) {
       this.state.activeTool = ToolStore.get();
       switch (tool) {

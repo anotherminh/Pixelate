@@ -19,6 +19,10 @@
       ApiUtil.fetchUserDetails(this.props.params.id);
     },
 
+    componentWillUnmount: function () {
+      UserStore.removeChangeListener(this._onChange);
+    },
+
     render: function () {
       return(
         <div>

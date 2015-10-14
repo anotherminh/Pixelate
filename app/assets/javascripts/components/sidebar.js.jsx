@@ -20,9 +20,9 @@
                onMouseOver={this.handleHover}
                onMouseLeave={this.handleMouseLeave}>
             <ul className="nav-menu">
-              <li><div>My Profile</div></li>
+              <li><ProfileButton/></li>
               <li><div>Browse</div></li>
-              <li><div>Drawing App</div></li>
+              <li><DrawingAppButton/></li>
               <li><div>Search</div></li>
               <li><LogOutButton/></li>
             </ul>
