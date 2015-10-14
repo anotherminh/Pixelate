@@ -6,7 +6,7 @@
     },
 
     render: function () {
-      var icon_url = 'images/' + this.props.toolType + '.png';
+      var icon_url = '/images/' + this.props.toolType + '.png';
 
       return (
         <img onClick={this.handleClick} className="tool" src={icon_url}/>

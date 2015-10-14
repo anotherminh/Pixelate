@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if @user
       log_in_user(@user)
-      redirect_to "/#/drawings/new"
+      redirect_to "/app/#/drawings/new"
     else
       flash.now[:errors] = ["Credentials do not match"]
       render :new

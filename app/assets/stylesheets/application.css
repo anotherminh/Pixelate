@@ -10,9 +10,40 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require reset
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+  font-family: 'Blox2';
+  src:url('/assets/Blox2.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ #welcome-box {
+   width: 600px;
+   height: 300px;
+   margin-top: 200px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: white;
+   border: thick solid black;
+   border-radius: 5%;
+   text-align: center;
+   font-family: 'Blox2';
+ }
+
+ #splash-page {
+   background-image: url("splash_page.jpg");
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+ }
+
  .drawing-app {
    width: 1000px;
    height: 800px;

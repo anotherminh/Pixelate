@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#root'
+  root to: 'static_pages#welcome'
+
+  get '/app', to: 'static_pages#app'
 
   namespace :api, defaults: {format: :json} do
     resources :drawings, only: [:create, :show, :index, :new, :update, :destroy]

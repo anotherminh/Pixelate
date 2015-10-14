@@ -59,8 +59,8 @@ var DrawingApp = React.createClass({
 
 var routes = (
   <Route>
-    <Route path="/drawings/new" component={DrawingApp}/>
-    <Route path="/drawings/:id" component={DrawingApp}/>
+    <Route path="drawings/new" component={DrawingApp}/>
+    <Route path="drawings/:id" component={DrawingApp}/>
   </Route>
 );
 

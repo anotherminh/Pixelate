@@ -1,5 +1,9 @@
 class StaticPagesController < ApplicationController
-  def root
-    render :root
+  def app
+    render :app
+  end
+
+  def welcome
+    render :splash_page
   end
 end

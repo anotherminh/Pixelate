@@ -7,7 +7,7 @@
         type: 'delete',
         dataType: 'json',
         success: function (response) {
-          window.location.href = '/session/new';
+          window.location.href = '/';
         }
       });
     }
