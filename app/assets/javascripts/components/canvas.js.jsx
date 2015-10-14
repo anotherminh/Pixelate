@@ -2,43 +2,42 @@
   'use strict';
   root.Canvas = React.createClass({
     getInitialState: function () {
-      return { mouseDown: false, activeTool: ToolStore.get() };
+      // return { mouseDown: false, activeTool: ToolStore.get() };
+      return { mouseDown: false };
     },
 
     toggleClick: function () {
-      console.log("mouseDown" + this.state.mouseDown);
-
       if (this.state.mouseDown) {
         this.setState({ mouseDown: false });
       } else {
         this.setState({ mouseDown: true });
       }
     },
-
-    handleToolSelection: function () {
-      this.state.activeTool = ToolStore.get();
-
-      switch (this.state.activeTool) {
-        case 'save':
-          if (this.props.drawing.id) {
-            ApiUtil.saveDrawing(this.props.drawing);
-          } else {
-            ApiUtil.saveNewDrawing(this.props.drawing);
-          }
-          break;
-        case 'eraser':
-          PaletteActions.receiveNewActiveColor('white');
-          break;
-      }
-    },
+    //
+    // handleToolSelection: function (e) {
+    //   // this.state.activeTool = ToolStore.get();
+    //
+    //   switch (this.state.activeTool) {
+    //     case 'save':
+    //       if (this.props.drawing.id) {
+    //         ApiUtil.saveDrawing(this.props.drawing);
+    //       } else {
+    //         ApiUtil.saveNewDrawing(this.props.drawing);
+    //       }
+    //       break;
+    //     case 'eraser':
+    //       PaletteActions.receiveNewActiveColor('white');
+    //       break;
+    //   }
+    // },
 
     handleLeavingCanvas: function () {
       this.setState({ mouseDown: false });
     },
 
-    componentDidMount: function () {
-      ToolStore.addChangeListener(this.handleToolSelection);
-    },
+    // componentDidMount: function () {
+    //   ToolStore.addChangeListener(this.handleToolSelection);
+    // },
 
     render: function () {
       var that = this;

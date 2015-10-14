@@ -2,7 +2,7 @@
   'use strict';
   root.Tool = React.createClass({
     handleClick: function () {
-      ToolActions.receiveNewActiveTool(this.props.toolType);
+      this.props.handleToolSelection(this.props.toolType);
     },
 
     render: function () {

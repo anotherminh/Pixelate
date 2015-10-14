@@ -7,7 +7,7 @@ var DrawingApp = React.createClass({
 
 
   getInitialState: function () {
-    return { drawing: null };
+    return { drawing: null, activeTool: ToolStore.get() };
   },
 
   _loadCanvas: function () {
@@ -34,11 +34,28 @@ var DrawingApp = React.createClass({
 
   componentDidMount: function () {
     this._initiateFetchingOfCanvas();
+    ToolStore.addChangeListener(this.handleToolSelection);
   },
 
   componentWillReceiveProps: function (newProps) {
     console.log(newProps);
     ApiUtil.loadSavedDrawing(newProps.params.id);
+  },
+
+  handleToolSelection: function (tool) {
+    this.state.activeTool = ToolStore.get();
+    switch (tool) {
+      case 'save':
+        if (this.state.drawing.id) {
+          ApiUtil.saveDrawing(this.state.drawing);
+        } else {
+          ApiUtil.saveNewDrawing(this.state.drawing);
+        }
+        break;
+      case 'eraser':
+        PaletteActions.receiveNewActiveColor('white');
+        break;
+    }
   },
 
   render: function () {
@@ -54,7 +71,7 @@ var DrawingApp = React.createClass({
             <Canvas drawing={drawing}/>
             <Palette/>
           </div>
-          <Tools/>
+          <Tools handleToolSelection={this.handleToolSelection}/>
         </div>
       );
     } else {
