@@ -15,7 +15,7 @@
  *= require_self
  */
 
- @font-face {
+@font-face {
   font-family: 'Blox2';
   src:url('/assets/Blox2.ttf');
   font-weight: normal;
@@ -85,7 +85,7 @@
  }
 
  #splash-page {
-   background-image: url("splash_page.jpg");
+   background-image: image-url("splash_page.jpg");
    width: 100%;
    height: 100%;
    position: absolute;
