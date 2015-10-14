@@ -1,6 +1,6 @@
 (function(root) {
   'use strict';
-  var tools = ["save"];
+  var tools = ["save", "eraser"];
   root.Tools = React.createClass({
     render: function () {
       return (

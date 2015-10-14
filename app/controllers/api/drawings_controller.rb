@@ -13,11 +13,11 @@ class Api::DrawingsController < ApplicationController
 
   def new
     cells = []
-    625.times do
+    2500.times do
       cells << "white"
     end
 
-    @new_drawing = current_user.drawings.new(title: "test", content: cells, size: 25)
+    @new_drawing = current_user.drawings.new(title: "test", content: cells, size: 50)
     render :new
   end
 

@@ -6,6 +6,8 @@
     },
 
     toggleClick: function () {
+      console.log("mouseDown" + this.state.mouseDown);
+
       if (this.state.mouseDown) {
         this.setState({ mouseDown: false });
       } else {
@@ -24,7 +26,14 @@
             ApiUtil.saveNewDrawing(this.props.drawing);
           }
           break;
+        case 'eraser':
+          PaletteActions.receiveNewActiveColor('white');
+          break;
       }
+    },
+
+    handleLeavingCanvas: function () {
+      this.setState({ mouseDown: false });
     },
 
     componentDidMount: function () {
@@ -34,12 +43,13 @@
     render: function () {
       var that = this;
       var canvas = that.props.drawing;
-      var style = {width: ((canvas.size * 15) + (canvas.size * 2))};
+      var style = {width: ((canvas.size * 10) + (canvas.size * 2))};
       var cells = canvas.content;
 
       return (
         <div className="canvas"
-             style={style}>
+             style={style}
+             onMouseLeave={that.handleLeavingCanvas}>
              {
                cells.map(function (cell) {
                  return <Cell key={cell.id}

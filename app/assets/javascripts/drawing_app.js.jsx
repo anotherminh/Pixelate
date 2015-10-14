@@ -42,12 +42,18 @@ var DrawingApp = React.createClass({
   },
 
   render: function () {
-    if (this.state.drawing) {
+    var drawing = this.state.drawing;
+    if (drawing) {
+      var canvasSize = ((drawing.size * 10) + (drawing.size * 2));
+      var containerStyle = { width: canvasSize };
       return (
         <div className="drawing-app">
+          <div className="title">Pixelate</div>
           <LogOutButton/>
-          <Canvas drawing={this.state.drawing}/>
-          <Palette/>
+          <div className="center-canvas-and-palette" style={containerStyle}>
+            <Canvas drawing={drawing}/>
+            <Palette/>
+          </div>
           <Tools/>
         </div>
       );
