@@ -9,6 +9,11 @@
       this.setState({ user: UserStore.get() });
     },
 
+    componentWillReceiveProps: function (newProps) {
+      console.log("fetching another user");
+      ApiUtil.fetchUserDetails(newProps.params.id);
+    },
+
     componentDidMount: function () {
       UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchUserDetails(this.props.params.id);
