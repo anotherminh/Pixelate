@@ -62,6 +62,17 @@
           ApiActions.receiveDrawing(response);
         }
       });
+    },
+
+    fetchUserDetails: function (id) {
+      $.ajax({
+        url: '/api/users/' + id,
+        type: 'get',
+        dataType: 'json',
+        success: function (response) {
+          ApiActions.receiveUserDetails(response);
+        }
+      });
     }
   };
 }(this));

@@ -1,0 +1,87 @@
+.app-title {
+  display: block;
+  font-family: 'Inconsolata';
+  width: 425px;
+  font-size: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.drawing-app {
+  padding: 20px;
+  width: 1000px;
+  height: 800px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-canvas-and-palette {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.palette {
+  min-width: 300px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.palette:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.color-swatch:hover {
+  cursor: pointer;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+.canvas {
+  border: 1px solid #ccc;
+  margin: 15px auto;
+}
+
+.canvas:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cell {
+  border: 1px dotted #ccc;
+  float: left;
+  width: 10px;
+  height: 10px;
+}
+
+.tools-container {
+  position: absolute;
+  width: 55px;
+  top: 100px;
+  right: 150px;
+}
+
+.tools-container:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tool {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 5px 0px;
+}
+
+.tool:hover {
+  cursor: pointer;
+}

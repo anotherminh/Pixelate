@@ -19,4 +19,11 @@ ApiActions = {
       cells: cells
     });
   },
+
+  receiveUserDetails: function (user) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.RECEIVE_USER,
+      user: user
+    });
+  }
 };

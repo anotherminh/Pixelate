@@ -82,11 +82,12 @@ var DrawingApp = React.createClass({
 
 var routes = (
   <Route>
+    <Route path="users/:id" component={UserDetails}/>
     <Route path="drawings/new" component={DrawingApp}/>
     <Route path="drawings/:id" component={DrawingApp}/>
   </Route>
 );
 
-function RenderDrawingApp () {
+function RenderApp () {
   React.render(<Router>{routes}</Router>, document.getElementById('content'));
 }

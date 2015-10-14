@@ -22,10 +22,15 @@ class Api::DrawingsController < ApplicationController
   end
 
   def update
-    @drawing = Drawing.find(params[:id])
+    @drawing = current_user.drawings.find(params[:id])
     if @drawing && @drawing.update(drawing_params)
       render :show
     end
+  end
+
+  def index
+    @drawings = current_user.drawings
+    render :index
   end
 
   private

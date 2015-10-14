@@ -7,11 +7,11 @@
 
     handleMouseDown: function () {
       this.setState({ active: 1 });
-      this.props.toggleClick();
+      this.props.handleMouseDown();
     },
 
     handleMouseUp: function () {
-      this.props.toggleClick();
+      this.props.handleMouseUp();
     },
 
     mouseOver: function(e) {
@@ -28,7 +28,6 @@
         this.state.active++; //updates to 2
         CellsActions.updateCellsStore(cell);
       }
-
       return (
         <div className="cell"
              style={cell.style}
