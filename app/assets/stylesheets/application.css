@@ -29,10 +29,12 @@
    margin-left: auto;
    margin-right: auto;
    background-color: white;
-   border: thick solid black;
+   border: 3px solid black;
    border-radius: 5%;
    text-align: center;
    font-family: 'Blox2';
+   padding: 15px;
+   font-size: 64px;
  }
 
  #splash-page {
