@@ -22,9 +22,16 @@
   font-style: normal;
 }
 
+@font-face {
+ font-family: 'Invasion';
+ src:url('/assets/INVASION2000.TTF');
+ font-weight: normal;
+ font-style: normal;
+}
+
  #welcome-box {
-   width: 600px;
-   height: 300px;
+   width: 500px;
+   height: 200px;
    margin-top: 200px;
    margin-left: auto;
    margin-right: auto;
@@ -32,9 +39,49 @@
    border: 3px solid black;
    border-radius: 5%;
    text-align: center;
+   padding: 40px;
+ }
+
+ .title {
+   display: block;
    font-family: 'Blox2';
-   padding: 15px;
+   width: 500px;
    font-size: 64px;
+ }
+
+ .buttons-container {
+   display: block;
+   width: 320px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 40px;
+ }
+
+ .buttons-container:after {
+   content: "";
+   clear: both;
+   display: block;
+ }
+
+ a.button:hover {
+   background-color: black;
+   color: white;
+ }
+
+ a.button {
+   display: block;
+   float: left;
+   text-decoration: none;
+   font-family: 'Invasion';
+   font-size: 24px;
+   color: black;
+   width: 150px;
+   padding: 5px;
+   margin: 7px 0px;
+ }
+
+ #demo {
+   width: 300px;
  }
 
  #splash-page {
