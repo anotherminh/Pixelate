@@ -7,13 +7,13 @@
   function loadDrawing (drawing) {
     _drawing = drawing;
     _drawing.content = parseDrawingContent(drawing.content);
-    DrawingsStore.changed();
+    DrawingStore.changed();
   }
 
   function loadNewSavedDrawing (drawing) {
     _drawing = drawing;
     _drawing.content = parseDrawingContent(drawing.content);
-    DrawingsStore.newDrawingSaved();
+    DrawingStore.newDrawingSaved();
   }
 
   // create objects out of cells such that they can be easily
@@ -29,7 +29,7 @@
     _drawing.content[cell.id] = cell;
   }
 
-  root.DrawingsStore = $.extend({}, EventEmitter.prototype, {
+  root.DrawingStore = $.extend({}, EventEmitter.prototype, {
     get: function () {
       return _drawing;
     },

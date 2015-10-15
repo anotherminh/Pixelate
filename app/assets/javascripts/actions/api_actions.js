@@ -25,5 +25,12 @@ ApiActions = {
       actionType: UserConstants.RECEIVE_USER,
       user: user
     });
+  },
+
+  receiveAllDrawings: function (drawings) {
+    AppDispatcher.dispatch({
+      actionType: DrawingsConstants.RECEIVE_ALL_DRAWINGS,
+      drawings: drawings
+    });
   }
 };

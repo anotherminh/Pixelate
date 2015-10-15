@@ -29,7 +29,7 @@ class Api::DrawingsController < ApplicationController
   end
 
   def index
-    @drawings = current_user.drawings
+    @drawings = Drawing.all
     render :index
   end
 

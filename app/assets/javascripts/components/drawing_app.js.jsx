@@ -8,23 +8,23 @@
     },
 
     _loadCanvas: function () {
-      this.setState({ drawing: DrawingsStore.get() });
+      this.setState({ drawing: DrawingStore.get() });
     },
 
     _onSaveOfNewDrawing: function () {
-      this.setState({ drawing: DrawingsStore.get() }, function () {
-        var url = '/drawings/' + DrawingsStore.get().id;
+      this.setState({ drawing: DrawingStore.get() }, function () {
+        var url = '/drawings/' + DrawingStore.get().id;
         this.history.pushState(null, url);
       });
     },
     // works for both fetching a brand new (not in db) canvas,
     // as well as a saved one
     _initiateFetchingOfCanvas: function () {
-      DrawingsStore.addChangeListener(this._loadCanvas);
+      DrawingStore.addChangeListener(this._loadCanvas);
       if (this.props.params.id) {
         ApiUtil.loadSavedDrawing(this.props.params.id);
       } else {
-        DrawingsStore.addNewDrawingSaveListener(this._onSaveOfNewDrawing);
+        DrawingStore.addNewDrawingSaveListener(this._onSaveOfNewDrawing);
         ApiUtil.makeNewDrawing(this.props.params.id);
       }
     },
@@ -41,8 +41,8 @@
 
     componentWillUnmount: function () {
       ToolStore.removeChangeListener(this.handleToolSelection);
-      DrawingsStore.removeChangeListener(this._loadCanvas);
-      DrawingsStore.removeChangeListener(this._onSaveOfNewDrawing);
+      DrawingStore.removeChangeListener(this._loadCanvas);
+      DrawingStore.removeChangeListener(this._onSaveOfNewDrawing);
     },
 
     saveToCanvas: function () {

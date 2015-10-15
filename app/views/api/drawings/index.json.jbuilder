@@ -1,3 +1,3 @@
 json.array!(@drawings) do |drawing|
-  json.extract!(drawing, :id, :title, :size, :content, :data_url)
+  json.extract!(drawing, :id, :title, :size, :content, :data_url, :user_id)
 end

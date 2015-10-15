@@ -21,7 +21,7 @@
                onMouseLeave={this.handleMouseLeave}>
             <ul className="nav-menu">
               <li className="sidebar-button"><ProfileButton/></li>
-              <li className="sidebar-button" ><div>Browse</div></li>
+              <li className="sidebar-button" ><BrowseButton/></li>
               <li className="sidebar-button" ><DrawingAppButton/></li>
               <li className="sidebar-button" ><div>Search</div></li>
               <li className="sidebar-button" ><LogOutButton/></li>

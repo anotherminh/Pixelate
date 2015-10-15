@@ -1,0 +1,3 @@
+DrawingsConstants = {
+  RECEIVE_ALL_DRAWINGS: "RECEIVE_ALL_DRAWINGS",
+};

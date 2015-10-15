@@ -7,10 +7,15 @@
       return { showButton: false, buttonType: '' };
     },
 
-    handleClick: function () {
-      if (current_user_id == this.props.drawing.user_id) {
-        var url = '/drawings/' + this.props.drawing.id;
-        this.history.pushState(null, url);
+    handleClick: function (e) {
+      var buttonClicked = e.currentTarget.innerHTML;
+      switch (buttonClicked) {
+        case "Edit Drawing":
+          if (current_user_id == this.props.drawing.user_id) {
+            var url = '/drawings/' + this.props.drawing.id;
+            this.history.pushState(null, url);
+          }
+        break;
       }
     },
 
@@ -45,14 +50,16 @@
       var button;
 
       if (this.state.showButton) {
-        button = <div className="thumb-button">{this.state.buttonType}</div>;
+        button = (
+          <div onClick={this.handleClick} className="thumb-button">{this.state.buttonType}
+          </div>
+        );
       }
 
       return (
         <div className="thumbnail-and-button"
           onMouseOver={this.handleHover}
-          onMouseLeave={this.handleMouseLeave}
-          onClick={this.handleClick}>
+          onMouseLeave={this.handleMouseLeave}>
           {button}
           <canvas className={this.props.typeOfThumb}
                   ref={function (canvas) {

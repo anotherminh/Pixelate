@@ -74,6 +74,17 @@
           ApiActions.receiveUserDetails(response);
         }
       });
+    },
+
+    fetchAllDrawings: function () {
+      $.ajax({
+        url: '/api/drawings/',
+        type: 'get',
+        dataType: 'json',
+        success: function (response) {
+          ApiActions.receiveAllDrawings(response);
+        }
+      });
     }
   };
 }(this));

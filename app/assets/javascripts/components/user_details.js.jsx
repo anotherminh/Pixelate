@@ -42,7 +42,7 @@
                 {
                   user.drawings.map(function (drawing, idx) {
                     return (
-                      <DrawThumbnail key={drawing.id} typeOfThumb={"show-pic" + idx} drawing={drawing}/>
+                      <DrawThumbnail key={drawing.id} typeOfThumb="show-pic" drawing={drawing}/>
                     );
                   })
                 }
