@@ -89,7 +89,7 @@
       } else {
         return (
           <div className="loading-page">
-            <Spinner spinnerName='cube-grid pulse'/>;
+            <Spinner spinnerName='cube-grid pulse'/>
           </div>
         );
       }
