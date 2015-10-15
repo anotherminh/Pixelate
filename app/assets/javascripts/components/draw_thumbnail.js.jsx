@@ -1,33 +1,29 @@
 (function(root) {
   'use strict';
   root.DrawThumbnail = React.createClass({
-    render: function () {
-      var drawing = this.props.drawing;
-      var thumbnail_size = { width: (drawing.size * 3) };
-      var klass = "draw-thumbnail";
+    componentDidMount: function () {
+      this.parseDataURI(this.props.typeOfThumb, this.props.drawing.data_url);
+    },
 
-      switch (this.props.typeOfThumbnail) {
-        case "profile":
-          klass += " profile-pic";
-          break;
-        case "index-thumb":
-          klass += " index-thumb";
-          break;
+    parseDataURI: function (typeOfThumb, dataURL) {
+      // use this function to load the image on show or index page
+      if (dataURL !== undefined && dataURL !== null) {
+        var canvas, context, image;
+        canvas = $("." + typeOfThumb)[0];
+        canvas.width = 150;
+        canvas.height = 150;
+        context = canvas.getContext('2d');
+        image = document.createElement("img");
+        image.addEventListener('load', function(){
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        }, false);
+        image.src = dataURL;
       }
+    },
 
+    render: function () {
       return (
-        <div style={thumbnail_size} className={klass}>
-          {
-            drawing.content.map (function (cellObj, idx) {
-              return (
-                <div className="thumbnail-cell"
-                   style={cellObj.style}
-                   key={idx}>
-                 </div>
-              );
-            })
-          }
-        </div>
+        <canvas className={this.props.typeOfThumb}></canvas>
       );
     }
   });

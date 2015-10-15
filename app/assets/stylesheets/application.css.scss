@@ -51,7 +51,6 @@
   clear: both;
   left: 26px;
   position: fixed;
-  transition: height 0.5s;
 }
 
 .sidebar-show-triangle-left {
@@ -63,8 +62,8 @@
   border-color: transparent transparent transparent white;
   left: 0px;
   bottom: 0px;
-  transition: border-width 0.5s;
 }
+
 .sidebar-show-triangle-right {
   width: 0;
   height: 0;
@@ -74,7 +73,6 @@
   right: 0px;
   border-color: transparent transparent white transparent;
   bottom: 0px;
-  transition: border-width 0.5s;
 }
 
 .sidebar-triangle-left {
@@ -85,8 +83,8 @@
   border-width: 20px 0 0 20px;
   border-color: transparent transparent transparent white;
   left: 0px;
-  transition: border-width 0.5s;
 }
+
 .sidebar-triangle-right {
   width: 0;
   height: 0;
@@ -95,7 +93,6 @@
   position: absolute;
   right: 0px;
   border-color: transparent transparent white transparent;
-  transition: border-width 0.5s;
 }
 
 .nav-menu li div {
