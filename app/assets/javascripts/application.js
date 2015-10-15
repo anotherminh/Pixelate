@@ -18,5 +18,6 @@
 //= require flux
 //= require eventemitter
 //= require reactrouter.min.js
+//= require html2canvas.js
 //= require_tree ./components
 //= require_tree .

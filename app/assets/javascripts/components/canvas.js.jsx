@@ -25,6 +25,7 @@
 
       return (
         <div className="canvas"
+            id="save-me"
              style={style}
              onMouseLeave={that.handleLeavingCanvas}>
              {

@@ -50,7 +50,7 @@
       this.state.activeTool = ToolStore.get();
       switch (tool) {
         case 'save':
-          html2canvas(element, {onrendered: function(canvas) {
+          html2canvas($("#save-me"), {onrendered: function(canvas) {
             $("#content").append(canvas);
             }
           });
