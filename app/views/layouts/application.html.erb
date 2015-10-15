@@ -8,8 +8,9 @@
   <link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <% current_user ? current_user_id = current_user.id : "" %>
 <script type="text/javascript">
-  window.current_user_id = <%= current_user.id %>
+  window.current_user_id = "<%= current_user_id %>"
 </script>
 
 <%= yield %>

@@ -47,41 +47,24 @@
     },
 
     saveToCanvas: function () {
-      var dataURL;
       html2canvas($("#save-me"), {onrendered: function(canvas) {
-          dataURL = canvas.toDataURL('image/png');
           // save this to the database
-        }
+          this.state.drawing.data_url = canvas.toDataURL('image/png');
+          if (this.state.drawing.id) {
+            ApiUtil.saveDrawing(this.state.drawing);
+          } else {
+            ApiUtil.saveNewDrawing(this.state.drawing);
+          }
+        }.bind(this)
       });
-    },
-
-    ParseDataURI: function (dataURL) {
-      // use this function to load the image on show or index page
-      if (dataURL !== undefined && dataURL !== null) {
-        var canvas, context, image;
-        canvas = $('#canvasEl')[0];
-        canvas.width = 150;
-        canvas.height = 150;
-        context = canvas.getContext('2d');
-        image = new Image();
-        image.addEventListener('load', function(){
-            context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        }, false);
-        image.src = dataURL;
-      }
     },
 
     handleToolSelection: function (tool) {
       this.state.activeTool = ToolStore.get();
       switch (tool) {
         case 'save':
-          var dataURL = this.saveToCanvas();
-
-          if (this.state.drawing.id) {
-            ApiUtil.saveDrawing(this.state.drawing);
-          } else {
-            ApiUtil.saveNewDrawing(this.state.drawing);
-          }
+          this.saveToCanvas();
+          console.log("parsed data url successfully");
           break;
         case 'eraser':
           PaletteActions.receiveNewActiveColor('#eee');

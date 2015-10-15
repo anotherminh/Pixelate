@@ -35,6 +35,6 @@ class Api::DrawingsController < ApplicationController
 
   private
   def drawing_params
-    params.require(:drawing).permit(:title, :size, { content: [] })
+    params.require(:drawing).permit(:title, :size, { content: [] }, :data_url)
   end
 end

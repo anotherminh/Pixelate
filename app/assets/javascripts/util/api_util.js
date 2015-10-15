@@ -8,7 +8,7 @@
       return cellObj.style.backgroundColor;
     });
 
-    drawing = { title: drawing.title, size: drawing.size, content: drawing.content };
+    drawing = { title: drawing.title, size: drawing.size, content: drawing.content, data_url: drawing.data_url };
 
     return { id: id, drawing: drawing };
   }
