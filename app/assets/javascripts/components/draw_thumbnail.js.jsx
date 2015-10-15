@@ -22,8 +22,13 @@
     },
 
     render: function () {
+      var klass = this.props.typeOfThumb;
+      if (klass.slice(0, 8) === "show-pic") {
+        klass += " thumbnail";
+      }
+
       return (
-        <canvas className={this.props.typeOfThumb}></canvas>
+        <canvas className={klass}></canvas>
       );
     }
   });

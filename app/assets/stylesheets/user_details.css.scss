@@ -15,8 +15,9 @@
 }
 
 .user-details-body {
+  padding: 10px;
   margin: 0px auto;
-  width: 1000px;
+  width: 900px;
   border: 2px black solid;
 }
 
@@ -25,6 +26,18 @@
   margin-right: auto;
 }
 
-.show-pic {
+.thumbnail {
   float: left;
+  margin: 10px;
+}
+
+.show-thumbnails-container {
+  width: 850px;
+  margin: 15px auto;
+}
+
+.show-thumbnails-container:after {
+  content: "";
+  clear: both;
+  display: block;
 }

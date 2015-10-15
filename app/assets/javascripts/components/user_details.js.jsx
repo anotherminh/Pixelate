@@ -36,13 +36,15 @@
             </div>
 
             <div className="user-details-body">
-              {
-                user.drawings.map(function (drawing, idx) {
-                  return (
-                    <DrawThumbnail key={idx} typeOfThumb={"show-pic" + idx} drawing={drawing}/>
-                  );
-                })
-              }
+              <div className="show-thumbnails-container">
+                {
+                  user.drawings.map(function (drawing, idx) {
+                    return (
+                      <DrawThumbnail key={idx} typeOfThumb={"show-pic" + idx} drawing={drawing}/>
+                    );
+                  })
+                }
+              </div>
             </div>
           </div>
         );
