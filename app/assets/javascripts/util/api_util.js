@@ -34,6 +34,7 @@
         data: { drawing: preparedParams.drawing },
         success: function (response) {
           console.log("saved sucessfully!");
+          ApiActions.receiveDrawing(response);
         }
       });
     },
