@@ -10,7 +10,7 @@
 
     render: function () {
       return (
-        <div className="profile-button" onClick={this.handleClick}>
+        <div className="sidebar-button" onClick={this.handleClick}>
           Profile
         </div>
       );

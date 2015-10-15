@@ -20,11 +20,11 @@
                onMouseOver={this.handleHover}
                onMouseLeave={this.handleMouseLeave}>
             <ul className="nav-menu">
-              <li><ProfileButton/></li>
-              <li><div>Browse</div></li>
-              <li><DrawingAppButton/></li>
-              <li><div>Search</div></li>
-              <li><LogOutButton/></li>
+              <li className="sidebar-button"><ProfileButton/></li>
+              <li className="sidebar-button" ><div>Browse</div></li>
+              <li className="sidebar-button" ><DrawingAppButton/></li>
+              <li className="sidebar-button" ><div>Search</div></li>
+              <li className="sidebar-button" ><LogOutButton/></li>
             </ul>
             <div className="sidebar-show-triangle-left"></div>
             <div className="sidebar-show-triangle-right"></div>

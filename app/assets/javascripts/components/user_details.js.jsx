@@ -24,11 +24,33 @@
     },
 
     render: function () {
-      return(
-        <div>
-          {this.state.user}
-        </div>
-      );
+      var user = this.state.user;
+      if (user) {
+        return(
+          <div className="user-details-container">
+            <div className="user-details-header">
+              <DrawThumbnail typeOfThumbnail={"profile"} drawing={user.drawings[0]}/>
+              <p className="username">
+                {user.username}
+              </p>
+            </div>
+
+            <div className="user-details-body">
+              {
+                user.drawings.map(function (drawing) {
+                  return <DrawThumbnail typeOfThumbnail="index-thumb" drawing={drawing}/>;
+                })
+              }
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="loading-page">
+            <Spinner spinnerName='cube-grid pulse'/>
+          </div>
+        );
+      }
     }
   });
 }(this));

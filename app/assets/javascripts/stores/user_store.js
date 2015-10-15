@@ -1,11 +1,23 @@
 (function(root) {
   'use strict';
   var _user = null, CHANGE_EVENT = "changed";
-  function reset_user (user) {
+  
+  function resetUser (user) {
     _user = user;
+    _user.drawings = user.drawings.map(function (drawing) {
+      drawing.content = parseDrawingContent(drawing.content);
+      return drawing;
+    });
     UserStore.changed();
   }
-  
+
+  function parseDrawingContent (content) {
+    var CellsArray = JSON.parse(content);
+    return CellsArray.map(function (cell, idx) {
+      return ({ id: idx, style: { "backgroundColor": cell } });
+    });
+  }
+
   root.UserStore = $.extend({}, EventEmitter.prototype, {
     get: function () {
       return _user;
@@ -26,7 +38,7 @@
     dispatcherID: AppDispatcher.register(function (action) {
       switch (action.actionType) {
         case UserConstants.RECEIVE_USER:
-          reset_user(action.user);
+          resetUser(action.user);
           break;
       }
     })

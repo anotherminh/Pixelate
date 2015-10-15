@@ -50,6 +50,11 @@
       this.state.activeTool = ToolStore.get();
       switch (tool) {
         case 'save':
+          html2canvas(element, {onrendered: function(canvas) {
+            $("#content").append(canvas);
+            }
+          });
+
           if (this.state.drawing.id) {
             ApiUtil.saveDrawing(this.state.drawing);
           } else {

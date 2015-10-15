@@ -15,7 +15,7 @@
     _drawing.content = parseDrawingContent(drawing.content);
     DrawingsStore.newDrawingSaved();
   }
-  
+
   // create objects out of cells such that they can be easily
   // rendered later in our canvas component
   function parseDrawingContent (content) {
