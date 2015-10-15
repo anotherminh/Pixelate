@@ -16,7 +16,7 @@
     render: function () {
       if (this.state.show) {
         return (
-          <div className="sidebar-show"
+          <div className="sidebar show"
                onMouseOver={this.handleHover}
                onMouseLeave={this.handleMouseLeave}>
             <ul className="nav-menu">
@@ -33,7 +33,7 @@
         );
       } else {
         return (
-          <div className="sidebar-hide"
+          <div className="sidebar hide"
                onMouseOver={this.handleHover}
                onMouseLeave={this.handleMouseLeave}>
             <div className="sidebar-triangle-left"></div>

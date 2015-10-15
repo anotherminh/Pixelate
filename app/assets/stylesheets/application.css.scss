@@ -37,18 +37,25 @@
   cursor: pointer;
 }
 
-.sidebar-hide {
-  width: 150px;
-  background-color: coral;
+.show {
+  height: 400px;
+}
+
+.hide {
   height: 20px;
+}
+
+.sidebar {
+  background-color: coral;
+  width: 150px;
   clear: both;
   left: 26px;
   position: fixed;
+  transition: height 0.5s;
 }
 
 .sidebar-show-triangle-left {
-  width:
-  0;
+  width: 0;
   position: absolute;
   height: 0;
   border-style: solid;
@@ -56,6 +63,7 @@
   border-color: transparent transparent transparent white;
   left: 0px;
   bottom: 0px;
+  transition: border-width 0.5s;
 }
 .sidebar-show-triangle-right {
   width: 0;
@@ -66,6 +74,7 @@
   right: 0px;
   border-color: transparent transparent white transparent;
   bottom: 0px;
+  transition: border-width 0.5s;
 }
 
 .sidebar-triangle-left {
@@ -76,6 +85,7 @@
   border-width: 20px 0 0 20px;
   border-color: transparent transparent transparent white;
   left: 0px;
+  transition: border-width 0.5s;
 }
 .sidebar-triangle-right {
   width: 0;
@@ -85,6 +95,7 @@
   position: absolute;
   right: 0px;
   border-color: transparent transparent white transparent;
+  transition: border-width 0.5s;
 }
 
 .nav-menu li div {
@@ -110,6 +121,7 @@
   left: 31%;
   bottom: 7px;
   position: absolute;
+  transition: border-width 0.5s;
 }
 
 .decor {
@@ -119,21 +131,13 @@
   left: 31%;
   top: 7px;
   position: absolute;
+  transition: border-width 0.5s;
 }
 
 .nav-menu {
   right: 18px;
   top: 40px;
   position: absolute;
-}
-
-.sidebar-show {
-  width: 150px;
-  background-color: coral;
-  height: 400px;
-  clear: both;
-  left: 26px;
-  position: fixed;
 }
 
 @font-face {
