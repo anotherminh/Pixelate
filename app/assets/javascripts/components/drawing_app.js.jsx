@@ -3,7 +3,6 @@
   root.DrawingApp = React.createClass({
     mixins: [ReactRouter.History],
 
-
     getInitialState: function () {
       return { drawing: null, activeTool: ToolStore.get() };
     },

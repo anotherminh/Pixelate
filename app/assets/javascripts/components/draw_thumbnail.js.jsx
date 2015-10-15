@@ -1,34 +1,65 @@
 (function(root) {
   'use strict';
   root.DrawThumbnail = React.createClass({
-    componentDidMount: function () {
-      this.parseDataURI(this.props.typeOfThumb, this.props.drawing.data_url);
+    mixins: [ReactRouter.History],
+
+    getInitialState: function () {
+      return { showButton: false, buttonType: '' };
     },
 
-    parseDataURI: function (typeOfThumb, dataURL) {
-      // use this function to load the image on show or index page
+    handleClick: function () {
+      if (current_user_id == this.props.drawing.user_id) {
+        var url = '/drawings/' + this.props.drawing.id;
+        this.history.pushState(null, url);
+      }
+    },
+
+    handleHover: function () {
+      if (current_user_id == this.props.drawing.user_id) {
+        this.setState( { showButton: true, buttonType: 'Edit Drawing' });
+      } else {
+        this.setState( { showButton: true, buttonType: 'Give Kudos' });
+      }
+    },
+
+    handleMouseLeave: function () {
+      this.setState( { showButton: false, buttonType: 'Edit Drawing' });
+    },
+
+    renderCanvas: function (canvas) {
+      if (!canvas) {return;}
+      var dataURL = this.props.drawing.data_url;
+      canvas = canvas.getDOMNode();
       if (dataURL !== undefined && dataURL !== null) {
-        var canvas, context, image;
-        canvas = $("." + typeOfThumb)[0];
+        var context, image;
         canvas.width = 150;
         canvas.height = 150;
         context = canvas.getContext('2d');
         image = document.createElement("img");
-        image.addEventListener('load', function(){
-            context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        }, false);
         image.src = dataURL;
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
       }
     },
 
     render: function () {
-      var klass = this.props.typeOfThumb;
-      if (klass.slice(0, 8) === "show-pic") {
-        klass += " thumbnail";
+      var button;
+
+      if (this.state.showButton) {
+        button = <div className="thumb-button">{this.state.buttonType}</div>;
       }
 
       return (
-        <canvas className={klass}></canvas>
+        <div className="thumbnail-and-button"
+          onMouseOver={this.handleHover}
+          onMouseLeave={this.handleMouseLeave}
+          onClick={this.handleClick}>
+          {button}
+          <canvas className={this.props.typeOfThumb}
+                  ref={function (canvas) {
+                    this.renderCanvas(canvas);
+                  }.bind(this)}>
+          </canvas>
+        </div>
       );
     }
   });

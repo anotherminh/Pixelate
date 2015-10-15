@@ -6,6 +6,7 @@
     },
 
     _onChange: function () {
+      console.log("User store has changed");
       this.setState({ user: UserStore.get() });
     },
 
@@ -15,11 +16,13 @@
     },
 
     componentDidMount: function () {
+      console.log("user detail mounted");
       UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchUserDetails(this.props.params.id);
     },
 
     componentWillUnmount: function () {
+      console.log("Unmounting user detail");
       UserStore.removeChangeListener(this._onChange);
     },
 
@@ -29,7 +32,6 @@
         return(
           <div className="user-details-container">
             <div className="user-details-header">
-              <DrawThumbnail typeOfThumb="profile-pic" drawing={user.drawings[0]}/>
               <p className="username">
                 {user.username}
               </p>
@@ -40,7 +42,7 @@
                 {
                   user.drawings.map(function (drawing, idx) {
                     return (
-                      <DrawThumbnail key={idx} typeOfThumb={"show-pic" + idx} drawing={drawing}/>
+                      <DrawThumbnail key={drawing.id} typeOfThumb={"show-pic" + idx} drawing={drawing}/>
                     );
                   })
                 }
