@@ -49,8 +49,12 @@
               </div>
             </div>
             <div className="comments-container">
-              <div className="comment-form"></div>
-              <div className="comments"></div>
+              <CommentForm drawingId={drawing.id}/>
+              <div className="comments">
+                {drawing.comments.map(function (comment) {
+                  return <Comment key={comment.id} comment={comment}/>;
+                })}
+              </div>
             </div>
           </div>
         );

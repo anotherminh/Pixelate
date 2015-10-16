@@ -1,6 +1,6 @@
 class Api::DrawingsController < ApplicationController
   def show
-    @drawing = Drawing.includes(:kudos, :user).where('drawings.id = ?', params[:id])[0]
+    @drawing = Drawing.includes(:kudos, :user, :comments, comments: [:user]).where('drawings.id = ?', params[:id])[0]
     render :show
   end
 

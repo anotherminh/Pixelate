@@ -110,6 +110,19 @@
           ApiActions.decrementKudos(response);
         }
       });
+    },
+
+    postComment: function (drawing_id, body) {
+      $.ajax({
+        url: '/api/comments',
+        type: 'post',
+        data: { comment: {drawing_id: drawing_id, body: body} },
+        dataType: 'json',
+        success: function (response) {
+          console.log("created new comment");
+          ApiActions.receiveNewComment(response);
+        }
+      });
     }
   };
 }(this));

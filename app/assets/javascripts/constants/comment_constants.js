@@ -1,0 +1,3 @@
+CommentConstants = {
+  RECEIVED_NEW_COMMENT: "RECEIVED_NEW_COMMENT"
+};

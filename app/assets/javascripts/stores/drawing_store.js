@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+
   var _drawing = null,
   CHANGE_EVENT = "changed",
   NEW_DRAWING_SAVE_SUCCESS = "NEW_DRAWING_SAVE_SUCCESS";
@@ -27,6 +28,11 @@
 
   function updateCell (cell) {
     _drawing.content[cell.id] = cell;
+  }
+
+  function addNewComment (comment) {
+    _drawing.comments.unshift(comment);
+    DrawingStore.changed();
   }
 
   root.DrawingStore = $.extend({}, EventEmitter.prototype, {
@@ -68,6 +74,9 @@
           break;
         case DrawingConstants.NEW_DRAWING_SAVED:
           loadNewSavedDrawing(action.drawing);
+          break;
+        case CommentConstants.RECEIVE_NEW_COMMENT:
+          addNewComment(action.comment);
           break;
       }
     })

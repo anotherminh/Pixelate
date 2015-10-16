@@ -5,6 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Hide this line for IE (needed for Firefox and others) -->
+  <![if !IE]>
+  <link rel="icon" href="/images/Pixelate-logo.ico" type="image/x-icon" />
+  <![endif]>
+  <!-- This is needed for IE -->
+  <link rel="shortcut icon" href="/images/Pixelate-logo.ico" type="image/ico" />
   <link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
 </head>
 <body>

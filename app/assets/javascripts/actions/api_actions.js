@@ -46,5 +46,12 @@ ApiActions = {
       actionType: KudosConstants.TAKEAWAY_KUDO,
       kudo: kudo
     });
+  },
+
+  receiveNewComment: function (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.RECEIVE_NEW_COMMENT,
+      comment: comment
+    });
   }
 };

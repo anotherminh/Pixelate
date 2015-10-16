@@ -4,4 +4,5 @@ class Drawing < ActiveRecord::Base
   belongs_to :user
   has_many :kudos
   has_many :kudos_givers, through: :kudos, source: :user
+  has_many :comments
 end

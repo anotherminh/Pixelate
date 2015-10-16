@@ -1,0 +1,44 @@
+.comment {
+  width: 600px;
+  border: 1px solid black;
+  margin: 10px auto;
+  font-family: "Inconsolata"
+}
+
+.author {
+  padding: 10px;
+  background-color: #ccc;
+}
+
+.body {
+  padding: 10px;
+}
+
+.comment-form {
+  width: 580px;
+  border: 1px solid black;
+  margin: 10px auto;
+  font-family: "Inconsolata";
+  padding: 10px;
+}
+
+.submit-comment {
+  position: relative;
+  font-family: "Inconsolata";
+  font-size: 16px;
+  border: 1px solid black;
+  left: 520px;
+}
+
+.submit-comment:hover {
+  background: #ccc;
+}
+
+textarea {
+  border: 0px;
+  width: 560px;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Inconsolata";
+}
