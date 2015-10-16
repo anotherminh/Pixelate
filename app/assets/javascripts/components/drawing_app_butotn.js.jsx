@@ -4,7 +4,7 @@
     mixins: [ReactRouter.History],
 
     handleClick: function() {
-      this.history.pushState(null, '/drawings/new');
+      this.history.pushState(null, 'drawings/new');
     },
 
     render: function () {

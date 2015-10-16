@@ -15,7 +15,10 @@
             var url = '/drawings/' + this.props.drawing.id;
             this.history.pushState(null, url);
           }
-        break;
+          break;
+        case "Give Kudos":
+          ApiUtil.giveKudo(this.props.drawing.id);
+          break;
       }
     },
 
@@ -61,6 +64,7 @@
           onMouseOver={this.handleHover}
           onMouseLeave={this.handleMouseLeave}>
           {button}
+          <div>Kudos: {this.props.drawing.kudos.length}</div>
           <canvas className={this.props.typeOfThumb}
                   ref={function (canvas) {
                     this.renderCanvas(canvas);

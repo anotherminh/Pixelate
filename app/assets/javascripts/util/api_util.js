@@ -85,6 +85,18 @@
           ApiActions.receiveAllDrawings(response);
         }
       });
-    }
+    },
+
+    giveKudo: function (drawing_id) {
+      $.ajax({
+        url: '/api/kudos',
+        type: 'post',
+        data: { kudo: {drawing_id: drawing_id } },
+        dataType: 'json',
+        success: function (response) {
+          ApiActions.receiveKudo(response);
+        }
+      });
+    },
   };
 }(this));

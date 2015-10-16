@@ -1,6 +1,6 @@
 class Api::DrawingsController < ApplicationController
   def show
-    @drawing = current_user.drawings.find(params[:id])
+    @drawing = current_user.drawings.includes(:kudos).where('drawings.id = ?', params[:id])[0]
     render :show
   end
 
@@ -29,7 +29,7 @@ class Api::DrawingsController < ApplicationController
   end
 
   def index
-    @drawings = Drawing.all
+    @drawings = Drawing.all.includes(:kudos)
     render :index
   end
 

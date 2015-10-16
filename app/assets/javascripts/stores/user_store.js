@@ -1,7 +1,7 @@
 (function(root) {
   'use strict';
   var _user = null, CHANGE_EVENT = "changed";
-  
+
   function resetUser (user) {
     _user = user;
     _user.drawings = user.drawings.map(function (drawing) {

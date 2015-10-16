@@ -11,7 +11,7 @@
 
     componentDidMount: function () {
       DrawingsStore.addChangeListener(this._onChange);
-      ApiUtil.fetchAllDrawings();
+      ApiUtil.fetchAllDrawings(current_user_id);
     },
 
     render: function () {

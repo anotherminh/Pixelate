@@ -32,5 +32,12 @@ ApiActions = {
       actionType: DrawingsConstants.RECEIVE_ALL_DRAWINGS,
       drawings: drawings
     });
-  }
+  },
+
+  receiveKudo: function (kudo) {
+    AppDispatcher.dispatch({
+      actionType: KudosConstants.RECEIVE_KUDO,
+      kudo: kudo
+    });
+  },
 };

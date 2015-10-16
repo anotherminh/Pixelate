@@ -36,7 +36,7 @@
 
     componentWillReceiveProps: function (newProps) {
       console.log(newProps);
-      ApiUtil.loadSavedDrawing(newProps.params.id);
+      this._initiateFetchingOfCanvas();
     },
 
     componentWillUnmount: function () {
