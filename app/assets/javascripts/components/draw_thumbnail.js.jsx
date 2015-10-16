@@ -8,6 +8,7 @@
     },
 
     handleClick: function (e) {
+      e.stopPropagation();
       var buttonClicked = e.currentTarget.innerHTML;
       switch (buttonClicked) {
         case "Edit Drawing":
@@ -19,25 +20,23 @@
         case "Give Kudos":
           ApiUtil.giveKudo(this.props.drawing.id);
           break;
-        case "Dislike":
+        case "Un-kudos":
           ApiUtil.dislike(this.props.drawing.id);
           break;
       }
     },
 
     handleHover: function () {
-      var drawing = this.props.drawing;
-      if (current_user_id == drawing.user_id) {
-        this.setState( { showButton: true, buttonType: 'Edit Drawing' });
-      } else if (drawing.kudos.indexOf(parseInt(current_user_id)) === -1) {
-        this.setState( { showButton: true, buttonType: 'Give Kudos' });
-      } else {
-        this.setState( { showButton: true, buttonType: 'Dislike' });
-      }
+      this.setState({ showButton: true });
     },
 
     handleMouseLeave: function () {
       this.setState( { showButton: false, buttonType: '' });
+    },
+
+    showDrawing: function (e) {
+      var url = '/drawing_details/' + this.props.drawing.id;
+      this.history.pushState(null, url);
     },
 
     renderCanvas: function (canvas) {
@@ -55,13 +54,24 @@
       }
     },
 
+    buttonText: function () {
+      var drawing = this.props.drawing;
+      if (current_user_id == drawing.user_id) {
+        return 'Edit Drawing';
+      } else if (drawing.kudos.indexOf(parseInt(current_user_id)) === -1) {
+        return 'Give Kudos';
+      } else {
+        return 'Un-kudos';
+      }
+    },
+
     render: function () {
       var button;
       var statsClass = "thumbnail-stats stats-hide";
 
       if (this.state.showButton) {
         button = (
-          <div onClick={this.handleClick} className="thumb-button">{this.state.buttonType}
+          <div onClick={this.handleClick} className="thumb-button">{this.buttonText()}
           </div>
         );
 
@@ -71,7 +81,8 @@
       return (
         <div className="thumbnail-and-button"
           onMouseOver={this.handleHover}
-          onMouseLeave={this.handleMouseLeave}>
+          onMouseLeave={this.handleMouseLeave}
+          onClick={this.showDrawing}>
           {button}
           <canvas className={this.props.typeOfThumb}
                   ref={function (canvas) {

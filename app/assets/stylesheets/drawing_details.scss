@@ -1,0 +1,72 @@
+.show-cell {
+  border: 1px dotted transparent;
+  float: left;
+  width: 10px;
+  height: 10px;
+}
+
+.drawing-title {
+  display: inline;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-family: 'Invasion';
+  font-size: 32px;
+}
+
+.drawing-details-container {
+  padding: 15px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.drawing-details-container:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.drawing-details-body {
+  padding: 10px;
+  padding-top: 0px;
+  margin: 0px auto;
+  width: 760px;
+}
+
+.stats-container {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.info {
+  font-family: 'Invasion';
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.artist-name {
+  padding-top: 10px;
+}
+
+.more-drawing-button {
+  font-family: 'Invasion';
+  font-size: 50px;
+}
+
+.more-drawing-button:hover {
+  cursor: pointer;
+}
+
+.right {
+  position: absolute;
+  top: 306px;
+  right: 200px;
+}
+
+.left {
+  position: absolute;
+  top: 306px;
+  left: 200px;
+}
