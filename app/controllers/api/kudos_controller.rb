@@ -1,7 +1,10 @@
 class Api::KudosController < ApplicationController
   def create
-    if current_user && current_user.kudos_given.create(kudos_params)
-      render :show
+    if current_user
+      @kudo = current_user.kudos_given.create(kudos_params)
+      if @kudo.save
+        render :show
+      end
     end
   end
 

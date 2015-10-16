@@ -35,7 +35,6 @@
     },
 
     componentWillReceiveProps: function (newProps) {
-      console.log(newProps);
       this._initiateFetchingOfCanvas();
     },
 
