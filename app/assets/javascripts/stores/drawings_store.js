@@ -1,15 +1,31 @@
 (function(root) {
   'use strict';
-  var _drawings = [], _likedDrawings = [], CHANGE_EVENT = "changed";
+  var _drawings = [], CHANGE_EVENT = "changed";
 
   function resetDrawings (drawings) {
     _drawings = drawings;
+    reveal_liker_ids();
     DrawingsStore.changed();
+  }
+
+  function reveal_liker_ids () {
+    _drawings.forEach(function (drawing) {
+      drawing.kudos = drawing.kudos.map(function (kudo) {
+        return kudo.user_id;
+      });
+    });
   }
 
   function incrementKudos (kudo) {
     var likedDrawing = findDrawingById(kudo.drawing_id);
-    likedDrawing.kudos.push(kudo);
+    likedDrawing.kudos.push(kudo.user_id);
+    DrawingsStore.changed();
+  }
+
+  function decrementKudos (kudo) {
+    var likedDrawing = findDrawingById(kudo.drawing_id);
+    var idx = likedDrawing.kudos.indexOf(kudo.user_id);
+    likedDrawing.kudos.splice(idx, 1);
     DrawingsStore.changed();
   }
 
@@ -45,6 +61,9 @@
           break;
         case KudosConstants.RECEIVE_KUDO:
           incrementKudos(action.kudo);
+          break;
+        case KudosConstants.TAKEAWAY_KUDO:
+          decrementKudos(action.kudo);
           break;
       }
     })

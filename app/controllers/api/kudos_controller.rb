@@ -10,9 +10,9 @@ class Api::KudosController < ApplicationController
 
   def destroy
     if current_user
-      @kudos = Kudo.where('user_id = ? AND drawing_id = ?', current_user.id, kudos_params)[0]
-      if @kudos.delete
-        render :show
+      @kudo = Kudo.where('user_id = ? AND drawing_id = ?', current_user.id, params[:id])[0]
+      if @kudo.delete
+        render json: { user_id: current_user.id, drawing_id: params[:id][0] } 
       end
     end
   end

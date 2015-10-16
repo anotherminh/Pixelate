@@ -22,7 +22,7 @@
             <p className="section-title">Hottest Draws</p>
             <div className="hot-drawings">
               {
-                drawings.slice(0, 10).map(function (drawing) {
+                drawings.slice(0, 8).map(function (drawing) {
                   return (
                     <DrawThumbnail key={drawing.id} typeOfThumb="show-pic" drawing={drawing}/>
                   );
@@ -32,7 +32,7 @@
             <p className="section-title">All Draws</p>
             <div className="all-other-drawings">
               {
-                drawings.slice(10).map(function (drawing) {
+                drawings.slice(8).map(function (drawing) {
                   return (
                     <DrawThumbnail key={drawing.id} typeOfThumb="show-pic" drawing={drawing}/>
                   );

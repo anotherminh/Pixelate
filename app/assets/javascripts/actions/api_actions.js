@@ -40,4 +40,11 @@ ApiActions = {
       kudo: kudo
     });
   },
+
+  decrementKudos: function (kudo) {
+    AppDispatcher.dispatch({
+      actionType: KudosConstants.TAKEAWAY_KUDO,
+      kudo: kudo
+    });
+  }
 };

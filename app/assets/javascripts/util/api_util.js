@@ -94,9 +94,22 @@
         data: { kudo: {drawing_id: drawing_id } },
         dataType: 'json',
         success: function (response) {
+          console.log("liked");
           ApiActions.receiveKudo(response);
         }
       });
     },
+
+    dislike: function (drawing_id) {
+      $.ajax({
+        url: '/api/kudos/' + drawing_id,
+        type: 'delete',
+        dataType: 'json',
+        success: function (response) {
+          console.log("disliked");
+          ApiActions.decrementKudos(response);
+        }
+      });
+    }
   };
 }(this));

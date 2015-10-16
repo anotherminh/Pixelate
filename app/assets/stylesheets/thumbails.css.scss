@@ -1,0 +1,50 @@
+
+.show-thumbnails-container {
+  width: 850px;
+  margin: 15px auto;
+}
+
+.show-thumbnails-container:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.thumb-button {
+  background-color: black;
+  position: absolute;
+  width: 96px;
+  bottom: 31px;
+  left: 53px;
+  font-family: 'Invasion';
+  font-size: 15px;
+  color: white;
+  padding: 5px;
+}
+
+.thumbnail-and-button {
+  width: 150px;
+  float: left;
+  margin: 20px 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.thumbnail-and-button:hover {
+  cursor: pointer;
+}
+
+.stats-hide {
+  opacity: 0;
+}
+
+.stats-show {
+  opacity: 100;
+}
+
+.thumbnail-stats {
+  width: 150px;
+  min-height: 15px;
+  font-family: 'Invasion';
+  font-size: 15px;
+}
