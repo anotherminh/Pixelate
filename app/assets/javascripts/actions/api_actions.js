@@ -53,5 +53,12 @@ ApiActions = {
       actionType: CommentConstants.RECEIVE_NEW_COMMENT,
       comment: comment
     });
+  },
+
+  receiveSearchResults: function (results) {
+    AppDispatcher.dispatch({
+      actionType: SearchConstants.RECEIVE_RESULTS,
+      results: results
+    });
   }
 };

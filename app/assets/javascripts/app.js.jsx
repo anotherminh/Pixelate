@@ -23,6 +23,7 @@ var routes = (
     <Route path="drawings/new" component={DrawingApp}/>
     <Route path="drawings/:id" component={DrawingApp}/>
     <Route path="drawing_details/:id" component={DrawingDetails}/>
+    <Route path="search/" component={Search}/>
   </Route>
 );
 

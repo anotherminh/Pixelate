@@ -9,6 +9,12 @@ class Api::UsersController < ApplicationController
     render :show
   end
 
+  def search
+    @user_matches = User.where("users.username LIKE ?", "%#{params[:input]}%")
+    @drawing_matches = Drawing.where("drawings.title LIKE ?", "%#{params[:input]}%")
+    render :search
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password)

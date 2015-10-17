@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get '/app', to: 'static_pages#app'
 
+  namespace :api do
+    get '/users/search/', to: 'users#search'
+  end
+
   namespace :api, defaults: {format: :json} do
     resources :drawings, only: [:create, :show, :index, :new, :update, :destroy]
     resources :users, only: [:index, :show]

@@ -123,6 +123,19 @@
           ApiActions.receiveNewComment(response);
         }
       });
+    },
+
+    runSearch: function (input) {
+      $.ajax({
+        url: '/api/users/search/',
+        type: 'get',
+        data: {input: input},
+        dataType: 'json',
+        success: function (response) {
+          console.log("finished search");
+          ApiActions.receiveSearchResults(response);
+        }
+      });
     }
   };
 }(this));

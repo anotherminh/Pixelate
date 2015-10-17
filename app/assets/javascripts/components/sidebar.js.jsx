@@ -23,7 +23,7 @@
               <li className="sidebar-button"><ProfileButton/></li>
               <li className="sidebar-button" ><BrowseButton/></li>
               <li className="sidebar-button" ><DrawingAppButton/></li>
-              <li className="sidebar-button" ><div>Search</div></li>
+              <li className="sidebar-button" ><SearchButton/></li>
               <li className="sidebar-button" ><LogOutButton/></li>
             </ul>
             <div className="sidebar-show-triangle-left"></div>
