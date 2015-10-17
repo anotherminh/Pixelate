@@ -17,7 +17,7 @@ class Api::DrawingsController < ApplicationController
       cells << "#eee"
     end
 
-    @new_drawing = current_user.drawings.new(title: "test", content: cells, size: 50)
+    @new_drawing = current_user.drawings.new(content: cells, size: 50)
     render :new
   end
 

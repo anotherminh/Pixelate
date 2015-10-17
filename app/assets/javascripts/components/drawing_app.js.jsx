@@ -4,7 +4,7 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { drawing: null, activeTool: ToolStore.get() };
+      return { drawing: null, activeTool: ToolStore.get(), isModalOpen: false, title: '' };
     },
 
     _loadCanvas: function () {
@@ -44,24 +44,40 @@
       DrawingStore.removeChangeListener(this._onSaveOfNewDrawing);
     },
 
-    saveToCanvas: function () {
+    saveToCanvas: function (drawingTitle) {
       html2canvas($("#save-me"), {onrendered: function(canvas) {
           // save this to the database
           this.state.drawing.data_url = canvas.toDataURL('image/png');
           if (this.state.drawing.id) {
             ApiUtil.saveDrawing(this.state.drawing);
           } else {
+            this.state.drawing.title = drawingTitle;
             ApiUtil.saveNewDrawing(this.state.drawing);
           }
         }.bind(this)
       });
     },
 
+    openModal: function() {
+         this.setState({ isModalOpen: true });
+     },
+
+     closeModal: function(e) {
+        e.preventDefault();
+        var drawingTitle = React.findDOMNode(this.refs.drawingTitle).value;
+        this.setState({ isModalOpen: false }, function () { this.saveToCanvas(drawingTitle); }.bind(this, drawingTitle) );
+     },
+
     handleToolSelection: function (tool) {
       this.state.activeTool = ToolStore.get();
       switch (tool) {
         case 'save':
-          this.saveToCanvas();
+          if (this.state.drawing.id) {
+            saveToCanvas();
+          } else {
+            this.openModal();
+          }
+          // this.saveToCanvas();
           console.log("parsed data url successfully");
           break;
         case 'eraser':
@@ -78,6 +94,14 @@
         return (
           <div className="drawing-app">
             <div className="app-title">Pixelate</div>
+              <Modal isOpen={this.state.isModalOpen}
+                     transitionName="modal-anim">
+                <h3>Name your drawing!</h3>
+                <form onSubmit={this.closeModal} className="drawing-name-form">
+                  <input name="title" type="text" ref="drawingTitle"/>
+                  <button value="Submit">Save</button>
+                </form>
+              </Modal>
             <div className="center-canvas-and-palette" style={containerStyle}>
               <Canvas drawing={drawing}/>
               <Palette/>
