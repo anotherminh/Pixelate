@@ -1,9 +1,9 @@
 
-# FresherNote
+# Pixelate
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
-[heroku]: http://www.pixelate.herokuapp.com
+[heroku]: pixelate.herokuapp.com
 
 ## Minimum Viable Product
 
