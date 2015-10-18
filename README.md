@@ -1,24 +1,21 @@
+
 # FresherNote
 
 [Heroku link][heroku] **NB:** This should be a link to your production site
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://www.pixelate.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+Pixelate is a simple web application for making and sharing pixel art, built on Ruby on Rails and React.js. The core features include:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Create, view, edit, and delete pixel drawings
+- [ ] Comment and like other users' drawings.
+- [ ] Search for users or drawings (by username or title).
 
 ## Design Docs
 * [View Wireframes][view]
@@ -29,67 +26,67 @@ and React.js. FresherNote allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: Stand-alone Widget (1.5 day)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+I want to get the drawing widget to work on its own, before adding users/ social features. I start with the backend by building a table and model for the canvases. This table will not contain any reference to the user table (that's for later). The canvas will also have a full JSON API.
+The front end is about setting up Flux and React views for the drawing. No There will also be one static page that would render the widget's component.
+The drawings can be saved to the database (by clicking the save button), but because we don't have users yet, the only way to load the drawings is by navigating to the drawings' show page (/drawings/:id). React Router will help us render the right drawing by fetching the drawing's id from the url.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Adding Users & Auth (1.5 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+In phase 2, I want to make the sign up/log in page, and use BCrypt to implement authorization. Again, I start with the backend by making a model for Users and adding association between users and their drawings. I will have a regular controller for users (for the sign up page) as well as a controller for Sessions. I will also add a JSON API for retrieving info about a specific user, as well as their associated drawings).
+The Flux component I'll be working on is the UserDetails component (which renders the user's show page). There, you can view the user's stats (how many drawings they have), as well as view their drawings. One of the drawings will be randomly selected to be rendered in a bigger size than others. Once we implement likes, this larger drawing will be the most liked drawing of the user.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Saving/Loading Drawings (1 day)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+So we will have a component for the 'edit' button. On hover, this button will appear on top of the drawing's thumbnail. On click, this component will fetch data from the database to render the canvas in the drawing app.
+I have to figure out how to prevent unauthorized users from editing other's drawings. I think I will pass the current user to the root React component, and every 'edit'/'delete' options will be rendered or not rendered according to the current user's id. This might involve 'wrapping' certain components inside of "authenticated component" which will handle the re-directing.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Likes/Kudos (.5 day)
 
-Using quill.js, allow for complex styling of notes. 
+The thumbnails on the user's show page will have a 'like' button that appears on hover. Only signed in users can like/give kudos to the drawings. And users can only like drawings once.
+Backend will include create a table, model, and API controller for 'likes'. Front end is relatively simple, except we have to possibly also wrap the like component in an AuthenticatedComponent (which checks to see if the user is logged in).
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Comments & Drawing Show Page (1.5 day)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+The drawing show page will just render the drawing at full-size, as well as display the info/stats of the drawings (title, artist, how many likes it has, how many comments, and what the comments are).
+On the backend, I'll create a table, model, and API controller for comments. Front end involves putting a comment form onto the drawing show page.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: Browse Page (.5 day)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+The browse page is split up into two basic components: the 10 most-liked drawings of the week, and a list of all the drawings submitted by users.
+
+### Phase 7: Navbar & Search page (1 day)
+
+Building the nav bar involves adding a couple of React components and CSS Styling such that it only appears on hover.
+
+The search page will be yet another React component, with two children: the search-input-field, and the search-results components.
+
+### Phase 8: Clean Up and Seed (1 day)
+A day of drawing (by me) and crowdsourcing (my friends) for drawings.
+
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Paintbucket for the app
+- [ ] Color selection for the drawing app
+- [ ] Customize canvas sizes (small, medium, large)
+- [ ] Different sizes for the brush/eraser
+- [ ] Artist bios
+- [ ] Tagging of drawings, so people can more easily search for the relevant drawings
+- [ ] Download drawings as png files
+- [ ] "undo" via ctrl + z
+- [ ] Collaborative drawing
+
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

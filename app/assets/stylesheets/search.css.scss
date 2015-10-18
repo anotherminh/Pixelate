@@ -3,7 +3,7 @@
   height: 24px;
   border: 1px solid black;
   font-family: "Inconsolata";
-  font-size: 18px;
+  font-size: 17px;
   float: left;
   padding: 5px;
 }
@@ -21,10 +21,13 @@
   font-size: 17px;
   float: left;
   margin-left: 10px;
+  background-color: #FF5556;
+  color: #000000;
 }
 
 .submit-search:hover {
-  background: #ccc;
+  cursor: pointer;
+  background-color: #FFFED5
 }
 .search-form {
   width: 387px;

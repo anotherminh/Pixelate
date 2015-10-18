@@ -73,7 +73,7 @@
       switch (tool) {
         case 'save':
           if (this.state.drawing.id) {
-            saveToCanvas();
+            this.saveToCanvas();
           } else {
             this.openModal();
           }
@@ -93,15 +93,15 @@
         var containerStyle = { width: canvasSize };
         return (
           <div className="drawing-app">
+            <Modal isOpen={this.state.isModalOpen}
+                   transitionName="modal-anim">
+              <h3>Name your drawing!</h3>
+              <form onSubmit={this.closeModal} className="drawing-name-form">
+                <input name="title" type="text" ref="drawingTitle"/>
+                <button value="Submit">Save</button>
+              </form>
+            </Modal>
             <div className="app-title">Pixelate</div>
-              <Modal isOpen={this.state.isModalOpen}
-                     transitionName="modal-anim">
-                <h3>Name your drawing!</h3>
-                <form onSubmit={this.closeModal} className="drawing-name-form">
-                  <input name="title" type="text" ref="drawingTitle"/>
-                  <button value="Submit">Save</button>
-                </form>
-              </Modal>
             <div className="center-canvas-and-palette" style={containerStyle}>
               <Canvas drawing={drawing}/>
               <Palette/>
