@@ -60,5 +60,12 @@ ApiActions = {
       actionType: SearchConstants.RECEIVE_RESULTS,
       results: results
     });
+  },
+
+  receiveDeletedDrawingInfo: function (drawing) {
+    AppDispatcher.dispatch({
+      actionType: DrawingsConstants.DRAWING_DELETED,
+      drawing: drawing
+    });
   }
 };

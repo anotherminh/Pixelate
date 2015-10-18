@@ -136,6 +136,18 @@
           ApiActions.receiveSearchResults(response);
         }
       });
+    },
+
+    deleteDrawing: function (drawing_id) {
+      $.ajax({
+        url: '/api/drawings/' + drawing_id,
+        type: 'delete',
+        dataType: 'json',
+        success: function (response) {
+          console.log("deletedDrawing");
+          ApiActions.receiveDeletedDrawingInfo(response);
+        }
+      });
     }
   };
 }(this));

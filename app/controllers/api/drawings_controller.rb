@@ -42,6 +42,13 @@ class Api::DrawingsController < ApplicationController
     render :index
   end
 
+  def destroy
+    @drawing = current_user.drawings.find(params[:id])
+    if @drawing && @drawing.delete
+      render :show
+    end
+  end
+
   private
   def drawing_params
     params.require(:drawing).permit(:title, :size, { content: [] }, :data_url)

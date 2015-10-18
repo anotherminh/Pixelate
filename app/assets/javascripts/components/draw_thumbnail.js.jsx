@@ -65,8 +65,13 @@
       }
     },
 
+    deleteDrawing: function (e) {
+      e.stopPropagation();
+      ApiUtil.deleteDrawing(this.props.drawing.id);
+    },
+
     render: function () {
-      var button;
+      var button, DeleteButton;
       var statsClass = "thumbnail-stats stats-hide";
 
       if (this.state.showButton) {
@@ -76,6 +81,12 @@
         );
 
         statsClass = "thumbnail-stats stats-show";
+      }
+
+      if (current_user_id == this.props.drawing.user_id) {
+        DeleteButton = (
+          <div onClick={this.deleteDrawing} className="delete-button"></div>
+        );
       }
 
       return (
@@ -90,7 +101,8 @@
                   }.bind(this)}>
           </canvas>
           <div className={statsClass}>
-            <p>Kudos: {this.props.drawing.kudos.length}</p>
+            <p className="kudo-count">Kudos: {this.props.drawing.kudos.length}</p>
+            {DeleteButton}
           </div>
         </div>
       );

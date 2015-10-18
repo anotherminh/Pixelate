@@ -10,6 +10,11 @@
   display: block;
 }
 
+.thumb-button:hover {
+  color: black;
+  background-color: #FF5556;
+}
+
 .thumb-button {
   background-color: black;
   position: absolute;
@@ -47,4 +52,21 @@
   min-height: 15px;
   font-family: 'Invasion';
   font-size: 15px;
+}
+
+.kudo-count {
+  float: left;
+  padding: 2px;
+}
+
+.delete-button {
+  width: 20px;
+  height: 20px;
+  background-image: image-url("delete-icon.png");
+  float: right;
+  margin-top: -3px;
+}
+
+.delete-button:hover {
+  background-image: image-url("delete-icon-hover.png");
 }

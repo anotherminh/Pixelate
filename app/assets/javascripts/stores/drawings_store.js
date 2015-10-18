@@ -2,8 +2,22 @@
   'use strict';
   var _drawings = [], CHANGE_EVENT = "changed";
 
+  function sortDrawingsByPopularity (drawings) {
+    var sorted = [];
+    sorted = drawings.sort(function (a, b) {
+      if (a.kudos.length > b.kudos.length) {
+        return -1;
+      } else if (a.kudos.length < b.kudos.length) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return sorted;
+  }
+
   function resetDrawings (drawings) {
-    _drawings = drawings;
+    _drawings = sortDrawingsByPopularity(drawings);
     reveal_liker_ids();
     DrawingsStore.changed();
   }
@@ -37,6 +51,19 @@
     }
   }
 
+  function findDrawingIdx (id) {
+    for (var i = 0; i < _drawings.length; i++) {
+      if (_drawings[i].id == id) {
+        return i;
+      }
+    }
+  }
+
+  function deleteDrawing (drawing) {
+    var deletedDrawingIdx = findDrawingIdx(drawing.id);
+    _drawings.splice(deletedDrawingIdx, 1);
+  }
+
   root.DrawingsStore = $.extend({}, EventEmitter.prototype, {
     all: function () {
       return _drawings.slice();
@@ -65,6 +92,8 @@
         case KudosConstants.TAKEAWAY_KUDO:
           decrementKudos(action.kudo);
           break;
+        case DrawingsConstants.DRAWING_DELETED:
+          deleteDrawing(action.drawing);
       }
     })
   });
