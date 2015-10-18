@@ -4,6 +4,15 @@ class Api::DrawingsController < ApplicationController
     render :show
   end
 
+  def edit
+    @drawing = current_user.drawings.find(params[:id])
+    if @drawing
+      render :show
+    else
+      raise "You can't edit someone else's drawing!"
+    end
+  end
+
   def create
     @drawing = current_user.drawings.new(drawing_params)
     if @drawing.save

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :drawings, only: [:create, :show, :index, :new, :update, :destroy]
+    resources :drawings, only: [:create, :show, :index, :edit, :new, :update, :destroy]
     resources :users, only: [:index, :show]
     resources :kudos, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]

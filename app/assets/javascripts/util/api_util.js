@@ -16,7 +16,7 @@
   root.ApiUtil = {
     loadSavedDrawing: function (id) {
       $.ajax({
-        url: '/api/drawings/' + id,
+        url: '/api/drawings/' + id + '/edit',
         type: 'get',
         dataType: 'json',
         success: function(response) {

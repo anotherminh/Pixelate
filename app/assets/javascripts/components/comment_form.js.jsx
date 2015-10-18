@@ -3,7 +3,7 @@
   var LinkedStateMixin = React.addons.LinkedStateMixin;
 
   root.CommentForm = React.createClass({
-    mixins: [LinkedStateMixin, ReactRouter.History],
+    mixins: [LinkedStateMixin],
     getInitialState: function () {
       return { commentBody: "" };
     },

@@ -209,6 +209,10 @@ a.button {
   width: 300px;
 }
 
+#demo:hover {
+  cursor: pointer;
+}
+
 #splash-page {
   background-image: image-url("splash_page.jpg");
   width: 100%;
