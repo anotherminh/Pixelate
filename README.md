@@ -3,7 +3,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: pixelate.herokuapp.com
+[heroku]: https://pixelate.herokuapp.com
 
 ## Minimum Viable Product
 
