@@ -2,7 +2,8 @@
   width: 600px;
   border: 1px solid black;
   margin: 10px auto;
-  font-family: "Inconsolata"
+  font-family: "Inconsolata";
+  position: relative;
 }
 
 .author {
@@ -41,4 +42,17 @@ textarea {
   padding: 10px;
   font-size: 16px;
   font-family: "Inconsolata";
+}
+
+.comment-delete-button {
+  width: 20px;
+  height: 20px;
+  background-image: image-url("delete-icon.png");
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+}
+
+.comment-delete-button:hover {
+  background-image: image-url("delete-icon-hover.png");
 }

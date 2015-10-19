@@ -11,7 +11,7 @@
     },
 
     _fetchCanvas: function (id) {
-      ApiUtil.loadSavedDrawing(id);
+      ApiUtil.loadDrawingShow(id);
     },
 
     componentDidMount: function () {

@@ -35,6 +35,20 @@
     DrawingStore.changed();
   }
 
+  function deleteComment (comment) {
+    var comments = _drawing.comments;
+    var idx;
+    for (var i = 0; i < comments.length; i++) {
+      if (comments[i].id == comment.id) {
+        idx = i;
+        break;
+      }
+    }
+
+    comments.splice(idx, 1);
+    DrawingStore.changed();
+  }
+
   root.DrawingStore = $.extend({}, EventEmitter.prototype, {
     get: function () {
       return _drawing;
@@ -77,6 +91,9 @@
           break;
         case CommentConstants.RECEIVE_NEW_COMMENT:
           addNewComment(action.comment);
+          break;
+        case CommentConstants.DELETED_COMMENT_RECEIVED:
+          deleteComment(action.comment);
           break;
       }
     })

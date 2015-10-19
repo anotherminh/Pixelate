@@ -5,6 +5,8 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = current_user.comments.find(params[:id])
+    render :show if @comment.delete
   end
 
   private

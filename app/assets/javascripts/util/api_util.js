@@ -148,6 +148,29 @@
           ApiActions.receiveDeletedDrawingInfo(response);
         }
       });
+    },
+
+    loadDrawingShow: function (drawing_id) {
+      $.ajax({
+        url: '/api/drawings/' + drawing_id,
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+          ApiActions.receiveDrawing(response);
+        }
+      });
+    },
+
+    deleteComment: function (comment_id) {
+      $.ajax({
+        url: '/api/comments/' + comment_id,
+        type: 'delete',
+        dataType: 'json',
+        success: function (response) {
+          console.log("deleted comment");
+          ApiActions.receieveDeletedCommentInfo(response);
+        }
+      });
     }
   };
 }(this));

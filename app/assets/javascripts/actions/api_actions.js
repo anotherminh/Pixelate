@@ -67,5 +67,12 @@ ApiActions = {
       actionType: DrawingsConstants.DRAWING_DELETED,
       drawing: drawing
     });
+  },
+
+  receieveDeletedCommentInfo: function (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.DELETED_COMMENT_RECEIVED,
+      comment: comment
+    });
   }
 };
