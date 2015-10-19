@@ -1,26 +1,38 @@
 # View Wireframes
 
-## New User
-![new-user]
+## Landing Page
+![landing-page]
 
-## New Session
-![new-session]
+## Sign In
+![sign-in]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Sign Up
+![sign-up]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## User Show Page
+![user-show]
 
-## NoteBookForm
-![notebook-form]
+## Browse
+![browse]
+
+## Drawing App
+![drawing-app]
+
+## Drawing Show Page
+![drawing-show-page]
+
+## Search Page
+![search]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+[landing-page]: ./wireframes/slpash_page.png
+[sign-in]: ./wireframes/signin.png
+[sign-up]: ./wireframes/signup.png
+[user-show]: ./wireframes/user_show_page.png
+[browse]: ./wireframes/browse.png
+[drawing-app]: ./wireframes/drawing_app.png
+[drawing-show-page]: ./wireframes/drawing_show_page.png
+[search]: ./wireframes/search.png
+[component-heirarchy]: ./wireframes/componenth.png
