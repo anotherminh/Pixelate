@@ -15,7 +15,8 @@
 }
 
 .drawing-details-container {
-  padding: 15px;
+  padding: 1px;
+  position: relative;
   text-align: center;
   margin: 0px auto;
   padding-bottom: 5px;
@@ -43,11 +44,15 @@
 .info {
   font-family: 'Invasion';
   font-size: 20px;
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .artist-name {
-  padding-top: 10px;
+  padding: 4px;
+  padding-left: 10px;
+  font-family: 'Invasion';
+  font-size: 32px;
+  border: 1px solid black;
 }
 
 .more-drawing-button {
@@ -62,11 +67,20 @@
 .right {
   position: absolute;
   top: 306px;
-  right: 200px;
+  right: -100px;
 }
 
 .left {
   position: absolute;
   top: 306px;
-  left: 200px;
+  left: -100px;
+}
+
+.show-comments-button {
+  padding-top: 5px;
+}
+
+.show-comments-button:hover {
+  color: #FF5556;
+  cursor: pointer;
 }

@@ -8,5 +8,6 @@ json.comments do
     json.author comment.user.username
     json.user_id comment.user_id
     json.id comment.id
+    json.created_at comment.created_at.strftime("Posted on %m/%d/%Y %T")
   end
 end
