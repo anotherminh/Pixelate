@@ -162,6 +162,8 @@
    border: 3px solid black;
    text-align: center;
    padding: 20px;
+   padding-top: 15px;
+   font-family: "Invasion";
 }
 
 .title {
@@ -224,4 +226,49 @@ a.button {
 
 .thumb-button {
   z-index: 2;
+}
+
+.box-title {
+  text-align: left;
+  font-size: 36px;
+  margin: 5px;
+  margin-top: 0px;
+}
+
+.auth-form label {
+  text-align: left;
+  margin: 5px;
+  text-size: 20px;
+}
+
+.auth-form input {
+  -webkit-appearance: none;
+  width: 350px;
+  height: 24px;
+  margin: 5px;
+  border: 1px solid black;
+  font-family: 'Invasion';
+  padding: 3px;
+  font-size: 16px;
+}
+
+#submit-auth {
+  -webkit-appearance: none;
+  float: right;
+  font-family: 'Invasion';
+  font-size: 16px;
+  color: black;
+  width: 100px;
+  height: 26px;
+  margin-right: -1px;
+  background: #FFFFFF;
+  border: 1px solid black;
+}
+
+#submit-auth:hover {
+  background: gray;
+}
+
+#welcome-box a {
+  text-decoration: none;
 }

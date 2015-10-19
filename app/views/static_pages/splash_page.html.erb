@@ -4,7 +4,23 @@
     <div class="buttons-container">
       <a class="button" href="/session/new"><span></span>Sign In</a>
       <a class="button" href="/users/new"><span></span>Sign Up</a>
-      <a class="button" id="demo"><span></span>Demo</a>
+      <a class="button" onclick="continueAsGuest()" id="demo"><span></span>Demo</a>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function continueAsGuest () {
+    console.log("here");
+    $.ajax({
+      url: "session/",
+      type: 'post',
+      data: { user: { username: "user", password: "password" } },
+      dataType: 'json',
+      success: function(response) {
+        console.log("here");
+        window.location.href = "/app/#/drawings/new"
+      }
+    });
+  }
+</script>

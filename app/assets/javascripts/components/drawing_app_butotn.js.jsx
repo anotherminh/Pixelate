@@ -10,7 +10,7 @@
     render: function () {
       return (
         <div onClick={this.handleClick}>
-          Drawing App
+          New Drawing
         </div>
       );
     }

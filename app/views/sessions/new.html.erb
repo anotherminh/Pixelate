@@ -1,13 +1,15 @@
-<h1>Sign In</h1>
-<form action="<%= session_url %>" method="post">
-  <%= auth_token %>
-  <label>Username
-    <input type="text" name="user[username]" value="">
-  </label>
+<div id="splash-page">
+  <div id="welcome-box">
+    <div class="box-title"> Sign In </div>
+    <form class="auth-form" action="<%= session_url %>" method="post">
+      <%= auth_token %>
+      <label>Username</label>
+      <input type="text" name="user[username]" value="">
 
-  <label>Password
-    <input type="password" name="user[password]" value="">
-  </label>
+      <label>Password</label>
+      <input type="password" name="user[password]" value="">
 
-  <input type="submit" value="Sign In">
-</form>
+      <input id="submit-auth" type="submit" value="Sign In">
+    </form>
+  </div>
+</div>

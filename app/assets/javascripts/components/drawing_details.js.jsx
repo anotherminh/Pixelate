@@ -86,7 +86,7 @@
               <div className="stats-container">
                 <p className="drawing-title">Title: {drawing.title}</p>
                 <span className="artist-name">
-                  {drawing.username}
+                  by: {drawing.username}
                 </span>
                 <p className="info">
                   Kudos: {drawing.kudos.count ? drawing.kudos.count : "0"}
