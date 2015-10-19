@@ -8,40 +8,40 @@
     },
 
     _loadCanvas: function () {
-      this.setState({ drawing: DrawingStore.get() });
+      this.setState({ drawing: DrawingStore.get(), message: DrawingStore.message() });
     },
 
     _onSaveOfNewDrawing: function () {
-      this.setState({ drawing: DrawingStore.get() }, function () {
+      this.setState({ drawing: DrawingStore.get(), message: DrawingStore.message() }, function () {
         var url = '/drawings/' + DrawingStore.get().id;
         this.history.pushState(null, url);
       });
     },
     // works for both fetching a brand new (not in db) canvas,
     // as well as a saved one
-    _initiateFetchingOfCanvas: function () {
+    _initiateFetchingOfCanvas: function (id) {
       DrawingStore.addChangeListener(this._loadCanvas);
-      if (this.props.params.id) {
-        ApiUtil.loadSavedDrawing(this.props.params.id);
+      if (id) {
+        ApiUtil.loadSavedDrawing(id);
       } else {
         DrawingStore.addNewDrawingSaveListener(this._onSaveOfNewDrawing);
-        ApiUtil.makeNewDrawing(this.props.params.id);
+        ApiUtil.makeNewDrawing();
       }
     },
 
     componentDidMount: function () {
-      this._initiateFetchingOfCanvas();
+      this._initiateFetchingOfCanvas(this.props.params.id);
       ToolStore.addChangeListener(this.handleToolSelection);
     },
 
     componentWillReceiveProps: function (newProps) {
-      this._initiateFetchingOfCanvas();
+      this._initiateFetchingOfCanvas(newProps.params.id);
     },
 
     componentWillUnmount: function () {
       ToolStore.removeChangeListener(this.handleToolSelection);
       DrawingStore.removeChangeListener(this._loadCanvas);
-      DrawingStore.removeChangeListener(this._onSaveOfNewDrawing);
+      DrawingStore.removeNewDrawingSaveListener(this._onSaveOfNewDrawing);
     },
 
     saveToCanvas: function (drawingTitle) {
@@ -86,13 +86,41 @@
       }
     },
 
+    resetFlash: function () {
+      var that = this;
+      setTimeout(function () { that.setState({ message: null }); }, 2000);
+    },
+
+    resetFlashEarly: function () {
+      this.setState({ message: null });
+    },
+
+    renderFlashMessage: function () {
+      var message;
+      var that = this;
+      if (this.state.message) {
+        message = (
+          <div className="flash-message"
+               onClick={this.resetFlashEarly}
+               ref={this.resetFlash}>
+            {this.state.message}
+          </div>
+        );
+      }
+
+      return message;
+    },
+
     render: function () {
       var drawing = this.state.drawing;
       if (drawing) {
+        var message = this.renderFlashMessage();
         var canvasSize = ((drawing.size * 10) + (drawing.size * 2));
         var containerStyle = { width: canvasSize };
+
         return (
           <div className="drawing-app">
+            {message}
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim">
               <h3>Name your drawing!</h3>
@@ -101,6 +129,7 @@
                 <button value="Submit">Save</button>
               </form>
             </Modal>
+
             <div className="app-title">Pixelate</div>
             <div className="center-canvas-and-palette" style={containerStyle}>
               <Canvas drawing={drawing}/>

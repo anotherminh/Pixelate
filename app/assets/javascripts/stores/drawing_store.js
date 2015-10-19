@@ -2,17 +2,21 @@
   'use strict';
 
   var _drawing = null,
+  _message = null,
   CHANGE_EVENT = "changed",
-  NEW_DRAWING_SAVE_SUCCESS = "NEW_DRAWING_SAVE_SUCCESS";
+  NEW_DRAWING_SAVE_SUCCESS = "NEW_DRAWING_SAVE_SUCCESS",
+  MESSAGE = "SAVE MESSAGE";
 
-  function loadDrawing (drawing) {
+  function loadDrawing (drawing, message) {
     _drawing = drawing;
+    _message = message;
     _drawing.content = parseDrawingContent(drawing.content);
     DrawingStore.changed();
   }
 
-  function loadNewSavedDrawing (drawing) {
+  function loadNewSavedDrawing (drawing, message) {
     _drawing = drawing;
+    _message = message;
     _drawing.content = parseDrawingContent(drawing.content);
     DrawingStore.newDrawingSaved();
   }
@@ -54,6 +58,10 @@
       return _drawing;
     },
 
+    message: function () {
+      return _message;
+    },
+
     addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
     },
@@ -81,13 +89,13 @@
     dispatcherID: AppDispatcher.register(function (action) {
       switch (action.actionType) {
         case DrawingConstants.RECEIVE_DRAWING:
-          loadDrawing(action.drawing);
+          loadDrawing(action.drawing, action.message);
           break;
         case DrawingConstants.UPDATE_CELL:
           updateCell(action.cell);
           break;
         case DrawingConstants.NEW_DRAWING_SAVED:
-          loadNewSavedDrawing(action.drawing);
+          loadNewSavedDrawing(action.drawing, action.message);
           break;
         case CommentConstants.RECEIVE_NEW_COMMENT:
           addNewComment(action.comment);

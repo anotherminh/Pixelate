@@ -1,15 +1,17 @@
 ApiActions = {
-  receiveDrawing: function (drawing) {
+  receiveDrawing: function (drawing, message) {
     AppDispatcher.dispatch({
       actionType: DrawingConstants.RECEIVE_DRAWING,
-      drawing: drawing
+      drawing: drawing,
+      message: message
     });
   },
 
-  newDrawingSaved: function (drawing) {
+  newDrawingSaved: function (drawing, message) {
     AppDispatcher.dispatch({
       actionType: DrawingConstants.NEW_DRAWING_SAVED,
-      drawing: drawing
+      drawing: drawing,
+      message: message
     });
   },
 

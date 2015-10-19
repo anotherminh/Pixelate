@@ -18,6 +18,21 @@
     });
   }
 
+  function findDrawingIdx (id) {
+    var drawings = _user.drawings;
+    for (var i = 0; i < drawings.length; i++) {
+      if (drawings[i].id == id) {
+        return i;
+      }
+    }
+  }
+
+  function deleteDrawing (drawing) {
+    var deletedDrawingIdx = findDrawingIdx(drawing.id);
+    _user.drawings.splice(deletedDrawingIdx, 1);
+    UserStore.changed();
+  }
+
   root.UserStore = $.extend({}, EventEmitter.prototype, {
     get: function () {
       return _user;
@@ -39,6 +54,9 @@
       switch (action.actionType) {
         case UserConstants.RECEIVE_USER:
           resetUser(action.user);
+          break;
+        case DrawingsConstants.DRAWING_DELETED:
+          deleteDrawing(action.drawing);
           break;
       }
     })

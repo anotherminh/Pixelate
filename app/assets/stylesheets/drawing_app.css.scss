@@ -10,6 +10,7 @@
 
 .drawing-app {
   padding: 20px;
+  padding-top: 0px;
   width: 1000px;
   height: 700px;
   position: relative;
@@ -83,4 +84,14 @@
 
 .tool:hover {
   cursor: pointer;
+}
+
+.flash-message {
+  padding: 20px;
+  background-color: #6AFF0D;
+  font-family: "Inconsolata";
+  width: 129px;
+  position: absolute;
+  left: 40%;
+  top: 40%;
 }
