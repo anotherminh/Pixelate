@@ -16,9 +16,14 @@
     },
 
     componentDidMount: function () {
+      var id = this.props.params.id;
+      if (typeof(this.props.params.id) === 'undefined') {
+        id = 2;
+      }
+
       console.log("user detail mounted");
       UserStore.addChangeListener(this._onChange);
-      ApiUtil.fetchUserDetails(this.props.params.id);
+      ApiUtil.fetchUserDetails(id);
     },
 
     componentWillUnmount: function () {
