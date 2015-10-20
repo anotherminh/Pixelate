@@ -53,3 +53,25 @@
   padding: 5px;
   background: #ccc;
 }
+
+.search-result-info {
+  padding: 10px;
+  float: left;
+}
+
+.result-entry {
+  position: relative;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.result-entry:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.result-thumb {
+  float: left;
+}

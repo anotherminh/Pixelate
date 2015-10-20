@@ -17,15 +17,15 @@
  //
 
 .eraser-cursor {
-  cursor: url("eraser_cursor.png") 0 20, auto;
+  cursor: image-url("eraser_cursor.png") 0 20, auto;
 }
 
 .brush-cursor {
-  cursor: url("brush_cursor.png") 0 20, auto;
+  cursor: image-url("brush_cursor.png") 0 20, auto;
 }
 
 .paintbucket-cursor {
-  cursor: url("paintbucket_cursor.png") 0 20, auto;
+  cursor: image-url("paintbucket_cursor.png") 0 20, auto;
 }
 
 .index-thumb {

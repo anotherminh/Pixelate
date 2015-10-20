@@ -44,8 +44,8 @@
             <div className="search-results">
               <div className="results-title">User Matches Found:</div>
               {
-                this.state.userResults.map(function (result) {
-                  return <div>{result.username}</div>;
+                this.state.userResults.map(function (result, idx) {
+                  return <UserResult key={idx} user={result}/>;
                 })
               }
             </div>
@@ -53,10 +53,10 @@
             <div className="search-results">
               <div className="results-title">Drawing Matches Found:</div>
               {
-                this.state.drawingResults.map(function (result) {
+                this.state.drawingResults.map(function (result, idx) {
                   return (
                     <div>
-                      <div>{result.title}</div>
+                      <DrawingResult key={idx} drawing={result}/>
                     </div>
                   );
                 })
