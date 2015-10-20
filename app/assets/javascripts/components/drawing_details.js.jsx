@@ -89,7 +89,7 @@
                   by: {drawing.username}
                 </span>
                 <p className="info">
-                  Kudos: {drawing.kudos.count ? drawing.kudos.count : "0"}
+                  Kudos: {drawing.kudos.length ? drawing.kudos.length : "0"}
                 </p>
                 {commentButton}
               </div>
