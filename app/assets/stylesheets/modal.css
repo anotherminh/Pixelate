@@ -68,3 +68,14 @@
   background-color: #FFFED5;
   color: black;
 }
+
+.close-modal {
+  font-family: "Inconsolata";
+  font-size: 17px;
+  float: left;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+  color: #FFFED5;
+}

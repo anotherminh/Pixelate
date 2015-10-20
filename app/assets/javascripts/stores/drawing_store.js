@@ -74,7 +74,7 @@
     CellsToPaint.forEach(function (idx) {
       _drawing.content[idx].style.backgroundColor = CurrentSelectedColor;
     });
-    
+
     DrawingStore.changed();
   }
 
@@ -84,12 +84,20 @@
     startIdx = parseInt(startIdx);
 
     var up = startIdx - parseInt(_drawing.size),
-        down = startIdx + parseInt(_drawing.size),
-        left = startIdx - 1,
-        right = startIdx + 1;
+        down = startIdx + parseInt(_drawing.size), left, right;
+
+    if (startIdx % width !== 0) {
+      left = startIdx - 1;
+    }
+
+    if (startIdx % width !== (width - 1)) {
+      right = startIdx + 1;
+    }
+
     [up, down, left, right].forEach(function (i) {
        //will break if we are comparing white and #ffffff
-      if (_drawing.content[i] && (((_drawing.content[i].style.backgroundColor === startColor) &&
+      if (_drawing.content[i] &&
+         (((_drawing.content[i].style.backgroundColor === startColor) &&
          (neighbors.indexOf(i) === -1)) &&
          (CellsToPaint.indexOf(i) === -1))) {
         eligibleCells.push(i);

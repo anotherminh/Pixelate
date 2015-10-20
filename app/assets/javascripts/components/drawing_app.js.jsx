@@ -138,6 +138,10 @@
       return message;
     },
 
+    closeModalWithoutSave: function () {
+      this.setState({ isModalOpen: false });
+    },
+
     render: function () {
       var drawing = this.state.drawing;
       if (drawing) {
@@ -150,6 +154,7 @@
             {message}
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim">
+              <div onClick={this.closeModalWithoutSave} className="close-modal">X</div>
               <h3>Name your drawing!</h3>
               <form onSubmit={this.closeModal} className="drawing-name-form">
                 <input name="title" type="text" ref="drawingTitle"/>
