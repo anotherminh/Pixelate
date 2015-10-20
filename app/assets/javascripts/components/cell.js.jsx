@@ -22,16 +22,18 @@
 
     render: function () {
       var cell = this.props.cell;
-
-      if (this.state.active === 1) {
+      if (this.state.active === 1 && !this.props.paintbucketOn) {
         this.props.cell.style.backgroundColor = ColorStore.get();
         this.state.active++; //updates to 2
         CellsActions.updateCellsStore(cell);
+      } else if (this.props.paintbucketOn) {
+        this.state.active++; //updates to 2
       }
+
       return (
         <div className="cell"
              style={cell.style}
-             idx={cell.id}
+             value={this.props.idx}
              onMouseDown={this.handleMouseDown}
              onMouseUp={this.handleMouseUp}
              onMouseOver={this.mouseOver}>

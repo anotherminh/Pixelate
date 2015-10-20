@@ -1,8 +1,8 @@
 ToolActions = {
-  receiveNewActiveTool: function (tool) {
+  paintbucket: function (cell_idx) {
     AppDispatcher.dispatch({
-      actionType: ToolConstants.RECEIVE_NEW_ACTIVE_TOOL,
-      tool: tool
+      actionType: ToolsConstants.PAINTBUCKET,
+      cell: cell_idx
     });
   }
 };

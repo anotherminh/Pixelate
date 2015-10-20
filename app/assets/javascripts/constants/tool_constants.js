@@ -1,3 +1,0 @@
-ToolConstants = {
-  RECEIVE_NEW_ACTIVE_TOOL: "RECEIVE_NEW_ACTIVE_TOOL"
-};

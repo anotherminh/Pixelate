@@ -1,0 +1,3 @@
+ToolsConstants = {
+  PAINTBUCKET: "PAINTBUCKET"
+};

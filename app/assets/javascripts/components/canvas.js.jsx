@@ -22,16 +22,18 @@
       var canvas = that.props.drawing;
       var style = {width: ((canvas.size * 10) + (canvas.size * 2))};
       var cells = canvas.content;
-
       return (
         <div className="canvas"
-            id="save-me"
+             id="save-me"
              style={style}
+             onClick={this.props.paintbucket}
              onMouseLeave={that.handleLeavingCanvas}>
              {
-               cells.map(function (cell) {
+               cells.map(function (cell, idx) {
                  return <Cell key={cell.id}
+                              idx={idx}
                               cell={cell}
+                              paintbucketOn={that.props.paintbucketOn}
                               handleMouseDown={that.handleMouseDown}
                               handleMouseUp={that.handleMouseUp}
                               mouseDown={that.state.mouseDown}

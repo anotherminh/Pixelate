@@ -4,7 +4,7 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { drawing: null, activeTool: ToolStore.get(), isModalOpen: false, title: '' };
+      return { drawing: null, isModalOpen: false, title: '', paintbucketOn: false };
     },
 
     _loadCanvas: function () {
@@ -19,6 +19,10 @@
     },
     // works for both fetching a brand new (not in db) canvas,
     // as well as a saved one
+    _turnOffPaintbucket: function () {
+      this.state.paintbucketOn = false;
+    },
+
     _initiateFetchingOfCanvas: function (id) {
       DrawingStore.addChangeListener(this._loadCanvas);
       if (id) {
@@ -31,7 +35,6 @@
 
     componentDidMount: function () {
       this._initiateFetchingOfCanvas(this.props.params.id);
-      ToolStore.addChangeListener(this.handleToolSelection);
     },
 
     componentWillReceiveProps: function (newProps) {
@@ -39,7 +42,6 @@
     },
 
     componentWillUnmount: function () {
-      ToolStore.removeChangeListener(this.handleToolSelection);
       DrawingStore.removeChangeListener(this._loadCanvas);
       DrawingStore.removeNewDrawingSaveListener(this._onSaveOfNewDrawing);
     },
@@ -59,7 +61,7 @@
     },
 
     openModal: function() {
-         this.setState({ isModalOpen: true });
+      this.setState({ isModalOpen: true });
      },
 
      closeModal: function(e) {
@@ -68,8 +70,13 @@
         this.setState({ isModalOpen: false }, function () { this.saveToCanvas(drawingTitle); }.bind(this, drawingTitle) );
      },
 
+    paintbucket: function (e) {
+      if (this.state.paintbucketOn) {
+        ToolActions.paintbucket($(e.target).attr('value'));
+      }
+    },
+
     handleToolSelection: function (tool) {
-      this.state.activeTool = ToolStore.get();
       switch (tool) {
         case 'save':
           if (this.state.drawing.id) {
@@ -82,6 +89,10 @@
           break;
         case 'eraser':
           PaletteActions.receiveNewActiveColor('#eee');
+          this.setState({ paintbucketOn: false });
+          break;
+        case 'paintbucket':
+          this.setState({ paintbucketOn: true });
           break;
       }
     },
@@ -132,7 +143,7 @@
 
             <div className="app-title">Pixelate</div>
             <div className="center-canvas-and-palette" style={containerStyle}>
-              <Canvas drawing={drawing}/>
+              <Canvas paintbucket={this.paintbucket} drawing={drawing} paintbucketOn={this.state.paintbucketOn}/>
               <Palette/>
             </div>
             <Tools handleToolSelection={this.handleToolSelection}/>

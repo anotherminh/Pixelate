@@ -5,7 +5,8 @@
   _message = null,
   CHANGE_EVENT = "changed",
   NEW_DRAWING_SAVE_SUCCESS = "NEW_DRAWING_SAVE_SUCCESS",
-  MESSAGE = "SAVE MESSAGE";
+  MESSAGE = "SAVE MESSAGE",
+  FINISHED_PAINT = "FINISHED_PAINT";
 
   function loadDrawing (drawing, message) {
     _drawing = drawing;
@@ -51,6 +52,51 @@
 
     comments.splice(idx, 1);
     DrawingStore.changed();
+  }
+
+  function paintbucket (StartCellIdx) {
+    //figure out the color of the first cell, then color every
+    //adjacent cell of the same color until there is no more
+    StartCellIdx = (parseInt(StartCellIdx));
+    var CurrentSelectedColor = ColorStore.get();
+    var StartCellColor = _drawing.content[StartCellIdx].style.backgroundColor;
+
+    var CellsToPaint = [];
+    var neighbors = [StartCellIdx];
+
+    while (neighbors.length > 0) {
+
+      var current_parent = neighbors.shift();
+      CellsToPaint.push(current_parent);
+      neighbors = neighbors.concat(findEligibleNeighborCell(StartCellColor, current_parent, neighbors, CellsToPaint));
+    }
+
+    CellsToPaint.forEach(function (idx) {
+      _drawing.content[idx].style.backgroundColor = CurrentSelectedColor;
+    });
+    
+    DrawingStore.changed();
+  }
+
+  function findEligibleNeighborCell (startColor, startIdx, neighbors, CellsToPaint) {
+    var eligibleCells = [];
+    var width = parseInt(_drawing.size);
+    startIdx = parseInt(startIdx);
+
+    var up = startIdx - parseInt(_drawing.size),
+        down = startIdx + parseInt(_drawing.size),
+        left = startIdx - 1,
+        right = startIdx + 1;
+    [up, down, left, right].forEach(function (i) {
+       //will break if we are comparing white and #ffffff
+      if (_drawing.content[i] && (((_drawing.content[i].style.backgroundColor === startColor) &&
+         (neighbors.indexOf(i) === -1)) &&
+         (CellsToPaint.indexOf(i) === -1))) {
+        eligibleCells.push(i);
+      }
+    });
+
+    return eligibleCells;
   }
 
   root.DrawingStore = $.extend({}, EventEmitter.prototype, {
@@ -102,6 +148,9 @@
           break;
         case CommentConstants.DELETED_COMMENT_RECEIVED:
           deleteComment(action.comment);
+          break;
+        case ToolsConstants.PAINTBUCKET:
+          paintbucket(action.cell);
           break;
       }
     })
