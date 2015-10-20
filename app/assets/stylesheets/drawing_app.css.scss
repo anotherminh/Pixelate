@@ -95,3 +95,17 @@
   left: 40%;
   top: 40%;
 }
+
+.stylized-color-picker {
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+.stylized-color-picker:hover {
+  cursor: pointer;
+}
+
+#color-picker {
+  opacity: 0;
+}

@@ -1,8 +1,8 @@
 (function(root) {
   'use strict';
   var _colors = [
-      'red', 'cornflowerblue', 'forestgreen', 'wheat', '#ccc', 'white',
-      'black', 'pink', 'purple'
+      '#FF0000', '#6495ED', '#228B22', '#F5DEB3', '#D2691E', '#FFFFFF',
+      '#000000', '#FFC0CB', '#800080'
   ];
 
   root.Palette = React.createClass({
@@ -11,7 +11,7 @@
         <div className="palette">
           {
             _colors.map(function (color, idx) {
-              return (<Swatch key={idx} color={color}/>);
+              return (<ColorPicker key={idx} defaultColor={color}/>);
             })
           }
         </div>
