@@ -94,6 +94,9 @@
         case 'paintbucket':
           this.setState({ paintbucketOn: true });
           break;
+        case 'brush':
+          this.setState({ paintbucketOn: false });
+          break;
       }
     },
 

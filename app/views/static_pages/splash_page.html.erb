@@ -11,15 +11,13 @@
 
 <script type="text/javascript">
   function continueAsGuest () {
-    console.log("here");
     $.ajax({
-      url: "session/",
-      type: 'post',
-      data: { user: { username: "user", password: "password" } },
+      url: "/guest_sign_in",
+      type: 'get',
       dataType: 'json',
       success: function(response) {
-        console.log("here");
-        window.location.href = "/app/#/drawings/new"
+        console.log("successfully logged in as guest");
+        window.location.href = "/app/"
       }
     });
   }

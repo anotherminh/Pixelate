@@ -84,7 +84,7 @@
               <MoreDrawingButton drawingId={drawing.id + 1} name="Next"/>
               <ShowCanvas drawing={drawing}/>
               <div className="stats-container">
-                <p className="drawing-title">Title: {drawing.title}</p>
+                <p className="drawing-title">{drawing.title}</p>
                 <span className="artist-name">
                   by: {drawing.username}
                 </span>

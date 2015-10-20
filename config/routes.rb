@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/app', to: 'static_pages#app'
 
+  get '/guest_sign_in', to: 'sessions#signInAsGuest'
+
   namespace :api do
     get '/users/search/', to: 'users#search'
   end

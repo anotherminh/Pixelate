@@ -3,6 +3,12 @@ class SessionsController < ApplicationController
     render :new
   end
 
+  def signInAsGuest
+    @user = User.find_by_credentials("user", "password")
+    log_in_user(@user)
+    render json: { "signed in" => true }
+  end
+
   def create
     username = session_params[:username]
     password = session_params[:password]
@@ -10,7 +16,7 @@ class SessionsController < ApplicationController
 
     if @user
       log_in_user(@user)
-      render json: { "signed in" => true }
+      redirect_to '/app/#/'
     else
       flash.now[:errors] = ["Credentials do not match"]
       render :new
