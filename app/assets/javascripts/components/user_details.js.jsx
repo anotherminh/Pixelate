@@ -18,7 +18,7 @@
     componentDidMount: function () {
       var id = this.props.params.id;
       if (typeof(this.props.params.id) === 'undefined') {
-        id = 2;
+        id = current_user_id;
       }
 
       console.log("user detail mounted");

@@ -4,7 +4,7 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { drawing: null, isModalOpen: false, title: '', paintbucketOn: false };
+      return { drawing: null, isModalOpen: false, title: '', paintbucketOn: false, lastActiveColor: "#000000" };
     },
 
     _loadCanvas: function () {
@@ -42,8 +42,15 @@
     },
 
     componentWillUnmount: function () {
+      document.getElementsByTagName('body')[0].className= "";
       DrawingStore.removeChangeListener(this._loadCanvas);
       DrawingStore.removeNewDrawingSaveListener(this._onSaveOfNewDrawing);
+    },
+
+    setCursor: function (toolName) {
+      if (toolName !== 'save') {
+        document.getElementsByTagName('body')[0].className = (toolName + "-cursor");
+      }
     },
 
     saveToCanvas: function (drawingTitle) {
@@ -77,6 +84,7 @@
     },
 
     handleToolSelection: function (tool) {
+      this.setCursor(tool);
       switch (tool) {
         case 'save':
           if (this.state.drawing.id) {
@@ -88,14 +96,19 @@
           console.log("parsed data url successfully");
           break;
         case 'eraser':
-          PaletteActions.receiveNewActiveColor('#eee');
-          this.setState({ paintbucketOn: false });
+          this.setState(
+            { paintbucketOn: false, lastActiveColor: ColorStore.get() },
+            PaletteActions.receiveNewActiveColor('#eee')
+          );
           break;
         case 'paintbucket':
           this.setState({ paintbucketOn: true });
           break;
         case 'brush':
-          this.setState({ paintbucketOn: false });
+          this.setState(
+            { paintbucketOn: false },
+            PaletteActions.receiveNewActiveColor(this.state.lastActiveColor)
+          );
           break;
       }
     },
