@@ -10,8 +10,9 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    @user_matches = User.joins(:drawings).where("users.username LIKE ?", "%#{params[:input]}%").group("users.id")
-    @drawing_matches = Drawing.where("drawings.title LIKE ?", "%#{params[:input]}%")
+    @user_matches = User.joins(:drawings)
+                        .where("LOWER(users.username) LIKE ?", "%#{(params[:input]).downcase}%").group("users.id")
+    @drawing_matches = Drawing.where("LOWER(drawings.title) LIKE ?", "%#{(params[:input]).downcase}%")
     render :search
   end
 
