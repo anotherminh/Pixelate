@@ -32,7 +32,8 @@
             pages.map(function (num) {
               return (
                 <div className={num == currentPage ? "page-button current-page" : "page-button"}
-                     onClick={this.props.handlePageClick}>
+                     onClick={this.props.handlePageClick}
+                     key={num}>
                   {num}
                 </div>
               );

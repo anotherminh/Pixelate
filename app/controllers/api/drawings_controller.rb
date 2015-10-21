@@ -39,12 +39,13 @@ class Api::DrawingsController < ApplicationController
 
   def hot_drawings
     @drawings = Drawing
-                  .select("drawings.*, COUNT(kudos.id) AS kudo_count")
+                  .select("drawings.*, COUNT(kudos.id) AS kudos_count")
                   .joins(:kudos)
                   .group('drawings.id')
-                  .order('kudo_count DESC')
-                  .limit(10)
+                  .order('kudos_count DESC')
+                  .limit(8)
                   .includes(:comments)
+    @drawings.preload(:kudos)
     render 'api/drawings/index.json.jbuilder'
   end
 
@@ -55,7 +56,7 @@ class Api::DrawingsController < ApplicationController
       page_num = 1
     end
 
-    @drawings = Drawing.page(page_num).per(28)
+    @drawings = Drawing.includes(:kudos).page(page_num).per(28)
 
     render 'api/drawings/index.json.jbuilder'
   end

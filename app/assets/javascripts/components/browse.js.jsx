@@ -4,11 +4,11 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { drawings: DrawingsStore.all() };
+      return { drawings: DrawingsStore.all(), hottestDrawings: DrawingsStore.allHotDrawings() };
     },
 
     _onChange: function () {
-      this.setState({ drawings: DrawingsStore.all() });
+      this.setState({ drawings: DrawingsStore.all(), hottestDrawings: DrawingsStore.allHotDrawings() });
     },
 
     componentWillUnmount: function () {
@@ -26,6 +26,7 @@
     componentDidMount: function () {
       DrawingsStore.addChangeListener(this._onChange);
       ApiUtil.fetchBrowsePage(1);
+      ApiUtil.fetchBestDrawings();
     },
 
     render: function () {
@@ -35,7 +36,7 @@
           <div className="index">
             <p className="section-title">Hottest Draws</p>
             <div className="hot-drawings">
-              <HottestDrawings/>
+              <HottestDrawings drawings={this.state.hottestDrawings}/>
             </div>
             <p className="section-title">All Draws</p>
             <div className="all-other-drawings">

@@ -6,32 +6,19 @@
 
   function resetHotDrawings (response) {
     _hottestDrawings = response.drawings;
-    DrawingsStore.hotDrawsReceived();
-  }
-
-  function sortDrawingsByPopularity (drawings) {
-    var sorted = [];
-    sorted = drawings.sort(function (a, b) {
-      if (a.kudos.length > b.kudos.length) {
-        return -1;
-      } else if (a.kudos.length < b.kudos.length) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-    return sorted;
-  }
-
-  function resetDrawings (response) {
-    _drawings = sortDrawingsByPopularity(response.drawings);
-    _drawingsCount = response.all_drawings_count;
-    reveal_liker_ids();
+    reveal_liker_ids(_hottestDrawings);
     DrawingsStore.changed();
   }
 
-  function reveal_liker_ids () {
-    _drawings.forEach(function (drawing) {
+  function resetDrawings (response) {
+    _drawings = response.drawings;
+    _drawingsCount = response.all_drawings_count;
+    reveal_liker_ids(_drawings);
+    DrawingsStore.changed();
+  }
+
+  function reveal_liker_ids (drawings) {
+    drawings.forEach(function (drawing) {
       drawing.kudos = drawing.kudos.map(function (kudo) {
         return kudo.user_id;
       });
@@ -40,15 +27,37 @@
 
   function incrementKudos (kudo) {
     var likedDrawing = findDrawingById(kudo.drawing_id);
+    var HotLikedDrawing = findHottestDrawingById(kudo.drawing_id);
+
     likedDrawing.kudos.push(kudo.user_id);
+    if (HotLikedDrawing) {
+      HotLikedDrawing.kudos.push(kudo.user_id);
+    }
+
     DrawingsStore.changed();
   }
 
   function decrementKudos (kudo) {
-    var likedDrawing = findDrawingById(kudo.drawing_id);
-    var idx = likedDrawing.kudos.indexOf(kudo.user_id);
-    likedDrawing.kudos.splice(idx, 1);
+    var UnlikedDrawing = findDrawingById(kudo.drawing_id);
+    var HotUnlikedDrawing = findHottestDrawingById(kudo.drawing_id);
+
+    var idx = UnlikedDrawing.kudos.indexOf(kudo.user_id);
+    UnlikedDrawing.kudos.splice(idx, 1);
+
+    if (HotUnlikedDrawing) {
+      idx = HotUnlikedDrawing.kudos.indexOf(kudo.user_id);
+      HotUnlikedDrawing.kudos.splice(idx, 1);
+    }
+
     DrawingsStore.changed();
+  }
+
+  function findHottestDrawingById (id) {
+    for (var i = 0; i < _hottestDrawings.length; i++) {
+      if (_hottestDrawings[i].id == id) {
+        return _hottestDrawings[i];
+      }
+    }
   }
 
   function findDrawingById (id) {
@@ -91,18 +100,6 @@
 
     removeChangeListener: function (callback) {
       this.removeListener(CHANGE_EVENT, callback);
-    },
-
-    addHotDrawsChangeListener: function (callback) {
-      this.on(HOT_DRAWS_RECEIVED, callback);
-    },
-
-    removeHotDrawsChangeListener: function (callback) {
-      this.removeListener(HOT_DRAWS_RECEIVED, callback);
-    },
-
-    hotDrawsReceived: function () {
-      this.emit(HOT_DRAWS_RECEIVED);
     },
 
     changed: function () {
