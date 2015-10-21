@@ -12,7 +12,7 @@ class Api::KudosController < ApplicationController
     if current_user
       @kudo = Kudo.where('user_id = ? AND drawing_id = ?', current_user.id, params[:id])[0]
       if @kudo.delete
-        render json: { user_id: current_user.id, drawing_id: params[:id][0] }
+        render json: { user_id: current_user.id, drawing_id: params[:id]}
       end
     end
   end

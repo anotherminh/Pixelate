@@ -43,7 +43,6 @@
 
     var idx = UnlikedDrawing.kudos.indexOf(kudo.user_id);
     UnlikedDrawing.kudos.splice(idx, 1);
-
     if (HotUnlikedDrawing) {
       idx = HotUnlikedDrawing.kudos.indexOf(kudo.user_id);
       HotUnlikedDrawing.kudos.splice(idx, 1);
