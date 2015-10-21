@@ -11,7 +11,7 @@
       var newColor = e.target.value;
       this.setState(
         { color: newColor },
-        PaletteActions.receiveNewActiveColor(this.state.color));
+        PaletteActions.receiveNewActiveColor(newColor));
       },
 
     render: function () {
@@ -20,7 +20,7 @@
         <label onClick={this.handleClick} className="stylized-color-picker" style={style}>
           <input id="color-picker"
                  type="color"
-                 onChange={this._onChange}
+                 onInput={this._onChange}
                  onClick={this._onChange}
                  value={this.state.color}/>
         </label>

@@ -17,12 +17,13 @@
         this.history.pushState(null, url);
       });
     },
-    // works for both fetching a brand new (not in db) canvas,
-    // as well as a saved one
+
     _turnOffPaintbucket: function () {
       this.state.paintbucketOn = false;
     },
 
+    // works for both fetching a brand new (not in db) canvas,
+    // as well as a saved one
     _initiateFetchingOfCanvas: function (id) {
       DrawingStore.addChangeListener(this._loadCanvas);
       if (id) {
@@ -34,6 +35,7 @@
     },
 
     componentDidMount: function () {
+      this.setCursor("brush");
       this._initiateFetchingOfCanvas(this.props.params.id);
     },
 
@@ -102,12 +104,22 @@
           );
           break;
         case 'paintbucket':
-          this.setState({ paintbucketOn: true });
+          this.setState({ paintbucketOn: true },
+            function () {
+              if (ColorStore.get() === "#eee") {
+                PaletteActions.receiveNewActiveColor(this.state.lastActiveColor);
+              }
+            }
+          );
           break;
         case 'brush':
           this.setState(
             { paintbucketOn: false },
-            PaletteActions.receiveNewActiveColor(this.state.lastActiveColor)
+            function () {
+              if (ColorStore.get() === "#eee") {
+                PaletteActions.receiveNewActiveColor(this.state.lastActiveColor);
+              }
+            }
           );
           break;
       }

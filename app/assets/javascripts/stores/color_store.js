@@ -4,7 +4,6 @@
 
   function updateActiveColor (color) {
     _activeColor = color;
-    // ColorStore.changed();
   }
 
   root.ColorStore = $.extend({}, EventEmitter.prototype, {
