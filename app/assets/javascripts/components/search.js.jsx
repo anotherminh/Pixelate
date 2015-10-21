@@ -6,17 +6,21 @@
     mixins: [LinkedStateMixin, ReactRouter.History],
 
     getInitialState: function () {
-      return { input: "", userResults: null, drawingResults: null };
+      return { input: "", userResults: null, drawingResults: null, clicked: false };
     },
 
     runSearch: function () {
-      ApiUtil.runSearch(this.state.input);
+      if (!clicked) {
+        this.state.clicked = true;
+        ApiUtil.runSearch(this.state.input);
+      }
     },
 
     _onChange: function () {
       this.setState({
         userResults: SearchResultsStore.userResults(),
-        drawingResults: SearchResultsStore.drawingResults()
+        drawingResults: SearchResultsStore.drawingResults(),
+        clicked: false
       });
     },
 

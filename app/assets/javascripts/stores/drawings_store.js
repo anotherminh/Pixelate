@@ -38,6 +38,7 @@
   }
 
   function decrementKudos (kudo) {
+    debugger
     var UnlikedDrawing = findDrawingById(kudo.drawing_id);
     var HotUnlikedDrawing = findHottestDrawingById(kudo.drawing_id);
 
