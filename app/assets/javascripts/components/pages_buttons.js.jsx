@@ -3,7 +3,7 @@
   root.PagesButton = React.createClass({
     render: function () {
       var currentPage = parseInt(this.props.currentPage);
-      var maxPageNum = Math.ceil(DrawingsStore.getDrawingsCount() / 28);
+      var maxPageNum = Math.ceil(DrawingsStore.getDrawingsCount() / 20);
       var pages = [currentPage];
 
       // try to add 2 of the previous pages, if they are > 0

@@ -1,6 +1,5 @@
 (function(root) {
   'use strict';
-  var LinkedStateMixin = React.addons.LinkedStateMixin;
 
   root.ColorPicker = React.createClass({
     getInitialState: function () {
