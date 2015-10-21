@@ -3,14 +3,15 @@
   var LinkedStateMixin = React.addons.LinkedStateMixin;
 
   root.Search = React.createClass({
-    mixins: [LinkedStateMixin, ReactRouter.History],
+    mixins: [LinkedStateMixin],
 
     getInitialState: function () {
       return { input: "", userResults: null, drawingResults: null, clicked: false };
     },
 
-    runSearch: function () {
-      if (!clicked) {
+    runSearch: function (e) {
+      e.preventDefault();
+      if (!this.state.clicked) {
         this.state.clicked = true;
         ApiUtil.runSearch(this.state.input);
       }
@@ -33,6 +34,7 @@
     },
 
     render: function () {
+      debugger;
       if (this.state.userResults || this.state.drawingResults) {
         return (
           <div className="search-container">

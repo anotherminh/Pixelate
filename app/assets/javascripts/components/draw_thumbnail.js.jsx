@@ -40,8 +40,9 @@
     },
 
     renderCanvas: function (canvas) {
-      if (!canvas) {return;}
+      if (!canvas) { return; }
       var dataURL = this.props.drawing.data_url;
+      console.log(dataURL);
       canvas = canvas.getDOMNode();
       if (dataURL !== undefined && dataURL !== null) {
         var context, image;
