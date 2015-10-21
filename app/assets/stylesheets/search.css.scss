@@ -27,7 +27,7 @@
 
 .submit-search:hover {
   cursor: pointer;
-  background-color: #FFFED5
+  background-color: #FFFED5;
 }
 .search-form {
   width: 393px;
@@ -74,4 +74,9 @@
 
 .result-thumb {
   float: left;
+}
+
+.result-entry:hover {
+  background-color: #F5F5F5;
+  cursor: pointer;
 }

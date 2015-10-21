@@ -58,7 +58,7 @@
       if (this.state.showComments) {
         text = "Hide Comments";
       } else {
-        text = "Show Comments";
+        text = "Show Comments (" + this.state.drawing.comments.length + ")";
       }
 
       showButton = (
