@@ -1,0 +1,81 @@
+.modal-anim-enter {
+    opacity: 0.00;
+    transform: scale(0.7);
+    transition: all 0.2s;
+}
+
+.modal-anim-enter.modal-anim-enter-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-anim-leave {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.2s;
+}
+
+.modal-anim-leave.modal-anim-leave-active {
+    opacity: 0.00;
+    transform: scale(0.7);
+}
+
+.blur-background {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: .8;
+  z-index: 1;
+}
+
+.modal {
+  margin: 250px auto;
+  font-family: "Inconsolata";
+  font-size: 24px;
+  z-index: 2;
+  position: absolute;
+  left: 30%;
+  background-color: #FF5556;
+  padding: 10px;
+  text-align: center;
+}
+
+.drawing-name-form input {
+  margin: 10px;
+  width: 300px;
+  height: 24px;
+  border: 1px solid black;
+  font-family: "Inconsolata";
+  font-size: 17px;
+  padding: 5px;
+}
+
+.drawing-name-form button {
+  height: 37px;
+  width: 60px;
+  border: 1px solid black;
+  font-family: "Inconsolata";
+  font-size: 17px;
+  margin-left: 10px;
+  background-color: #000000;
+  color: #FFFED5;
+}
+
+.drawing-name-form button:hover {
+  cursor: pointer;
+  background-color: #FFFED5;
+  color: black;
+}
+
+.close-modal {
+  font-family: "Inconsolata";
+  font-size: 17px;
+  float: left;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+  color: #FFFED5;
+}

@@ -1,0 +1,72 @@
+/* line 1, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.comment {
+  width: 600px;
+  border: 1px solid black;
+  margin: 10px auto;
+  font-family: "Inconsolata";
+  position: relative;
+}
+
+/* line 9, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.author {
+  padding: 10px;
+  background-color: #ccc;
+}
+
+/* line 14, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.body {
+  padding: 10px;
+}
+
+/* line 18, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.comment-form {
+  width: 580px;
+  border: 1px solid black;
+  margin: 10px auto;
+  font-family: "Inconsolata";
+  padding: 10px;
+}
+
+/* line 26, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.submit-comment {
+  position: relative;
+  font-family: "Inconsolata";
+  font-size: 16px;
+  border: 1px solid black;
+  left: 520px;
+}
+
+/* line 34, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.submit-comment:hover {
+  background: #ccc;
+}
+
+/* line 38, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+textarea {
+  border: 0px;
+  width: 560px;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Inconsolata";
+}
+
+/* line 47, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.comment-delete-button {
+  width: 20px;
+  height: 20px;
+  background-image: url(/assets/delete-icon-2a5aee5def5f717ae7f30a160e1bca0c13ef3c9b44f66b756481641f70d7d3f4.png);
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+}
+
+/* line 56, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.comment-delete-button:hover {
+  background-image: url(/assets/delete-icon-hover-f167576c437957ab261df2536cc6a3f967e0630fe2a3df34ee8a9818c5ee5f47.png);
+}
+
+/* line 60, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/comments.css.scss */
+.timestamp {
+  float: right;
+}

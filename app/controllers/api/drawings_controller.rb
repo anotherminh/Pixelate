@@ -37,9 +37,27 @@ class Api::DrawingsController < ApplicationController
     end
   end
 
-  def index
-    @drawings = Drawing.all.includes(:kudos)
-    render :index
+  def hot_drawings
+    @drawings = Drawing
+                  .select("drawings.*, COUNT(kudos.id) AS kudo_count")
+                  .joins(:kudos)
+                  .group('drawings.id')
+                  .order('kudo_count DESC')
+                  .limit(10)
+                  .includes(:comments)
+    render 'api/drawings/index.json.jbuilder'
+  end
+
+  def page
+    if params[:id]
+      page_num = params[:id]
+    else
+      page_num = 1
+    end
+
+    @drawings = Drawing.page(page_num).per(28)
+
+    render 'api/drawings/index.json.jbuilder'
   end
 
   def destroy

@@ -1,0 +1,79 @@
+/* line 1, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.section-title {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-family: 'Invasion';
+  font-size: 32px;
+  width: 280px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* line 12, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.index {
+  padding: 20px;
+  margin: 0px auto;
+  width: 900px;
+}
+
+/* line 18, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.hot-drawings {
+  width: 760px;
+  margin: 0px auto;
+}
+
+/* line 23, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.all-other-drawings {
+  width: 760px;
+  margin: 0px auto;
+}
+
+/* line 28, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.hot-drawings:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* line 34, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.all-other-drawings:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* line 40, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.page-button {
+  font-family: 'Inconsolata';
+  margin: 5px;
+  font-size: 17px;
+  float: left;
+}
+
+/* line 47, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.current-page {
+  font-family: 'Inconsolata';
+  font-size: 17px;
+  border: 1px solid black;
+}
+
+/* line 53, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.page-buttons {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 59, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.page-buttons:hover {
+  cursor: pointer;
+  background-color: #FFFED5;
+}
+
+/* line 64, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/browse.css.scss */
+.page-buttons:after {
+  content: "";
+  display: block;
+  clear: both;
+}

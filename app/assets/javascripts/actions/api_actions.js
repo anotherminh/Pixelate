@@ -29,10 +29,10 @@ ApiActions = {
     });
   },
 
-  receiveAllDrawings: function (drawings) {
+  receiveAllDrawings: function (response) {
     AppDispatcher.dispatch({
       actionType: DrawingsConstants.RECEIVE_ALL_DRAWINGS,
-      drawings: drawings
+      response: response
     });
   },
 
@@ -52,7 +52,7 @@ ApiActions = {
 
   receiveNewComment: function (comment) {
     AppDispatcher.dispatch({
-      actionType: CommentConstants.RECEIVE_NEW_COMMENT,
+      actionType: CommentConstants.RECEIVED_NEW_COMMENT,
       comment: comment
     });
   },
@@ -75,6 +75,13 @@ ApiActions = {
     AppDispatcher.dispatch({
       actionType: CommentConstants.DELETED_COMMENT_RECEIVED,
       comment: comment
+    });
+  },
+
+  receiveBestDrawings: function (drawings) {
+    AppDispatcher.dispatch({
+      actionType: DrawingsConstants.BEST_DRAWINGS_RECEIVED,
+      drawings: drawings
     });
   }
 };

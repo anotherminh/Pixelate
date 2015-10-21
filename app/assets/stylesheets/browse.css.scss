@@ -36,3 +36,32 @@
   clear: both;
   display: block;
 }
+
+.page-button {
+  font-family: 'Inconsolata';
+  margin: 5px;
+  font-size: 17px;
+  float: left;
+}
+
+.current-page {
+  font-family: 'Inconsolata';
+  font-size: 17px;
+  border: 1px solid black;
+}
+
+.page-buttons {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-button:hover {
+  cursor: pointer;
+}
+
+.page-buttons:after {
+  content: "";
+  display: block;
+  clear: both;
+}

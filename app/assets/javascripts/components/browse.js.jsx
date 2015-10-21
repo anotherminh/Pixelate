@@ -1,6 +1,8 @@
 (function(root) {
   'use strict';
   root.Browse = React.createClass({
+    mixins: [ReactRouter.History],
+
     getInitialState: function () {
       return { drawings: DrawingsStore.all() };
     },
@@ -9,9 +11,21 @@
       this.setState({ drawings: DrawingsStore.all() });
     },
 
+    componentWillUnmount: function () {
+      DrawingsStore.removeChangeListener(this._onChange);
+    },
+
+    handlePageClick: function (e) {
+      this.history.pushState(null, 'browse/' + e.currentTarget.innerHTML);
+    },
+
+    componentWillReceiveProps: function (newProps) {
+      ApiUtil.fetchBrowsePage(newProps.params.id);
+    },
+
     componentDidMount: function () {
       DrawingsStore.addChangeListener(this._onChange);
-      ApiUtil.fetchAllDrawings(current_user_id);
+      ApiUtil.fetchBrowsePage(1);
     },
 
     render: function () {
@@ -21,24 +35,19 @@
           <div className="index">
             <p className="section-title">Hottest Draws</p>
             <div className="hot-drawings">
-              {
-                drawings.slice(0, 8).map(function (drawing) {
-                  return (
-                    <DrawThumbnail key={drawing.id} typeOfThumb="show-pic" drawing={drawing}/>
-                  );
-                })
-              }
+              <HottestDrawings/>
             </div>
             <p className="section-title">All Draws</p>
             <div className="all-other-drawings">
               {
-                drawings.slice(8).map(function (drawing) {
+                drawings.map(function (drawing) {
                   return (
                     <DrawThumbnail key={drawing.id} typeOfThumb="show-pic" drawing={drawing}/>
                   );
                 })
               }
             </div>
+            <PagesButton handlePageClick={this.handlePageClick} currentPage={this.props.params.id ? this.props.params.id : 1}/>
           </div>
         );
       } else {

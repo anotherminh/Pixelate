@@ -1,0 +1,29 @@
+/* line 1, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/user_details.css.scss */
+.username {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-family: 'Invasion';
+  font-size: 32px;
+  width: 250px;
+  margin: 10px auto;
+}
+
+/* line 11, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/user_details.css.scss */
+.user-details-header {
+  padding: 15px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+/* line 17, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/user_details.css.scss */
+.user-details-body {
+  margin: 0px auto;
+  width: 760px;
+}
+
+/* line 22, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/user_details.css.scss */
+.profile-pic {
+  margin-left: auto;
+  margin-right: auto;
+}

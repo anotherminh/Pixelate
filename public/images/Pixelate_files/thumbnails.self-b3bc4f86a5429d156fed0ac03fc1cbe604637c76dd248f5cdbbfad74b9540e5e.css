@@ -1,0 +1,83 @@
+/* line 2, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.show-thumbnails-container {
+  width: 850px;
+  margin: 15px auto;
+}
+
+/* line 7, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.show-thumbnails-container:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* line 13, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.thumb-button:hover {
+  color: black;
+  background-color: #FF5556;
+}
+
+/* line 18, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.thumb-button {
+  background-color: black;
+  position: absolute;
+  width: 96px;
+  bottom: 31px;
+  left: 53px;
+  font-family: 'Invasion';
+  font-size: 15px;
+  color: white;
+  padding: 5px;
+}
+
+/* line 30, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.thumbnail-and-button {
+  width: 150px;
+  float: left;
+  margin: 20px 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* line 38, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.thumbnail-and-button:hover {
+  cursor: pointer;
+}
+
+/* line 42, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.stats-hide {
+  opacity: 0;
+}
+
+/* line 46, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.stats-show {
+  opacity: 100;
+}
+
+/* line 50, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.thumbnail-stats {
+  width: 150px;
+  min-height: 15px;
+  font-family: 'Invasion';
+  font-size: 15px;
+}
+
+/* line 57, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.kudo-count {
+  float: left;
+  padding: 2px;
+}
+
+/* line 62, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.delete-button {
+  width: 20px;
+  height: 20px;
+  background-image: url(/assets/delete-icon-2a5aee5def5f717ae7f30a160e1bca0c13ef3c9b44f66b756481641f70d7d3f4.png);
+  float: right;
+  margin-top: -3px;
+}
+
+/* line 70, /Users/minwin08/Desktop/Pixelate/app/assets/stylesheets/thumbnails.css.scss */
+.delete-button:hover {
+  background-image: url(/assets/delete-icon-hover-f167576c437957ab261df2536cc6a3f967e0630fe2a3df34ee8a9818c5ee5f47.png);
+}

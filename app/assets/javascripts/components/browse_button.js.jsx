@@ -5,7 +5,7 @@
 
     handleClick: function() {
       console.log("profile clicked");
-      this.history.pushState(null, 'users/');
+      this.history.pushState(null, 'browse/1');
     },
 
     render: function () {

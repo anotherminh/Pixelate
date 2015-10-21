@@ -84,13 +84,24 @@
       });
     },
 
-    fetchAllDrawings: function () {
+    fetchBrowsePage: function (page_num) {
       $.ajax({
-        url: '/api/drawings/',
+        url: '/api/browse/' + page_num,
         type: 'get',
         dataType: 'json',
         success: function (response) {
           ApiActions.receiveAllDrawings(response);
+        }
+      });
+    },
+
+    fetchBestDrawings: function () {
+      $.ajax({
+        url: '/api/best_drawings/',
+        type: 'get',
+        dataType: 'json',
+        success: function (response) {
+          ApiActions.receiveBestDrawings(response);
         }
       });
     },

@@ -19,7 +19,7 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={UserDetails}/>
     <Route path="users/:id" component={UserDetails}/>
-    <Route path="users/" component={Browse}/>
+    <Route path="browse/:id" component={Browse}/>
     <Route path="drawings/new" component={DrawingApp}/>
     <Route path="drawings/:id" component={DrawingApp}/>
     <Route path="drawing_details/:id" component={DrawingDetails}/>
