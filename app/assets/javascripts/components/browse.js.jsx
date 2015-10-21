@@ -30,7 +30,7 @@
 
     render: function () {
       var drawings = this.state.drawings;
-      if (drawings.length > 0 && DrawingsStore.allHotDrawings().length > 0) {
+      if (drawings.length > 0) {
         return (
           <div className="index">
             <p className="section-title">Hottest Draws</p>
