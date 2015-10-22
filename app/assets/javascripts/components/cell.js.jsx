@@ -45,7 +45,7 @@
              value={this.props.idx}
              onMouseDown={this.handleMouseDown}
              onMouseUp={this.handleMouseUp}
-             onMouseOver={this.mouseOver}>
+             onMouseEnter={this.mouseOver}>
         </div>
       );
     }

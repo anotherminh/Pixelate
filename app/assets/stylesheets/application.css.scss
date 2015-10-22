@@ -166,17 +166,18 @@
 }
 
 #welcome-box {
-   width: 500px;
-   height: 150px;
-   margin-top: 280px;
-   margin-left: auto;
-   margin-right: auto;
-   background-color: white;
-   border: 3px solid black;
-   text-align: center;
-   padding: 20px;
-   padding-top: 15px;
-   font-family: "Invasion";
+  position: relative;
+  width: 500px;
+  height: 150px;
+  margin-top: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border: 3px solid black;
+  text-align: center;
+  padding: 20px;
+  padding-top: 15px;
+  font-family: "Invasion";
 }
 
 .title {
@@ -247,6 +248,7 @@ a.button {
   font-size: 36px;
   margin: 5px;
   margin-top: 0px;
+  margin-left: 40px;
 }
 
 .auth-form label {
@@ -300,4 +302,16 @@ a.button {
 
 #link-to-github:hover {
   color: #FF5556;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  width: 40px;
+}
+
+.back-arrow:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(0.7); filter: brightness(0.7);
 }
