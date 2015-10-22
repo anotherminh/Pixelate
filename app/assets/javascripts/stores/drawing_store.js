@@ -201,10 +201,10 @@
         case DrawingConstants.RECEIVE_PAST_DRAWING:
           setDrawingToPastState(action.drawing);
           break;
-        case KudosConstants.RECEIVE_KUDO:
+        case KudosConstants.RECEIVE_SHOW_KUDO:
           incrementKudos(action.kudo);
           break;
-        case KudosConstants.TAKEAWAY_KUDO:
+        case KudosConstants.TAKEAWAY_SHOW_KUDO:
           decrementKudos(action.kudo);
           break;
         case DrawingConstants.TOGGLE_GRID:

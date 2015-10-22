@@ -72,10 +72,6 @@
       return showButton;
     },
 
-    giveKudo: function () {
-      ApiUtil.giveKudo(this.state.drawing.id);
-    },
-
     redirectToUser: function () {
       this.history.pushState(null, 'users/' + this.state.drawing.user_id);
     },
@@ -85,9 +81,15 @@
       var buttonClicked = this.renderKudosButton().innerText;
 
       if (buttonClicked === " + 1") {
-        ApiUtil.giveKudo(drawingId);
+        ApiUtil.giveKudo({
+          drawing_id: this.state.drawing.id,
+          from: "show"
+        });
       } else {
-        ApiUtil.dislike(drawingId);
+        ApiUtil.dislike({
+          drawing_id: this.state.drawing.id,
+          from: "show"
+        });
       }
     },
 

@@ -105,25 +105,33 @@
       });
     },
 
-    giveKudo: function (drawing_id) {
+    giveKudo: function (drawing_info) {
       $.ajax({
         url: '/api/kudos',
         type: 'post',
-        data: { kudo: {drawing_id: drawing_id } },
+        data: { kudo: {drawing_id: drawing_info.drawing_id } },
         dataType: 'json',
         success: function (response) {
-          ApiActions.receiveKudo(response);
+          if (drawing_info.from === "global") {
+            ApiActions.receiveBrowseKudo(response);
+          } else {
+            ApiActions.receiveShowKudo(response);
+          }
         }
       });
     },
 
-    dislike: function (drawing_id) {
+    dislike: function (drawing_info) {
       $.ajax({
         url: '/api/kudos/' + drawing_id,
         type: 'delete',
         dataType: 'json',
         success: function (response) {
-          ApiActions.decrementKudos(response);
+          if (drawing_info.from === "global") {
+            ApiActions.decrementBrowseKudo(response);
+          } else {
+            ApiActions.decrementShowKudos(response);
+          }
         }
       });
     },

@@ -118,10 +118,10 @@
         case DrawingsConstants.RECEIVE_ALL_DRAWINGS:
           resetDrawings(action.response);
           break;
-        case KudosConstants.RECEIVE_KUDO:
+        case KudosConstants.RECEIVE_BROWSE_KUDO:
           incrementKudos(action.kudo);
           break;
-        case KudosConstants.TAKEAWAY_KUDO:
+        case KudosConstants.TAKEAWAY_BROWSE_KUDO:
           decrementKudos(action.kudo);
           break;
         case DrawingsConstants.DRAWING_DELETED:

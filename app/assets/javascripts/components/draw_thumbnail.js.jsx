@@ -18,10 +18,16 @@
           }
           break;
         case "Give Kudos":
-          ApiUtil.giveKudo(this.props.drawing.id);
+          ApiUtil.giveKudo({
+            drawing_id: this.props.drawing.id,
+            from: "global"
+          });
           break;
         case "Un-kudos":
-          ApiUtil.dislike(this.props.drawing.id);
+          ApiUtil.dislike({
+            drawing_id: this.props.drawing.id,
+            from: "global"
+          });
           break;
       }
     },

@@ -36,16 +36,30 @@ ApiActions = {
     });
   },
 
-  receiveKudo: function (kudo) {
+  receiveBrowseKudo: function (kudo) {
     AppDispatcher.dispatch({
-      actionType: KudosConstants.RECEIVE_KUDO,
+      actionType: KudosConstants.RECEIVE_BROWSE_KUDO,
       kudo: kudo
     });
   },
 
-  decrementKudos: function (kudo) {
+  decrementBrowseKudo: function (kudo) {
     AppDispatcher.dispatch({
-      actionType: KudosConstants.TAKEAWAY_KUDO,
+      actionType: KudosConstants.TAKEAWAY_BROWSE_KUDO,
+      kudo: kudo
+    });
+  },
+
+  receiveShowKudo: function () {
+    AppDispatcher.dispatch({
+      actionType: KudosConstants.RECEIVE_SHOW_KUDO,
+      kudo: kudo
+    });
+  },
+
+  decrementShowKudos: function () {
+    AppDispatcher.dispatch({
+      actionType: KudosConstants.TAKEAWAY_SHOW_KUDO,
       kudo: kudo
     });
   },
