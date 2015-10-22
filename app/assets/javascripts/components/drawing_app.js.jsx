@@ -1,5 +1,7 @@
 (function(root) {
   'use strict';
+  var _keys = {};
+
   root.DrawingApp = React.createClass({
     mixins: [ReactRouter.History],
 
@@ -8,6 +10,7 @@
     },
 
     _loadCanvas: function () {
+      console.log("right before undo is supposed to happen");
       this.setState({ drawing: DrawingStore.get(), message: DrawingStore.message() });
     },
 
@@ -34,8 +37,32 @@
       }
     },
 
+    UndoChange: function () {
+      console.log("Undoing the change");
+      ApiActions.UndoDrawing(HistoryStore.getLastState());
+    },
+
+    _keysDown: function (e) {
+      var keyValue = parseInt(e.keyCode);
+
+      if (keyValue === 90 || (keyValue === 17 || keyValue === 91)) {
+        _keys[keyValue] = true;
+      }
+
+      if (_keys[90] && (_keys[17] || _keys[91])) {
+        console.log("firing the UndoChange");
+        this.UndoChange();
+        _keys = {};
+      }
+    },
+
+    addUndoListener: function () {
+      window.addEventListener("keydown", this._keysDown);
+    },
+
     componentDidMount: function () {
       this.setCursor("brush");
+      this.addUndoListener();
       this._initiateFetchingOfCanvas(this.props.params.id);
     },
 

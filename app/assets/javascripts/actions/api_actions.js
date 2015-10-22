@@ -83,5 +83,21 @@ ApiActions = {
       actionType: DrawingsConstants.BEST_DRAWINGS_RECEIVED,
       drawings: drawings
     });
+  },
+
+  saveToHistory: function (state) {
+    console.log("Action dispatching");
+    AppDispatcher.dispatch({
+      actionType: DrawingConstants.RECEIVE_HISTORY_STATE,
+      state: state
+    });
+  },
+
+  UndoDrawing: function (drawing) {
+    console.log("ApiAction: UndoDrawing");
+    AppDispatcher.dispatch({
+      actionType: DrawingConstants.RECEIVE_PAST_DRAWING,
+      drawing: drawing
+    });
   }
 };

@@ -8,6 +8,12 @@
   MESSAGE = "SAVE MESSAGE",
   FINISHED_PAINT = "FINISHED_PAINT";
 
+  function setDrawingToPastState (drawing) {
+    console.log("setting drawing to past state");
+    _drawing = drawing;
+    DrawingStore.changed();
+  }
+
   function loadDrawing (drawing, message) {
     _drawing = drawing;
     _message = message;
@@ -159,6 +165,10 @@
           break;
         case ToolsConstants.PAINTBUCKET:
           paintbucket(action.cell);
+          break;
+        case DrawingConstants.RECEIVE_PAST_DRAWING:
+          console.log("RECEIVED PAST DRAWING");
+          setDrawingToPastState(action.drawing);
           break;
       }
     })

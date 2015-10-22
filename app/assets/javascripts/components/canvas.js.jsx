@@ -10,6 +10,8 @@
     },
 
     handleMouseDown: function () {
+      var copy = $.extend(true, {}, this.props.drawing);
+      ApiActions.saveToHistory(copy);
       this.setState({ mouseDown: true });
     },
 
