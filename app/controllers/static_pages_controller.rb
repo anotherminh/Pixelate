@@ -1,9 +1,17 @@
 class StaticPagesController < ApplicationController
   def app
-    render :app
+    if current_user
+      render :app
+    else
+      render :splash_page
+    end
   end
 
   def welcome
-    render :splash_page
+    if current_user
+      render :app
+    else
+      render :splash_page
+    end
   end
 end

@@ -3,8 +3,41 @@ class SessionsController < ApplicationController
     render :new
   end
 
+  def make_username
+    username = "sample_user_"
+
+    3.times do
+      username += ('1'..'9').to_a.sample
+    end
+
+    username
+  end
+
+  def make_password
+    password = ""
+
+    8.times do
+      password += ('1'..'9').to_a.sample
+    end
+
+    password
+  end
+
+  def make_new_guest
+    username = make_username
+    password = make_password
+
+    if User.create({ username: username, password: password })
+      return { username: username, password: password }
+    else
+      make_new_guest
+    end
+  end
+
   def signInAsGuest
-    @user = User.find_by_credentials("user", "password")
+    user_params = make_new_guest
+
+    @user = User.find_by_credentials(user_params[:username], user_params[:password])
     log_in_user(@user)
     render json: { "signed in" => true }
   end
