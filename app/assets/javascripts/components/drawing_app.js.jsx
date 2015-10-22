@@ -120,6 +120,17 @@
           }
           // this.saveToCanvas();
           break;
+        case 'download':
+          var dataUrl = this.state.drawing.data_url;
+          if (dataUrl) {
+            window.open(this.state.drawing.data_url);
+          } else {
+            html2canvas($("#save-me"), {onrendered: function(canvas) {
+                window.open(canvas.toDataURL('image/png'));
+              }
+            });
+          }
+          break;
         case 'eraser':
           this.setState(
             { paintbucketOn: false, lastActiveColor: ColorStore.get() },
