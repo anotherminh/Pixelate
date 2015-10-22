@@ -118,7 +118,6 @@
           } else {
             this.openModal();
           }
-          // this.saveToCanvas();
           break;
         case 'download':
           var dataUrl = this.state.drawing.data_url;
@@ -130,6 +129,9 @@
               }
             });
           }
+          break;
+        case 'grid':
+          ApiActions.toggleGrid();
           break;
         case 'eraser':
           this.setState(

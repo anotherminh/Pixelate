@@ -26,6 +26,10 @@
   }
 
   function incrementKudos (kudo) {
+    // if (_drawings.length === 0) {
+    //   return false;
+    // }
+
     var likedDrawing = findDrawingById(kudo.drawing_id);
     var HotLikedDrawing = findHottestDrawingById(kudo.drawing_id);
 
@@ -38,6 +42,10 @@
   }
 
   function decrementKudos (kudo) {
+    // if (_drawings.length === 0) {
+    //   return false;
+    // }
+
     var UnlikedDrawing = findDrawingById(kudo.drawing_id);
     var HotUnlikedDrawing = findHottestDrawingById(kudo.drawing_id);
 

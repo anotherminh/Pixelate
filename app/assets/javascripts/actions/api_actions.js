@@ -97,5 +97,11 @@ ApiActions = {
       actionType: DrawingConstants.RECEIVE_PAST_DRAWING,
       drawing: drawing
     });
+  },
+
+  toggleGrid: function () {
+    AppDispatcher.dispatch({
+      actionType: DrawingConstants.TOGGLE_GRID
+    });
   }
 };

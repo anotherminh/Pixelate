@@ -3,10 +3,20 @@
 
   var _drawing = null,
   _message = null,
+  _gridOn = true,
   CHANGE_EVENT = "changed",
   NEW_DRAWING_SAVE_SUCCESS = "NEW_DRAWING_SAVE_SUCCESS",
   MESSAGE = "SAVE MESSAGE",
   FINISHED_PAINT = "FINISHED_PAINT";
+
+  function toggleGrid () {
+    if (_gridOn) {
+      _gridOn = false;
+    } else {
+      _gridOn = true;
+    }
+    DrawingStore.changed();
+  }
 
   function incrementKudos (kudo) {
     _drawing.kudos.push(kudo.user_id);
@@ -140,6 +150,10 @@
       return _message;
     },
 
+    gridStatus: function () {
+      return _gridOn;
+    },
+
     addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
     },
@@ -193,6 +207,8 @@
         case KudosConstants.TAKEAWAY_KUDO:
           decrementKudos(action.kudo);
           break;
+        case DrawingConstants.TOGGLE_GRID:
+          toggleGrid();
       }
     })
   });

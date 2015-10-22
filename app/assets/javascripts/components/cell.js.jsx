@@ -20,6 +20,14 @@
       }
     },
 
+    calculateCellClass: function () {
+      if (DrawingStore.gridStatus()) {
+        return "cell border-on";
+      } else {
+        return "cell border-off";
+      }
+    },
+
     render: function () {
       var cell = this.props.cell;
       if (this.state.active === 1 && !this.props.paintbucketOn) {
@@ -29,8 +37,10 @@
         this.state.active++; //updates to 2
       }
 
+      var klass = this.calculateCellClass();
+
       return (
-        <div className="cell"
+        <div className={klass}
              style={cell.style}
              value={this.props.idx}
              onMouseDown={this.handleMouseDown}

@@ -55,8 +55,15 @@
   clear: both;
 }
 
-.cell {
+.border-on {
   border: 1px dotted white;
+}
+
+.border-off {
+  border: 1px solid transparent;
+}
+
+.cell {
   float: left;
   width: 10px;
   height: 10px;
