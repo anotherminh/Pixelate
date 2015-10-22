@@ -127,7 +127,7 @@
 
     resetFlash: function () {
       var that = this;
-      setTimeout(function () { that.setState({ message: null }); }, 2000);
+      setTimeout(function () { that.setState({ message: null }); }, 4000);
     },
 
     resetFlashEarly: function () {
@@ -177,7 +177,7 @@
             <div className="app-title">Pixelate</div>
             <div className="center-canvas-and-palette" style={containerStyle}>
               <Canvas paintbucket={this.paintbucket} drawing={drawing} paintbucketOn={this.state.paintbucketOn}/>
-              <Palette/>
+              <Palette paintbucketOn={this.state.paintbucketOn}/>
             </div>
             <Tools handleToolSelection={this.handleToolSelection}/>
           </div>

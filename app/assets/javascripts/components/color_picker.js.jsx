@@ -8,6 +8,7 @@
 
     _onChange: function (e) {
       var newColor = e.target.value;
+      this.props.resetCursor();
       this.setState(
         { color: newColor },
         PaletteActions.receiveNewActiveColor(newColor));
