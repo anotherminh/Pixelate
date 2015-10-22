@@ -40,6 +40,7 @@
 
             <div className="user-details-body">
               <div className="show-thumbnails-container">
+                <NewDrawingButton/>
                 {
                   user.drawings.map(function (drawing, idx) {
                     return (

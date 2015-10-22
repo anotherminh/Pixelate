@@ -1,6 +1,8 @@
 (function(root) {
   'use strict';
   root.DrawingDetails = React.createClass({
+    mixins: [ReactRouter.History],
+
     getInitialState: function () {
       return { drawing: null, showComments: false };
     },
@@ -70,9 +72,39 @@
       return showButton;
     },
 
+    giveKudo: function () {
+      ApiUtil.giveKudo(this.state.drawing.id);
+    },
+
+    redirectToUser: function () {
+      this.history.pushState(null, 'users/' + this.state.drawing.user_id);
+    },
+
+    handleKudoClick: function (e) {
+      var drawingId = this.state.drawing.id;
+      var buttonClicked = this.renderKudosButton().innerText;
+
+      if (buttonClicked === " + 1") {
+        ApiUtil.giveKudo(drawingId);
+      } else {
+        ApiUtil.dislike(drawingId);
+      }
+    },
+
+    renderKudosButton: function () {
+      var kudos = this.state.drawing.kudos;
+      if (kudos.indexOf(parseInt(current_user_id)) === -1) {
+        return { innerText: " + 1", class: "info-give-kudo" };
+      } else {
+        return { innerText: " - 1", class: "info-takeaway-kudo" };
+      }
+    },
+
     render: function () {
       var drawing = this.state.drawing;
       if (drawing) {
+        var kudosButton = this.renderKudosButton().innerText;
+        var kudosButtonClass = this.renderKudosButton().class;
         var comments = this.renderComments();
         var commentButton = this.renderShowCommentButton();
         var canvasSize = ((drawing.size * 10) + (drawing.size * 2));
@@ -85,11 +117,14 @@
               <ShowCanvas drawing={drawing}/>
               <div className="stats-container">
                 <p className="drawing-title">{drawing.title}</p>
-                <span className="artist-name">
+                <span onClick={this.redirectToUser} className="artist-name">
                   by: {drawing.username}
                 </span>
                 <p className="info">
                   Kudos: {drawing.kudos.length ? drawing.kudos.length : "0"}
+                  <span onClick={this.handleKudoClick} className={kudosButtonClass}>
+                    {kudosButton}
+                  </span>
                 </p>
                 {commentButton}
               </div>

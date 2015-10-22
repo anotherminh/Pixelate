@@ -286,3 +286,18 @@ a.button {
 #welcome-box a {
   text-decoration: none;
 }
+
+#link-to-github {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  padding: 5px;
+  text-decoration: none;
+  font-family: Inconsolata;
+  font-size: 14px;
+  color: black;
+}
+
+#link-to-github:hover {
+  color: #FF5556;
+}

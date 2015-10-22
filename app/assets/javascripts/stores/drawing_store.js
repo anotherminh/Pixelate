@@ -8,6 +8,23 @@
   MESSAGE = "SAVE MESSAGE",
   FINISHED_PAINT = "FINISHED_PAINT";
 
+  function incrementKudos (kudo) {
+    _drawing.kudos.push(kudo.user_id);
+    DrawingStore.changed();
+  }
+
+  function decrementKudos (kudo) {
+    var idx = _drawing.kudos.indexOf(kudo.user_id);
+    _drawing.kudos.splice(idx, 1);
+    DrawingStore.changed();
+  }
+
+  function reveal_liker_ids () {
+    _drawing.kudos = _drawing.kudos.map(function (kudo) {
+      return kudo.user_id;
+    });
+  }
+
   function setDrawingToPastState (drawing) {
     _drawing = drawing;
     DrawingStore.changed();
@@ -16,6 +33,7 @@
   function loadDrawing (drawing, message) {
     _drawing = drawing;
     _message = message;
+    reveal_liker_ids();
     _drawing.content = parseDrawingContent(drawing.content);
     DrawingStore.changed();
   }
@@ -23,6 +41,7 @@
   function loadNewSavedDrawing (drawing, message) {
     _drawing = drawing;
     _message = message;
+    reveal_liker_ids();
     _drawing.content = parseDrawingContent(drawing.content);
     DrawingStore.newDrawingSaved();
   }
@@ -166,8 +185,13 @@
           paintbucket(action.cell);
           break;
         case DrawingConstants.RECEIVE_PAST_DRAWING:
-          console.log("RECEIVED PAST DRAWING");
           setDrawingToPastState(action.drawing);
+          break;
+        case KudosConstants.RECEIVE_KUDO:
+          incrementKudos(action.kudo);
+          break;
+        case KudosConstants.TAKEAWAY_KUDO:
+          decrementKudos(action.kudo);
           break;
       }
     })

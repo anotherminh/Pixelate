@@ -6,7 +6,7 @@
 }
 
 .drawing-title {
-  display: inline;
+  display: inline-block;
   background-color: black;
   color: white;
   padding: 5px;
@@ -49,10 +49,15 @@
 
 .artist-name {
   padding: 4px;
+  display: inline-block;
   padding-left: 10px;
   font-family: 'Invasion';
   font-size: 32px;
   border: 1px solid black;
+}
+
+.artist-name:hover {
+  cursor: pointer;
 }
 
 .more-drawing-button {
@@ -83,4 +88,42 @@
 .show-comments-button:hover {
   color: #FF5556;
   cursor: pointer;
+}
+
+.info-give-kudo:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.info-give-kudo:before {
+  content: "";
+  width: 130px;
+  height: 20px;
+  position: absolute;
+  left: 0px;
+}
+
+.info-give-kudo {
+  display: inline;
+  opacity: 0;
+  color: darkturquoise;
+}
+
+.info-takeaway-kudo:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.info-takeaway-kudo {
+  display: inline;
+  opacity: 0;
+  color: #FF5556;
+}
+
+.info-takeaway-kudo:before {
+  content: "";
+  width: 130px;
+  height: 20px;
+  position: absolute;
+  left: 0px;
 }
