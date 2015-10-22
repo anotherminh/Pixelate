@@ -10,7 +10,6 @@
     },
 
     _loadCanvas: function () {
-      console.log("right before undo is supposed to happen");
       this.setState({ drawing: DrawingStore.get(), message: DrawingStore.message() });
     },
 
@@ -38,7 +37,6 @@
     },
 
     UndoChange: function () {
-      console.log("Undoing the change");
       ApiActions.UndoDrawing(HistoryStore.getLastState());
     },
 
@@ -50,7 +48,6 @@
       }
 
       if (_keys[90] && (_keys[17] || _keys[91])) {
-        console.log("firing the UndoChange");
         this.UndoChange();
         _keys = {};
       }
@@ -122,7 +119,6 @@
             this.openModal();
           }
           // this.saveToCanvas();
-          console.log("parsed data url successfully");
           break;
         case 'eraser':
           this.setState(

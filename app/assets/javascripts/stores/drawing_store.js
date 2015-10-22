@@ -9,7 +9,6 @@
   FINISHED_PAINT = "FINISHED_PAINT";
 
   function setDrawingToPastState (drawing) {
-    console.log("setting drawing to past state");
     _drawing = drawing;
     DrawingStore.changed();
   }

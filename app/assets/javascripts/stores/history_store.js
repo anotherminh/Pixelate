@@ -8,7 +8,6 @@
     }
 
     _previousStates.push(state_of_drawing);
-    console.log("There are now " + _previousStates.length + " states");
   }
 
   root.HistoryStore = $.extend({}, EventEmitter.prototype, {
@@ -19,7 +18,6 @@
     dispatcherID: AppDispatcher.register(function (action) {
       switch (action.actionType) {
         case DrawingConstants.RECEIVE_HISTORY_STATE:
-          console.log("Action registered");
           updateHistory(action.state);
           break;
       }

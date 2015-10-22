@@ -25,7 +25,6 @@
       if (this.state.active === 1 && !this.props.paintbucketOn) {
         this.props.cell.style.backgroundColor = ColorStore.get();
         this.state.active++; //updates to 2
-        CellsActions.updateCellsStore(cell);
       } else if (this.props.paintbucketOn) {
         this.state.active++; //updates to 2
       }

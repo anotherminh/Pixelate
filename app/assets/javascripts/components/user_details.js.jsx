@@ -6,12 +6,10 @@
     },
 
     _onChange: function () {
-      console.log("User store has changed");
       this.setState({ user: UserStore.get() });
     },
 
     componentWillReceiveProps: function (newProps) {
-      console.log("fetching another user");
       ApiUtil.fetchUserDetails(newProps.params.id);
     },
 
@@ -21,13 +19,11 @@
         id = current_user_id;
       }
 
-      console.log("user detail mounted");
       UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchUserDetails(id);
     },
 
     componentWillUnmount: function () {
-      console.log("Unmounting user detail");
       UserStore.removeChangeListener(this._onChange);
     },
 

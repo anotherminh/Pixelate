@@ -4,7 +4,6 @@
     mixins: [ReactRouter.History],
 
     handleClick: function() {
-      console.log("profile clicked");
       this.history.pushState(null, 'search/');
     },
 
