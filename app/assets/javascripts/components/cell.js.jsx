@@ -2,12 +2,10 @@
   'use strict';
   root.Cell = React.createClass({
     getInitialState: function() {
-      // return { active: 0 };
       return {};
     },
 
     handleMouseDown: function () {
-      // this.setState({ active: 1 });
       if (!this.props.paintbucketOn) {
         var x = this.props.cell.id % 50;
         var y = Math.floor(this.props.cell.id / 50);
@@ -40,12 +38,6 @@
 
     render: function () {
       var cell = this.props.cell;
-      // if (this.state.active === 1 && !this.props.paintbucketOn) {
-      //   this.props.cell.style.backgroundColor = ColorStore.get();
-      //   this.state.active++; //updates to 2
-      // } else if (this.props.paintbucketOn) {
-      //   this.state.active++; //updates to 2
-      // }
 
       var klass = this.calculateCellClass();
 

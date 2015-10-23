@@ -26,11 +26,13 @@
   }
 
   function incrementKudos (kudo) {
+    debugger
     _drawing.kudos.push(kudo.user_id);
     DrawingStore.changed();
   }
 
   function decrementKudos (kudo) {
+    debugger
     var idx = _drawing.kudos.indexOf(kudo.user_id);
     _drawing.kudos.splice(idx, 1);
     DrawingStore.changed();
