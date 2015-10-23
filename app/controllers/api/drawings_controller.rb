@@ -56,7 +56,7 @@ class Api::DrawingsController < ApplicationController
       page_num = 1
     end
 
-    @drawings = Drawing.includes(:kudos).page(page_num).per(20)
+    @drawings = Drawing.includes(:kudos).order('drawings.created_at DESC').page(page_num).per(20)
 
     render 'api/drawings/index.json.jbuilder'
   end
