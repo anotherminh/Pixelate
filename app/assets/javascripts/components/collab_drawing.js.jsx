@@ -6,12 +6,7 @@
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { drawing: null,
-               isModalOpen: false,
-               title: '',
-               paintbucketOn: false,
-               lastActiveColor: "#000000",
-               showHelp: false };
+      return { drawing: null, isModalOpen: false, title: '', paintbucketOn: false, lastActiveColor: "#000000" };
     },
 
     _loadCanvas: function () {
@@ -50,14 +45,6 @@
 
       if (keyValue === 90 || (keyValue === 17 || keyValue === 91)) {
         _keys[keyValue] = true;
-      } else if (keyValue === 66) {
-        this.handleToolSelection("brush");
-      } else if (keyValue === 69) {
-        this.handleToolSelection("eraser");
-      } else if (keyValue === 80) {
-        this.handleToolSelection("paintbucket");
-      } else if (keyValue === 71) {
-        this.handleToolSelection("grid");
       }
 
       if (_keys[90] && (_keys[17] || _keys[91])) {
@@ -66,14 +53,14 @@
       }
     },
 
-    addShortcutListener: function () {
+    addUndoListener: function () {
       window.addEventListener("keydown", this._keysDown);
     },
 
     componentDidMount: function () {
       this.setCursor("brush");
 
-      this.addShortcutListener();
+      this.addUndoListener();
       this._initiateFetchingOfCanvas(this.props.params.id);
     },
 
@@ -174,13 +161,6 @@
             }
           );
           break;
-        case 'question':
-          if (this.state.showHelp) {
-            this.setState({ showHelp: false });
-          } else {
-            this.setState({ showHelp: true });
-          }
-          break;
       }
     },
 
@@ -214,30 +194,12 @@
       this.setState({ isModalOpen: false });
     },
 
-    renderHelpModal: function () {
-      var helpBox;
-      if (this.state.showHelp) {
-        helpBox = (
-          <div className="helpbox">
-            <div className="helpbox-title">Shortcuts</div>
-            <p>Undo: Ctrl (⌘) + z</p>
-            <p>Brush: B</p>
-            <p>Paintbucket: P</p>
-            <p>Eraser: E</p>
-            <p>Toggle-grid: G</p>
-          </div>
-        );
-      }
-      return helpBox;
-    },
-
     render: function () {
       var drawing = this.state.drawing;
       if (drawing) {
         var message = this.renderFlashMessage();
         var canvasSize = ((drawing.size * 10) + (drawing.size * 2));
         var containerStyle = { width: canvasSize };
-        var HelpModal = this.renderHelpModal();
 
         return (
           <div className="drawing-app">
@@ -252,7 +214,6 @@
               </form>
             </Modal>
 
-            {HelpModal}
             <div className="app-title">Pixelate</div>
             <div className="center-canvas-and-palette" style={containerStyle}>
               <Canvas paintbucket={this.paintbucket} drawing={drawing} paintbucketOn={this.state.paintbucketOn}/>

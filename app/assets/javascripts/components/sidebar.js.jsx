@@ -5,6 +5,10 @@
       return { show: false };
     },
 
+    componentDidMount: function () {
+
+    },
+
     handleHover: function () {
       this.setState( { show: true } );
     },

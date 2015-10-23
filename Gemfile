@@ -29,7 +29,6 @@ gem 'newrelic_rpm'
 gem 'bcrypt', '~> 3.1.7'
 gem 'seed_dump'
 gem 'kaminari'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 

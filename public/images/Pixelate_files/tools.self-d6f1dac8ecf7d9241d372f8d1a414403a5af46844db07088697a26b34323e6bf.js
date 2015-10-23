@@ -1,6 +1,6 @@
 (function (root) {
   'use strict';
-  var tools = ["brush", "eraser", "paintbucket", "save"];
+  var tools = ["brush", "eraser", "paintbucket", "save", "question"];
   root.Tools = React.createClass({
     displayName: "Tools",
 

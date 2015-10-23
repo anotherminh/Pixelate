@@ -1,3 +1,25 @@
+.helpbox {
+  width: 132px;
+  height: 117px;
+  border: 1px dashed black;
+  padding: 15px;
+  font-family: "Inconsolata";
+  font-size: 14px;
+  position: absolute;
+  left: 20px;
+  top: 100px;
+}
+
+.helpbox p {
+  margin: 5px 0px;
+}
+
+.helpbox-title {
+  text-decoration: underline;
+  text-align: center;
+  padding-bottom: 3px;
+}
+
 .app-title {
   display: block;
   font-family: 'Inconsolata';
