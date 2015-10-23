@@ -50,14 +50,14 @@ ApiActions = {
     });
   },
 
-  receiveShowKudo: function () {
+  receiveShowKudo: function (kudo) {
     AppDispatcher.dispatch({
       actionType: KudosConstants.RECEIVE_SHOW_KUDO,
       kudo: kudo
     });
   },
 
-  decrementShowKudos: function () {
+  decrementShowKudos: function (kudo) {
     AppDispatcher.dispatch({
       actionType: KudosConstants.TAKEAWAY_SHOW_KUDO,
       kudo: kudo

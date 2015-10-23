@@ -9,6 +9,13 @@
   MESSAGE = "SAVE MESSAGE",
   FINISHED_PAINT = "FINISHED_PAINT";
 
+  root.receiveUpdatedContent = function (changedCellsIdx) {
+    var currentColor = ColorStore.get();
+    changedCellsIdx.forEach(function (idx) {
+      _drawing.content[idx] = { id: idx, style: { "backgroundColor": currentColor } };
+    });
+  };
+
   function toggleGrid () {
     if (_gridOn) {
       _gridOn = false;
@@ -65,10 +72,6 @@
     });
   }
 
-  function updateCell (cell) {
-    _drawing.content[cell.id] = cell;
-  }
-
   function addNewComment (comment) {
     _drawing.comments.unshift(comment);
     DrawingStore.changed();
@@ -108,6 +111,7 @@
     CellsToPaint.forEach(function (idx) {
       _drawing.content[idx].style.backgroundColor = CurrentSelectedColor;
     });
+
 
     DrawingStore.changed();
   }
@@ -209,6 +213,7 @@
           break;
         case DrawingConstants.TOGGLE_GRID:
           toggleGrid();
+          break;
       }
     })
   });

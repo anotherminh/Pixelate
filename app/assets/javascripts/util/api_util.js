@@ -123,7 +123,7 @@
 
     dislike: function (drawing_info) {
       $.ajax({
-        url: '/api/kudos/' + drawing_id,
+        url: '/api/kudos/' + drawing_info.drawing_id,
         type: 'delete',
         dataType: 'json',
         success: function (response) {
