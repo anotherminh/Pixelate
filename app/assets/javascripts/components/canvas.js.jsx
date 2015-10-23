@@ -15,10 +15,6 @@
       this.setState({ mouseDown: true });
     },
 
-    // handleLeavingCanvas: function () {
-    //   this.setState({ mouseDown: false });
-    // },
-
     render: function () {
       var that = this;
       var canvas = that.props.drawing;
@@ -28,12 +24,13 @@
         <div className="canvas"
              id="save-me"
              style={style}
-             onClick={this.props.paintbucket}>
+             onClick={this.props.fillArea}>
              {
                cells.map(function (cell, idx) {
                  return <Cell key={cell.id}
                               idx={idx}
                               cell={cell}
+                              brushSize={that.props.brushSize}
                               paintbucketOn={that.props.paintbucketOn}
                               handleMouseDown={that.handleMouseDown}
                               handleMouseUp={that.handleMouseUp}

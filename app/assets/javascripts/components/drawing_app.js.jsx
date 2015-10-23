@@ -11,6 +11,7 @@
                title: '',
                paintbucketOn: false,
                lastActiveColor: "#000000",
+               brushSize: "small",
                showHelp: false };
     },
 
@@ -23,10 +24,6 @@
         var url = '/drawings/' + DrawingStore.get().id;
         this.history.pushState(null, url);
       });
-    },
-
-    _turnOffPaintbucket: function () {
-      this.state.paintbucketOn = false;
     },
 
     // works for both fetching a brand new (not in db) canvas,
@@ -118,13 +115,17 @@
         this.setState({ isModalOpen: false }, function () { this.saveToCanvas(drawingTitle); }.bind(this, drawingTitle) );
      },
 
-    paintbucket: function (e) {
+    fillArea: function (e) {
       if (this.state.paintbucketOn) {
         ToolActions.paintbucket($(e.target).attr('value'));
+      } else if (this.state.brushSize === 'medium') {
+        ToolActions.paintMedium($(e.target).attr('value'));
+      } else if (this.state.brushSize === 'large') {
+        ToolActions.paintLarge($(e.target).attr('value'));
       }
     },
 
-    handleToolSelection: function (tool) {
+    handleToolSelection: function (tool, opts) {
       this.setCursor(tool);
       switch (tool) {
         case 'save':
@@ -171,6 +172,7 @@
               if (ColorStore.get() === "#eee") {
                 PaletteActions.receiveNewActiveColor(this.state.lastActiveColor);
               }
+              this.setState({ brushSize: opts });
             }
           );
           break;
@@ -255,7 +257,10 @@
             {HelpModal}
             <div className="app-title">Pixelate</div>
             <div className="center-canvas-and-palette" style={containerStyle}>
-              <Canvas paintbucket={this.paintbucket} drawing={drawing} paintbucketOn={this.state.paintbucketOn}/>
+              <Canvas fillArea={this.fillArea}
+                      drawing={drawing}
+                      brushSize={this.state.brushSize}
+                      paintbucketOn={this.state.paintbucketOn}/>
               <Palette paintbucketOn={this.state.paintbucketOn}/>
             </div>
             <Tools handleToolSelection={this.handleToolSelection}/>

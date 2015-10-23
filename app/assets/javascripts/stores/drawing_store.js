@@ -116,6 +116,14 @@
     DrawingStore.changed();
   }
 
+  function paintMedium () {
+    console.log("paint medium in drawing_store needs to be defined");
+  }
+
+  function paintLarge () {
+    console.log("paint large in drawing_store needs to be defined");
+  }
+
   function findEligibleNeighborCell (startColor, startIdx, neighbors, CellsToPaint) {
     var eligibleCells = [];
     var width = parseInt(_drawing.size);
@@ -201,6 +209,12 @@
           break;
         case ToolsConstants.PAINTBUCKET:
           paintbucket(action.cell);
+          break;
+        case ToolsConstants.PAINT_MEDIUM:
+          paintMedium(action.cell);
+          break;
+        case ToolsConstants.PAINT_LARGE:
+          paintLarge(action.cell);
           break;
         case DrawingConstants.RECEIVE_PAST_DRAWING:
           setDrawingToPastState(action.drawing);
