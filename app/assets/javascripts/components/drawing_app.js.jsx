@@ -59,6 +59,7 @@
 
     componentDidMount: function () {
       this.setCursor("brush");
+
       this.addUndoListener();
       this._initiateFetchingOfCanvas(this.props.params.id);
     },
@@ -80,6 +81,7 @@
     },
 
     saveToCanvas: function (drawingTitle) {
+      document.getElementsByTagName('body')[0].className = ("wait-cursor");
       html2canvas($("#save-me"), {onrendered: function(canvas) {
           // save this to the database
           this.state.drawing.data_url = canvas.toDataURL('image/png');
@@ -114,6 +116,7 @@
       switch (tool) {
         case 'save':
           if (this.state.drawing.id) {
+            setCursor("wait");
             this.saveToCanvas();
           } else {
             this.openModal();
@@ -174,6 +177,7 @@
       var message;
       var that = this;
       if (this.state.message) {
+        document.getElementsByTagName('body')[0].className= "";
         message = (
           <div className="flash-message"
                onClick={this.resetFlashEarly}

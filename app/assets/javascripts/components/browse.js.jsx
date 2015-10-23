@@ -8,6 +8,7 @@
     },
 
     _onChange: function () {
+      document.getElementsByTagName('body')[0].className = ("");
       this.setState({ drawings: DrawingsStore.all(), hottestDrawings: DrawingsStore.allHotDrawings() });
     },
 
@@ -20,6 +21,7 @@
     },
 
     componentWillReceiveProps: function (newProps) {
+      document.getElementsByTagName('body')[0].className = ("wait-cursor");
       ApiUtil.fetchBrowsePage(newProps.params.id);
     },
 

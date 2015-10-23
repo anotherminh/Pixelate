@@ -16,6 +16,10 @@
  // */
  //
 
+.wait-cursor {
+  cursor: wait;
+}
+
 .eraser-cursor {
   cursor: image-url("eraser_cursor.png") 0 20, auto;
 }
