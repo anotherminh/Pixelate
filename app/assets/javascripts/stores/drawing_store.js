@@ -95,7 +95,6 @@
     //figure out the color of the first cell, then color every
     //adjacent cell of the same color until there is no more
     StartCellIdx = (parseInt(StartCellIdx));
-    var CurrentSelectedColor = ColorStore.get();
     var StartCellColor = _drawing.content[StartCellIdx].style.backgroundColor;
 
     var CellsToPaint = [];
@@ -108,20 +107,15 @@
       neighbors = neighbors.concat(findEligibleNeighborCell(StartCellColor, current_parent, neighbors, CellsToPaint));
     }
 
-    CellsToPaint.forEach(function (idx) {
-      _drawing.content[idx].style.backgroundColor = CurrentSelectedColor;
-    });
-
+    paintCells(CellsToPaint);
 
     DrawingStore.changed();
   }
 
-  function paintMedium () {
-    console.log("paint medium in drawing_store needs to be defined");
-  }
-
-  function paintLarge () {
-    console.log("paint large in drawing_store needs to be defined");
+  function paintCells(cells_idx) {
+    cells_idx.forEach(function (idx) {
+      _drawing.content[idx].style.backgroundColor = ColorStore.get();
+    });
   }
 
   function findEligibleNeighborCell (startColor, startIdx, neighbors, CellsToPaint) {
@@ -209,12 +203,6 @@
           break;
         case ToolsConstants.PAINTBUCKET:
           paintbucket(action.cell);
-          break;
-        case ToolsConstants.PAINT_MEDIUM:
-          paintMedium(action.cell);
-          break;
-        case ToolsConstants.PAINT_LARGE:
-          paintLarge(action.cell);
           break;
         case DrawingConstants.RECEIVE_PAST_DRAWING:
           setDrawingToPastState(action.drawing);

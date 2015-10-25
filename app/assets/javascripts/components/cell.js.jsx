@@ -6,7 +6,8 @@
     },
 
     handleMouseDown: function () {
-      // doesn't check to see if brush size is on
+      // this is where we should handle the logic
+      // of having different brush sizes
       if (!this.props.paintbucketOn) {
         var x = this.props.cell.id % 50;
         var y = Math.floor(this.props.cell.id / 50);

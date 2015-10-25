@@ -60,7 +60,7 @@
     _previousCell = null;
     // var _cells = DrawingStore.get().content;
     var _cellsIdx = [];
-    
+
     cellsInBetween.forEach(function (coord) {
       var idx = coord[1] * 50 + coord[0];
       _cellsIdx.push(idx);
