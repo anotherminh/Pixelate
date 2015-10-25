@@ -17,7 +17,7 @@ var App = React.createClass({
 
 var routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={UserDetails}/>
+    <IndexRoute component={Browse}/>
     <Route path="users/:id" component={UserDetails}/>
     <Route path="browse/:id" component={Browse}/>
     <Route path="drawings/new" component={DrawingApp}/>
