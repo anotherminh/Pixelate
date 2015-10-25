@@ -30,7 +30,6 @@
                  return <Cell key={cell.id}
                               idx={idx}
                               cell={cell}
-                              brushSize={that.props.brushSize}
                               paintbucketOn={that.props.paintbucketOn}
                               handleMouseDown={that.handleMouseDown}
                               handleMouseUp={that.handleMouseUp}

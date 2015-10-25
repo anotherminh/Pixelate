@@ -11,7 +11,6 @@
                title: '',
                paintbucketOn: false,
                lastActiveColor: "#000000",
-               brushSize: "small",
                showHelp: false };
     },
 
@@ -118,10 +117,6 @@
     fillArea: function (e) {
       if (this.state.paintbucketOn) {
         ToolActions.paintbucket($(e.target).attr('value'));
-      } else if (this.state.brushSize === 'medium') {
-        ToolActions.paintMedium($(e.target).attr('value'));
-      } else if (this.state.brushSize === 'large') {
-        ToolActions.paintLarge($(e.target).attr('value'));
       }
     },
 
@@ -172,7 +167,6 @@
               if (ColorStore.get() === "#eee") {
                 PaletteActions.receiveNewActiveColor(this.state.lastActiveColor);
               }
-              this.setState({ brushSize: opts });
             }
           );
           break;

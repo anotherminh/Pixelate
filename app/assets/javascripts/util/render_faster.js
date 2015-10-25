@@ -7,7 +7,7 @@
     paintCells([coord]);
   };
 
-  root.handleNewCoord = function (coord) {
+  root.handleNewCoord = function (coord, size) {
     if (_previousCell) {
       var cellsInBetween = [_previousCell.slice()], xDiff, yDiff, xDiffPositive, yDiffPositive;
       xDiff = coord[0] - _previousCell[0];
