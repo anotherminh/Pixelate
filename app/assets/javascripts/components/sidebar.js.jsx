@@ -2,7 +2,7 @@
   'use strict';
   root.Sidebar = React.createClass({
     getInitialState: function () {
-      return { show: true };
+      return { show: false };
     },
 
     componentDidMount: function () {
@@ -14,7 +14,7 @@
     },
 
     handleMouseLeave: function () {
-      this.setState( { show: true } );
+      this.setState( { show: false } );
     },
 
     render: function () {
