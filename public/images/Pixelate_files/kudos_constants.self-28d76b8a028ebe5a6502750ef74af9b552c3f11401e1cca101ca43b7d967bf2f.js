@@ -1,4 +1,0 @@
-KudosConstants = {
-  RECEIVE_KUDO: "RECEIVE_KUDO",
-  TAKEAWAY_KUDO: "TAKEAWAY_KUDO"
-};
