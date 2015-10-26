@@ -82,6 +82,7 @@ On the backend, I'll create a table, model, and API controller for comments. Fro
 ### Phase 6: Clean Up, Seed, and Other Bonus Features (4 days)
 Once I'm done with the MVP, I plan to implement as many of the bonus features as I can get to.  One of the things I plan to tackle is faster rendering speed for very fast brush strokes.  Every browser has some limitation on how many mouse events get triggered, so if you move the mouse very, very fast, not all the events will be triggered---which means only some of the cells will be colored.
 
+[Details][phase-six]
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
