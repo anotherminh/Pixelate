@@ -54,6 +54,15 @@
   cursor: pointer;
 }
 
+div.sidebar-button:after {
+  width: 110px;
+  height: 60px;
+  position: absolute;
+  left: 0px;
+  top: -30px;
+  content: "";
+}
+
 .show {
   height: 400px;
 }
