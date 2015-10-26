@@ -15,13 +15,6 @@ ApiActions = {
     });
   },
 
-  sendCellstoCellsStore: function (cells) {
-    AppDispatcher.dispatch({
-      actionType: DrawingConstants.RECEIVE_CELLS,
-      cells: cells
-    });
-  },
-
   receiveUserDetails: function (user) {
     AppDispatcher.dispatch({
       actionType: UserConstants.RECEIVE_USER,

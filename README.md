@@ -1,4 +1,3 @@
-
 # Pixelate
 
 [Heroku link][heroku]
@@ -17,6 +16,21 @@ Pixelate is a simple web application for making and sharing pixel art, built on 
 - [ ] Comment and like other users' drawings.
 - [ ] Search for users or drawings (by username or title).
 
+### Bonus Features Completed
+- [ ] Optimized drawing speed (can handle very fast mouse moves)
+- [ ] Paintbucket for the app
+- [ ] Color selection for the drawing app
+- [ ] Download drawings as png files
+- [ ] "undo" via ctrl + z
+
+### To-dos
+### Bonus Features (TBD)
+- [ ] Customize canvas sizes (small, medium, large)
+- [ ] Different sizes for the brush/eraser
+- [ ] Artist bios
+- [ ] Tagging of drawings, so people can more easily search for the relevant drawings
+- [ ] Collaborative drawing
+
 ## Design Docs
 * [View Wireframes][view]
 * [DB schema][schema]
@@ -26,66 +40,47 @@ Pixelate is a simple web application for making and sharing pixel art, built on 
 
 ## Implementation Timeline
 
-### Phase 1: Stand-alone Widget (1.5 day)
+### Phase 1: Stand-alone Widget & User Authentication (1 day)
 
-I want to get the drawing widget to work on its own, before adding users/ social features. I start with the backend by building a table and model for the canvases. This table will not contain any reference to the user table (that's for later). The canvas will also have a full JSON API.
-The front end is about setting up Flux and React views for the drawing. No There will also be one static page that would render the widget's component.
-The drawings can be saved to the database (by clicking the save button), but because we don't have users yet, the only way to load the drawings is by navigating to the drawings' show page (/drawings/:id). React Router will help us render the right drawing by fetching the drawing's id from the url.
+I want to get the drawing widget to work on its own, before adding users/ social features. I start with the backend by building a table and model for the canvases, as well as a table and model for the users. The canvas will also have a full JSON API.
+The front end is about setting up Flux and React views for the drawing. There will also be one static page that would render the widget's component.
+The drawings can be saved to the database (by clicking the save button).  I'm storing them as a string representation of a one-dimensional array of colors. The canvas that users see and interact with is created by setting a fixed width for the 'canvas' container and float all the pixels left.  The width is calculated by looking at the size of the canvas, which is a part of the drawing object that is stored in the database. For now, I don't allow for different sizes of drawings, but because of the way I have things set up now, allowing for different sizes in the future should be relatively simple.  
+The React Router will help us render the right drawing by fetching the drawing's id from the url.
 
 [Details][phase-one]
 
-### Phase 2: Adding Users & Auth (1.5 days)
+### Phase 2: Drawing index page & user profiles (1.5 days)
 
-In phase 2, I want to make the sign up/log in page, and use BCrypt to implement authorization. Again, I start with the backend by making a model for Users and adding association between users and their drawings. I will have a regular controller for users (for the sign up page) as well as a controller for Sessions. I will also add a JSON API for retrieving info about a specific user, as well as their associated drawings).
-The Flux component I'll be working on is the UserDetails component (which renders the user's show page). There, you can view the user's stats (how many drawings they have), as well as view their drawings. One of the drawings will be randomly selected to be rendered in a bigger size than others. Once we implement likes, this larger drawing will be the most liked drawing of the user.
+Phase 1 was about making pixel art.  Phase 2 is about laying the foundations for sharing pixel art. I will be implementing the browse page and the user profile page, where you can view all the drawings that other users have made.  The browse page has two sections--the top drawings (most liked), and the rest of the drawings (ordered by most recent). I can't implement the back-end to support actual fetching of the most populate drawings yet, because I've yet to implement the 'like' (or 'kudos', as I plan to call it) features.  The user's page contains just the thumbnails of all the drawings they have made.  
 
 [Details][phase-two]
 
-### Phase 3: Saving/Loading Drawings (1 day)
+### Phase 3: Giving Kudos (.5 day)
 
-So we will have a component for the 'edit' button. On hover, this button will appear on top of the drawing's thumbnail. On click, this component will fetch data from the database to render the canvas in the drawing app.
+Time to get fancy with the thumbnails for the drawings (which appears on both the user profile page and the index page). On hover, I want different buttons to appear on top of the drawing's thumbnail. First, there's the 'edit button' drawing, which only appears if the current users owns the drawing.  On click, this component will fetch data from the database to render the canvas in the drawing app.
+
 I have to figure out how to prevent unauthorized users from editing other's drawings. I think I will pass the current user to the root React component, and every 'edit'/'delete' options will be rendered or not rendered according to the current user's id. This might involve 'wrapping' certain components inside of "authenticated component" which will handle the re-directing.
+
+The thumbnails on the user's show page will also have a 'like' button that appears on hover. Only signed in users can like/give kudos to the drawings. And users can only like drawings once (and not at all if you yourself made it).  Backend will include create a table, model, and API controller for 'likes'.
 
 [Details][phase-three]
 
-### Phase 4: Likes/Kudos (.5 day)
+### Phase 4: Comments, Search, Navigation Menu (1 day)
+Comments will involve adding a comments table and model on the back end.  The search function will require a new Search Component, and a Search Results Component, but it will reuse the Draw Thumbnail component that we made for the index and user profile pages.
 
-The thumbnails on the user's show page will have a 'like' button that appears on hover. Only signed in users can like/give kudos to the drawings. And users can only like drawings once.
-Backend will include create a table, model, and API controller for 'likes'. Front end is relatively simple, except we have to possibly also wrap the like component in an AuthenticatedComponent (which checks to see if the user is logged in).
+I want my Navbar to be as nonintrusive as possible, so I plan to implement a pull-down tab that sticks to the top left corner of the screen.
 
 [Details][phase-four]
 
-### Phase 5: Comments & Drawing Show Page (1.5 day)
+### Phase 5: Paintbucket & Color Picker (1 day)
 
 The drawing show page will just render the drawing at full-size, as well as display the info/stats of the drawings (title, artist, how many likes it has, how many comments, and what the comments are).
 On the backend, I'll create a table, model, and API controller for comments. Front end involves putting a comment form onto the drawing show page.
 
 [Details][phase-five]
 
-### Phase 6: Browse Page (.5 day)
-
-The browse page is split up into two basic components: the 10 most-liked drawings of the week, and a list of all the drawings submitted by users.
-
-### Phase 7: Navbar & Search page (1 day)
-
-Building the nav bar involves adding a couple of React components and CSS Styling such that it only appears on hover.
-
-The search page will be yet another React component, with two children: the search-input-field, and the search-results components.
-
-### Phase 8: Clean Up and Seed (1 day)
-A day of drawing (by me) and crowdsourcing (my friends) for drawings.
-
-
-### Bonus Features (TBD)
-- [ ] Paintbucket for the app
-- [ ] Color selection for the drawing app
-- [ ] Customize canvas sizes (small, medium, large)
-- [ ] Different sizes for the brush/eraser
-- [ ] Artist bios
-- [ ] Tagging of drawings, so people can more easily search for the relevant drawings
-- [ ] Download drawings as png files
-- [ ] "undo" via ctrl + z
-- [ ] Collaborative drawing
+### Phase 6: Clean Up, Seed, and Other Bonus Features (4 days)
+Once I'm done with the MVP, I plan to implement as many of the bonus features as I can get to.  One of the things I plan to tackle is faster rendering speed for very fast brush strokes.  Every browser has some limitation on how many mouse events get triggered, so if you move the mouse very, very fast, not all the events will be triggered---which means only some of the cells will be colored.
 
 
 [phase-one]: ./docs/phases/phase1.md
@@ -93,3 +88,4 @@ A day of drawing (by me) and crowdsourcing (my friends) for drawings.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+[phase-six]: ./docs/phases/phase6.md

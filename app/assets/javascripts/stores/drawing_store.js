@@ -189,9 +189,6 @@
         case DrawingConstants.RECEIVE_DRAWING:
           loadDrawing(action.drawing, action.message);
           break;
-        case DrawingConstants.UPDATE_CELL:
-          updateCell(action.cell);
-          break;
         case DrawingConstants.NEW_DRAWING_SAVED:
           loadNewSavedDrawing(action.drawing, action.message);
           break;

@@ -1,51 +1,34 @@
 # Schema Information
 
-## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+## user
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+username       | string    | not null
+password_digest| text      | not null
+session_token  | integer   | not null, foreign key, indexed
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
-
-## reminders
+## drawings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
+size        | integer   | not null
+title       | string    | not null
+content     | text      | not null
+data_url    | text      |
 
-## tags
+## kudos
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+user_id     | integer   | not null, foreign key (references users), indexed
+drawing_id  | string    | not null, foreign key (references notes), indexed
 
-## taggings
+## comments
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
-
-## users
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
-password_digest | string    | not null
-session_token   | string    | not null, indexed, unique
+user_id     | integer   | not null, foreign key, indexed
+drawing_id  | integer   | not null, foreign key, indexed
+body        | text      | not null
