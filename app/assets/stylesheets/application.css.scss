@@ -172,7 +172,7 @@
 #welcome-box {
   position: relative;
   width: 500px;
-  height: 150px;
+  height: 180px;
   margin-top: 280px;
   margin-left: auto;
   margin-right: auto;
@@ -255,17 +255,25 @@ a.button {
   margin-left: 40px;
 }
 
+.auth-form {
+  margin-top: 7px;
+}
+
 .auth-form label {
   text-align: left;
   margin: 5px;
   text-size: 20px;
 }
 
+.auth-form input:focus {
+  background: aliceblue;
+}
+
 .auth-form input {
   -webkit-appearance: none;
-  width: 350px;
+  width: 360px;
   height: 24px;
-  margin: 5px;
+  margin: 7px;
   border: 1px solid black;
   font-family: 'Invasion';
   padding: 3px;
@@ -279,8 +287,9 @@ a.button {
   font-size: 16px;
   color: black;
   width: 100px;
-  height: 26px;
-  margin-right: -1px;
+  height: 31px;
+  margin-top: 10px;
+  margin-right: 13px;
   background: #FFFFFF;
   border: 1px solid black;
 }
@@ -318,4 +327,9 @@ a.button {
 .back-arrow:hover {
   cursor: pointer;
   background-color: #FF5556
+}
+
+.tagline {
+  margin: 20px 0px 5px 0px;
+    font-family: monospace;
 }

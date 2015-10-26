@@ -26,14 +26,13 @@
   }
 
   function incrementKudos (kudo) {
-    // if (_drawings.length === 0) {
-    //   return false;
-    // }
-
     var likedDrawing = findDrawingById(kudo.drawing_id);
     var HotLikedDrawing = findHottestDrawingById(kudo.drawing_id);
 
-    likedDrawing.kudos.push(kudo.user_id);
+    if (likedDrawing) {
+      likedDrawing.kudos.push(kudo.user_id);
+    }
+
     if (HotLikedDrawing) {
       HotLikedDrawing.kudos.push(kudo.user_id);
     }
@@ -42,17 +41,16 @@
   }
 
   function decrementKudos (kudo) {
-    // if (_drawings.length === 0) {
-    //   return false;
-    // }
-
     var UnlikedDrawing = findDrawingById(kudo.drawing_id);
     var HotUnlikedDrawing = findHottestDrawingById(kudo.drawing_id);
 
-    var idx = UnlikedDrawing.kudos.indexOf(kudo.user_id);
-    UnlikedDrawing.kudos.splice(idx, 1);
+    if (UnlikedDrawing) {
+      var idx = UnlikedDrawing.kudos.indexOf(kudo.user_id);
+      UnlikedDrawing.kudos.splice(idx, 1);
+    }
+
     if (HotUnlikedDrawing) {
-      idx = HotUnlikedDrawing.kudos.indexOf(kudo.user_id);
+      var idx = HotUnlikedDrawing.kudos.indexOf(kudo.user_id);
       HotUnlikedDrawing.kudos.splice(idx, 1);
     }
 

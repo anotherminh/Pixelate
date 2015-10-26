@@ -34,7 +34,6 @@
     },
 
     render: function () {
-      debugger;
       if (this.state.userResults || this.state.drawingResults) {
         return (
           <div className="search-container">

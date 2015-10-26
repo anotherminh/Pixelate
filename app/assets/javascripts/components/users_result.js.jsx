@@ -19,7 +19,7 @@
     },
 
     handleClick: function () {
-      var url = '/user_details/' + this.props.user.id;
+      var url = '/users/' + this.props.user.id;
       this.history.pushState(null, url);
     },
 

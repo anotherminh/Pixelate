@@ -1,4 +1,4 @@
-json.extract!(@user, :username, :drawings, :liked_drawings)
+json.extract!(@user, :id, :username, :drawings, :liked_drawings)
 
 json.drawings do
   json.array! @user.drawings do |drawing|

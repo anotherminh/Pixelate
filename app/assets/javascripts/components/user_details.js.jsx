@@ -28,8 +28,14 @@
     },
 
     render: function () {
+
       var user = this.state.user;
       if (user) {
+        var newDrawingButton;
+        if (current_user_id == user.id) {
+          newDrawingButton = <NewDrawingButton/>;
+        }
+
         return(
           <div className="user-details-container">
             <div className="user-details-header">
@@ -40,7 +46,7 @@
 
             <div className="user-details-body">
               <div className="show-thumbnails-container">
-                <NewDrawingButton/>
+                {newDrawingButton}
                 {
                   user.drawings.map(function (drawing, idx) {
                     return (
