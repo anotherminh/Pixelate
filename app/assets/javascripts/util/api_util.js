@@ -33,11 +33,9 @@
         dataType: 'json',
         data: { drawing: preparedParams.drawing },
         success: function (response) {
-          console.log("saved sucessfully!");
           ApiActions.receiveDrawing(response, "Save successful!");
         },
         error: function (response) {
-          console.log("failed to save");
           ApiActions.receiveDrawing(response, "Failed to save.");
         }
       });
@@ -51,11 +49,9 @@
         dataType: 'json',
         data: { drawing: preparedParams.drawing },
         success: function (response) {
-          console.log("saved new drawing sucessfully!");
           ApiActions.newDrawingSaved(response, "Save successful!");
         },
         error: function (response) {
-          console.log("failed to save");
           ApiActions.newDrawingSaved(response, "Failed to save.");
         }
       });

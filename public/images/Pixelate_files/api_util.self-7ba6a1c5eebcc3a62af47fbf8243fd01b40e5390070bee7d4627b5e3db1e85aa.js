@@ -124,7 +124,6 @@
         data: { kudo: {drawing_id: drawing_id } },
         dataType: 'json',
         success: function (response) {
-          console.log("liked");
           ApiActions.receiveKudo(response);
         }
       });
@@ -136,7 +135,6 @@
         type: 'delete',
         dataType: 'json',
         success: function (response) {
-          console.log("disliked");
           ApiActions.decrementKudos(response);
         }
       });
@@ -149,7 +147,6 @@
         data: { comment: {drawing_id: drawing_id, body: body} },
         dataType: 'json',
         success: function (response) {
-          console.log("created new comment");
           ApiActions.receiveNewComment(response);
         }
       });
@@ -162,7 +159,6 @@
         data: {input: input},
         dataType: 'json',
         success: function (response) {
-          console.log("finished search");
           ApiActions.receiveSearchResults(response);
         }
       });
@@ -174,7 +170,6 @@
         type: 'delete',
         dataType: 'json',
         success: function (response) {
-          console.log("deletedDrawing");
           ApiActions.receiveDeletedDrawingInfo(response);
         }
       });
@@ -197,7 +192,6 @@
         type: 'delete',
         dataType: 'json',
         success: function (response) {
-          console.log("deleted comment");
           ApiActions.receieveDeletedCommentInfo(response);
         }
       });
