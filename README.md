@@ -24,7 +24,6 @@ Pixelate is a simple web application for making and sharing pixel art, built on 
 - [ ] "undo" via ctrl + z
 
 ### To-dos
-### Bonus Features (TBD)
 - [ ] Customize canvas sizes (small, medium, large)
 - [ ] Different sizes for the brush/eraser
 - [ ] Artist bios
