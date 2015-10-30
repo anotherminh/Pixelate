@@ -125,7 +125,7 @@
       switch (tool) {
         case 'save':
           if (this.state.drawing.id) {
-            setCursor("wait");
+            this.setCursor("wait");
             this.saveToCanvas();
           } else {
             this.openModal();

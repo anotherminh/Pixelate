@@ -8,8 +8,6 @@
 
 Pixelate is a simple web application for making and sharing pixel art, built on Ruby on Rails and React.js. The core features include:
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
-
 - [ ] Create an account
 - [ ] Log in / Log out
 - [ ] Create, view, edit, and delete pixel drawings
